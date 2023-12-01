@@ -1,0 +1,57 @@
+.socials {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+.address-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact a {
+  font-size: 20px;
+}
+
+.iframe {
+  border: 0;
+  width: 600px;
+  height: 450px;
+}
+
+@media (max-width: 450px) {
+  .contact-title {
+    text-align: center;
+    font-size: 100%;
+  }
+  .iframe {
+    border: 0;
+    width: 350px;
+    height: 350px;
+  }
+  .contact a {
+    font-size: 90%;
+  }
+  .address-item svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 320px) {
+  .iframe {
+    border: 0;
+    width: 290px;
+    height: 300px;
+  }
+}

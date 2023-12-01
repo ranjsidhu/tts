@@ -1,0 +1,49 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image {
+  height: 300px;
+  width: auto;
+}
+
+.about-text-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-item {
+  margin-top: 3%;
+  font-size: 15px;
+  text-align: center;
+}
+
+.text-item-link {
+  text-decoration: underline;
+}
+
+.text-item-link:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .about-image {
+    height: 300px;
+    width: 375px;
+  }
+  .about-image-wrapper {
+    margin-top: 3vh;
+  }
+}
