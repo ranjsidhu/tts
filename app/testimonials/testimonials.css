@@ -1,0 +1,25 @@
+.testimonial-slider {
+  display: flex;
+  transition: transform 0.5s;
+}
+
+.testimonial-item {
+  flex: 0 0 100%;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.testimonial-caption {
+  text-align: center;
+}
+
+.testimonials-title {
+  text-align: center;
+}
