@@ -26,10 +26,6 @@ export default function BookingsPage() {
   ) => {
     const { value } = e.target;
     setFormData((prevData) => ({ ...prevData, time: value }));
-    console.log(
-      "🚀 ~ file: BookingsPage.tsx:15 ~ BookingsPage ~ formData:",
-      formData
-    );
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
