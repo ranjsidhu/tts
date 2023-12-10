@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import j3 from "../assets/j3.jpeg";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import "./about.css";
 
 export default function AboutPage() {

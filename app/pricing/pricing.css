@@ -1,6 +1,12 @@
+.pricing-title {
+  text-align: center;
+  font-size: 100% !important;
+}
+
 .pricing {
   font-size: 20px;
 }
+
 .pricing-table {
   width: 100%;
   border-collapse: collapse;
@@ -39,6 +45,17 @@
 @media (max-width: 320px) {
   .pricing {
     font-size: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .pricing {
+    font-size: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;

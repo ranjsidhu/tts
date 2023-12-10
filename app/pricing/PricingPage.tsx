@@ -1,11 +1,13 @@
 "use client";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import "./pricing.css";
 
 export default function PricingPage() {
   return (
     <Layout>
       <div className="pricing">
+        <br />
+        <h3 className="pricing-title">Pricing</h3>
         <br />
         <div>
           <table className="pricing-table">

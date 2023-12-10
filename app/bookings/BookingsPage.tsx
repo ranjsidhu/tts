@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import "./bookings.css";
 
 export default function BookingsPage() {

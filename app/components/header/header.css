@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 300px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .header {
+    width: 80vw;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 90px;
+  }
+
+  .navbar {
+    margin-right: auto;
+  }
+}
