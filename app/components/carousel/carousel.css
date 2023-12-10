@@ -1,0 +1,27 @@
+/* iPad Pro */
+@media (max-width: 1024px) {
+  .image {
+    height: 600px;
+    width: auto;
+    transition: opacity 0.5s ease;
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+/* iPad Air */
+@media (max-width: 820px) {
+  .image {
+    height: 400px;
+    width: auto;
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+  .image {
+    height: 250px;
+    width: 310px;
+    animation: fadeIn 1s ease-in;
+  }
+}

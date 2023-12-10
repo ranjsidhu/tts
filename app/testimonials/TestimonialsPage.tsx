@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "../components/Layout";
+import Layout from "../components/layout/Layout";
 import "./testimonials.css";
 
 interface Testimonial {

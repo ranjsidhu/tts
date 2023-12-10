@@ -47,3 +47,17 @@
     margin-top: 3vh;
   }
 }
+
+@media (max-width: 390px) {
+  .about-image {
+    height: 300px;
+    width: 340px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-image {
+    height: 280px;
+    width: 320px;
+  }
+}

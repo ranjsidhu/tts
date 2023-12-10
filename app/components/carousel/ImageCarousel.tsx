@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
-import styles from "./components.module.css";
+import "./carousel.css";
 
 interface ImageCarouselProps {
   images: any[];
@@ -10,19 +9,6 @@ interface ImageCarouselProps {
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(false);
-
-  //   const handlePrev = () => {
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex === 0 ? images.length - 1 : prevIndex - 1
-  //     );
-  //   };
-
-  //   const handleNext = () => {
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex === images.length - 1 ? 0 : prevIndex + 1
-  //     );
-  //     setFade(true);
-  //   };
 
   const handleTransitionEnd = () => {
     setFade(false);
@@ -46,15 +32,9 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
         priority
         src={images[currentIndex]}
         alt={`Image ${currentIndex + 1}`}
-        className={styles.image}
+        className="image"
         onTransitionEnd={handleTransitionEnd}
       />
-      {/* <div>
-        <button onClick={handlePrev} style={{ marginRight: "1em" }}>
-          Previous
-        </button>
-        <button onClick={handleNext}>Next</button>
-      </div> */}
     </div>
   );
 };

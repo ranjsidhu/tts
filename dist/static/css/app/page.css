@@ -1,53 +1,49 @@
-/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./app/components/components.module.css ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************/
-.components_nav__urMfi {
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/carousel/carousel.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/* iPad Pro */
+@media (max-width: 1024px) {
+  .image {
+    height: 600px;
+    width: auto;
+    transition: opacity 0.5s ease;
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+/* iPad Air */
+@media (max-width: 820px) {
+  .image {
+    height: 400px;
+    width: auto;
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+  .image {
+    height: 250px;
+    width: 310px;
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/navbar/navbar.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.nav {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.components_navLink__SZdF9 {
-  text-decoration: none;
-  color: black;
-  position: relative;
-  padding: 1rem 1rem;
-}
-
-.components_navLink__SZdF9:hover {
-  color: white;
-  background-color: black;
-  border-radius: 12px;
-  transition: background 0.3s ease;
-}
-
-.components_active__2qSNM {
-  text-decoration: underline;
-}
-
-.components_borderGold__6toCx {
-  border-left: 3px solid gold;
-}
-
-.components_borderBottom__gN_Az {
-  border-bottom: 3px solid gold;
-}
-
-.components_header___smpP {
-  display: flex;
-  flex-direction: column;
-  gap: 23px;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Hamburger menu styles */
-.components_menu-toggle__d_Ipk {
+.menu-toggle {
   display: none;
   cursor: pointer;
 }
 
-.components_bar__N03sJ {
+.bar {
   width: 30px;
   height: 2px;
   background-color: #333;
@@ -55,31 +51,161 @@
   transition: 0.4s;
 }
 
-.components_container__KqGqu {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
+.navLink {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  padding: 1rem 1rem;
 }
 
-.components_footer__7bPeW {
+.navLink:hover {
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.borderGold {
+  border-left: 3px solid gold;
+}
+
+.borderBottom {
+  border-bottom: 3px solid gold;
+}
+
+@media (max-width: 450px) {
+  .navbar {
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLink {
+    margin: 5px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bar.open:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .bar.open:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/header/header.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 300px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .header {
+    width: 80vw;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 90px;
+  }
+
+  .navbar {
+    margin-right: auto;
+  }
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/footer/FooterImages/footer-images.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+.socials {
+  display: flex;
+  gap: 35px;
+}
+
+.socials > img {
+  height: 40px;
+  width: auto;
+}
+
+.socials > img:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .socials > img {
+    height: 40px;
+    width: auto;
+  }
+
+  .socials {
+    padding-bottom: 30px;
+  }
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/footer/PageFooter/footer.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+.footer {
   background-color: black;
   color: white;
   padding: 25px;
   margin-top: 10vh;
-  /* position: fixed; */
-  /* bottom: 0; */
-  /* left: 0; */
-  /* right: 0; */
-  /* height: 15vh; */
 }
 
-.components_footerWrapper__NMBzh {
+.footer-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.components_footerFlex1__sOQps {
+.footer-flex-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,78 +214,51 @@
   gap: 20px;
 }
 
-.components_socials__09_64 {
-  display: flex;
-  gap: 35px;
-}
-
-.components_socials__09_64 > img {
-  height: 40px;
-  width: auto;
-}
-
-.components_socials__09_64 > img:hover {
-  cursor: pointer;
-}
-
-.components_footerLinks__YHLwb {
+.footer-links {
   display: flex;
   justify-content: space-evenly;
   gap: 60px;
 }
 
-.components_footerLegal__oDpRp {
+.footer-legal {
   text-align: center;
   line-height: 1.75;
 }
 
-/* Media query for screens with a maximum width of 768px (typical for mobile) */
-@media (max-width: 768px) {
-  .components_navLink__SZdF9 {
-    margin: 5px 0;
+@media (max-width: 450px) {
+  .footer {
+    background-color: black;
+    color: white;
+    padding: 25px;
+    overflow-x: hidden;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
   }
 
-  .components_menu-toggle__d_Ipk {
-    display: block;
-  }
-
-  .components_nav__urMfi {
-    display: none;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .components_nav__urMfi.components_open__CX_zB {
+  .footer-links {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .components_bar__N03sJ.components_open__CX_zB:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .components_bar__N03sJ.components_open__CX_zB:nth-child(2) {
-    opacity: 0;
-  }
-
-  .components_bar__N03sJ.components_open__CX_zB:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    gap: 20px;
   }
 }
 
-.components_logo__P3W1_ {
-  width: auto;
-  height: 300px;
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/components/layout/layout.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
 }
 
-.components_logo__P3W1_:hover {
-  cursor: pointer;
-}
-
-@keyframes components_fadeIn__LjPAk {
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/home/homepage.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+@keyframes fadeIn {
   from {
     opacity: 0; /* Start with a transparent image */
   }
@@ -168,27 +267,27 @@
   }
 }
 
-.components_images__EOXCo {
+.images {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
 
-.components_images__EOXCo > img {
+.images > img {
   height: 250px;
   width: auto;
-  animation: components_fadeIn__LjPAk 1s ease-in;
+  animation: fadeIn 1s ease-in;
 }
 
-.components_img-wrapper__X3OLx {
+.img-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-.components_quote__Lohdp {
+.quote {
   padding: 20px;
   border-left: 4px solid gold;
   border-right: 4px solid gold;
@@ -200,70 +299,53 @@
   text-align: center;
 }
 
-.components_carousel__vvO_f {
+.carousel {
   display: none;
 }
 
 /* iPad Pro */
 @media (max-width: 1024px) {
-  .components_carousel__vvO_f {
+  .carousel {
     display: block;
   }
-  .components_images__EOXCo {
+  .images {
     display: none;
   }
-  .components_image__kD5bh {
+  .image {
     height: 600px;
     width: auto;
     transition: opacity 0.5s ease;
-    animation: components_fadeIn__LjPAk 1s ease-in;
+    animation: fadeIn 1s ease-in;
   }
 }
 
 /* iPad Air */
 @media (max-width: 820px) {
-  .components_carousel__vvO_f {
+  .carousel {
     display: block;
   }
-  .components_images__EOXCo {
+  .images {
     display: none;
   }
-  .components_image__kD5bh {
+  .image {
     height: 400px;
     width: auto;
-    animation: components_fadeIn__LjPAk 1s ease-in;
+    animation: fadeIn 1s ease-in;
   }
 }
 
 @media (max-width: 450px) {
-  .components_header___smpP {
-    width: 80vw;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-  }
-  .components_navbar__S7xCu {
-    margin-right: auto;
-  }
-  .components_logo__P3W1_ {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 90px;
-  }
-  .components_images__EOXCo {
+  .images {
     display: none;
   }
-  .components_img-wrapper__X3OLx {
+  .img-wrapper {
     margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
   }
-  .components_quote__Lohdp {
+  .quote {
     padding: 10px;
     border-left: 2px solid gold;
     border-right: 2px solid gold;
@@ -273,42 +355,13 @@
     justify-content: center;
     font-size: 0.8rem;
   }
-  .components_carousel__vvO_f {
+  .carousel {
     display: block;
   }
-  .components_image__kD5bh {
+  .image {
     height: 250px;
     width: 310px;
-    animation: components_fadeIn__LjPAk 1s ease-in;
-  }
-
-  .components_footer__7bPeW {
-    background-color: black;
-    color: white;
-    padding: 25px;
-    overflow-x: hidden;
-    /* height: 16vh; */
-    /* position: fixed; */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-y: scroll;
-  }
-
-  .components_footerLinks__YHLwb {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  .components_socials__09_64 > img {
-    height: 40px;
-    width: auto;
-  }
-
-  .components_socials__09_64 {
-    padding-bottom: 30px;
+    animation: fadeIn 1s ease-in;
   }
 }
 

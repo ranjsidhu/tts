@@ -1,11 +1,11 @@
-import Header from "./Header";
+import Header from "../header/Header";
 import LayoutMain from "./LayoutMain";
-import PageFooter from "./PageFooter";
-import styles from "./components.module.css";
+import PageFooter from "../footer/PageFooter/PageFooter";
+import "./layout.css";
 
 export default function Layout({ children }: { children: any }) {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <LayoutMain>
         <Header />
         <div>{children}</div>
