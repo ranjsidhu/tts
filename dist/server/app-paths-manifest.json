@@ -1,8 +1,8 @@
 {
-  "/bookings/page": "app/bookings/page.js",
+  "/not-found": "app/not-found.js",
+  "/about/page": "app/about/page.js",
   "/pricing/page": "app/pricing/page.js",
-  "/testimonials/page": "app/testimonials/page.js",
-  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js"
+  "/offers/page": "app/offers/page.js",
+  "/bookings/page": "app/bookings/page.js"
 }

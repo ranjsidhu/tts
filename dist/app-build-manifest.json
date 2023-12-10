@@ -1,28 +1,10 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
-    ],
-    "/pricing/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/pricing/page.css",
-      "static/chunks/app/pricing/page.js"
-    ],
-    "/bookings/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/bookings/page.css",
-      "static/chunks/app/bookings/page.js"
     ],
     "/about/page": [
       "static/chunks/webpack.js",
@@ -30,11 +12,17 @@
       "static/css/app/about/page.css",
       "static/chunks/app/about/page.js"
     ],
-    "/testimonials/page": [
+    "/bookings/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/testimonials/page.css",
-      "static/chunks/app/testimonials/page.js"
+      "static/css/app/bookings/page.css",
+      "static/chunks/app/bookings/page.js"
+    ],
+    "/pricing/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/pricing/page.css",
+      "static/chunks/app/pricing/page.js"
     ],
     "/offers/page": [
       "static/chunks/webpack.js",
@@ -42,11 +30,16 @@
       "static/css/app/offers/page.css",
       "static/chunks/app/offers/page.js"
     ],
-    "/contact/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/contact/page.css",
-      "static/chunks/app/contact/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }
