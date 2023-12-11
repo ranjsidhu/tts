@@ -1,5 +1,6 @@
 .socials {
   display: flex;
+  flex-direction: row;
   gap: 35px;
 }
 
