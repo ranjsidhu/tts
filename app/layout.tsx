@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Analytics from "./Analytics";
-import reportWebVitals from "./reportWebVitals";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tutoringtosuccess.co.uk"),
   title: {
     default: "Tutoring To Success",
     template: "%s | TTS",
@@ -16,7 +16,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   openGraph: {
-    images: "/opengraph-image.png",
+    title: "Tutoring To Success",
+    description: "Your journey to success starts here",
+    images: [{ url: "/opengraph-image.png" }],
   },
 };
 
@@ -32,5 +34,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-reportWebVitals();

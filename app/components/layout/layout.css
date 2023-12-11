@@ -3,3 +3,32 @@
   grid-template-rows: 1fr auto;
   min-height: 100vh;
 }
+
+.not-found-title {
+  text-align: center;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.not-found a,
+.not-found a:visited {
+  text-decoration: underline;
+  color: black;
+}
+
+.not-found a {
+  cursor: pointer;
+}
+
+@media (max-width: 360px) {
+  .not-found p {
+    text-align: center;
+    text-wrap: balance;
+  }
+}

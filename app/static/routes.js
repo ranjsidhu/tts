@@ -1,37 +1,37 @@
 const routes = [
   {
     id: 1,
-    route: "/",
+    route: "",
     name: "Home",
   },
   {
     id: 2,
-    route: "/about/",
+    route: "/about",
     name: "About",
   },
   {
     id: 3,
-    route: "/bookings/",
+    route: "/bookings",
     name: "Bookings",
   },
   {
     id: 4,
-    route: "/pricing/",
+    route: "/pricing",
     name: "Pricing",
   },
   {
     id: 5,
-    route: "/testimonials/",
+    route: "/testimonials",
     name: "Testimonials",
   },
   {
     id: 6,
-    route: "/offers/",
+    route: "/offers",
     name: "Offers",
   },
   {
     id: 7,
-    route: "/contact/",
+    route: "/contact",
     name: "Contact",
   },
 ];

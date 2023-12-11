@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import routes from "../../routes";
+import routes from "../../static/routes";
 import "./navbar.css";
 
 const Navbar = () => {
