@@ -1,4 +1,0 @@
-# Exclude all files and directories
-/*
-# Include the dist folder and its contents
-!/dist
