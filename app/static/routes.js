@@ -16,7 +16,7 @@ const routes = [
   },
   {
     id: 4,
-    route: "/pricing",
+    route: "/pricing/",
     name: "Pricing",
   },
   {
