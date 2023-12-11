@@ -32,7 +32,7 @@ const routes = [
   {
     id: 7,
     route: "/contact/",
-    name: "Contacts",
+    name: "Contact",
   },
 ];
 
