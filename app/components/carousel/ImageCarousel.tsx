@@ -8,11 +8,6 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(false);
-
-  const handleTransitionEnd = () => {
-    setFade(false);
-  };
 
   useEffect(() => {
     // Auto-scroll functionality
@@ -24,7 +19,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [images, 1500]);
+  }, [images, 1800]);
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -33,7 +28,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
         src={images[currentIndex]}
         alt={`Image ${currentIndex + 1}`}
         className="image"
-        onTransitionEnd={handleTransitionEnd}
       />
     </div>
   );
