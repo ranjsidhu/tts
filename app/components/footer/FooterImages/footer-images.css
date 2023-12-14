@@ -14,12 +14,12 @@
 }
 
 @media (max-width: 450px) {
+  .socials {
+    padding-bottom: 30px;
+  }
+
   .socials > img {
     height: 40px;
     width: auto;
-  }
-
-  .socials {
-    padding-bottom: 30px;
   }
 }
