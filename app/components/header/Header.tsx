@@ -6,7 +6,7 @@ import "./header.css";
 export default function Header() {
   return (
     <div className="header">
-      <div>
+      <div className="header-logo">
         <a href="/">
           <Image priority src={Logo1} alt="logo" className="logo" />
         </a>
