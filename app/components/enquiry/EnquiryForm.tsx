@@ -12,6 +12,7 @@ export default function EnquiryForm() {
     phone: "",
     message: "",
   });
+  const [enquirySent, setEnquirySent] = useState(false);
 
   const changeHandler = (
     e:
@@ -25,10 +26,16 @@ export default function EnquiryForm() {
   const sendEnquiry = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = { ...formData, date: new Date().toUTCString() };
-    instance
-      .post("/enquiry/email", data)
-      .then(({ data }) => console.log(data.message));
-    console.log("🚀 ~ file: EnquiryForm.tsx:19 ~ sendEnquiry ~ data:", data);
+    instance.post("/enquiry/email", data).then(({ data }) => {
+      setFormData((prevData) => ({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        message: "",
+      }));
+      setEnquirySent(true);
+    });
   };
 
   return (
@@ -99,6 +106,12 @@ export default function EnquiryForm() {
         </div>
 
         <button type="submit">Send Enquiry</button>
+
+        {enquirySent && (
+          <p>
+            Thank you for your enquiry! Our Admin team will be in touch soon.
+          </p>
+        )}
       </form>
     </>
   );
