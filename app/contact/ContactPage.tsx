@@ -8,7 +8,7 @@ export default function ContactPage() {
     <Layout>
       <div className="contact">
         <br />
-        <h3 className="contact-title">Contact</h3>
+        <h3 className="contact-title">Contact Us</h3>
         <br />
         <div className="socials">
           <address>
@@ -62,7 +62,10 @@ export default function ContactPage() {
                 <title>Location filled</title>
               </svg>
               <a href="https://maps.app.goo.gl/2GXcXVXVyh4WuwsS7">
-                Bilbrook Junior Football Club Pendeford, Wolverhampton WV9 5HQ
+                <p>Tutoring To Success</p>
+                <p>337 Tettenhall Road</p>
+                <p>Wolverhampton</p>
+                <p>WV6 0SU</p>
               </a>
             </div>
           </address>
@@ -71,9 +74,9 @@ export default function ContactPage() {
         <br />
         <iframe
           className="iframe"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.711356771984!2d-2.147948022871854!3d52.62906002814871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709da20bb27061%3A0xe0825436901f9107!2sBilbrook%20Junior%20Football%20Club!5e0!3m2!1sen!2suk!4v1696773034479!5m2!1sen!2suk"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.4940235032795!2d-2.1624408226845357!3d52.59684063053694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709b524d9dced7%3A0x9813f9de96f46667!2sTutoring%20To%20Success!5e0!3m2!1sen!2suk!4v1702931595578!5m2!1sen!2suk"
           loading="lazy"
-          //   referrerpolicy="no-referrer-when-downgrade"
+          allowFullScreen
         ></iframe>
       </div>
     </Layout>
