@@ -36,7 +36,7 @@ address {
   }
   .iframe {
     border: 0;
-    width: 350px;
+    width: 100%;
     height: 350px;
   }
   .contact a {
@@ -51,7 +51,7 @@ address {
 @media (max-width: 320px) {
   .iframe {
     border: 0;
-    width: 290px;
+    width: 100%;
     height: 300px;
   }
 }
