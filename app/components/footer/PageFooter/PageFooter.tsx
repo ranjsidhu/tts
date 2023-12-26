@@ -2,13 +2,18 @@ import { links } from "../../../static/static";
 import FooterImages from "../FooterImages/FooterImages";
 import "./footer.css";
 
+interface Link {
+  name: string;
+  href: string;
+}
+
 export default function PageFooter() {
   return (
     <div className="footer">
       <div className="footer-wrapper">
         <div className="footer-flex-1">
           <div className="footer-links">
-            {links.map((link: any, index: number) => (
+            {links.map((link: Link, index: number) => (
               <div key={index}>
                 <a href={link.href}>{link.name}</a>
               </div>

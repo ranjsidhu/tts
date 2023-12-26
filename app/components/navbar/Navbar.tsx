@@ -4,6 +4,12 @@ import Link from "next/link";
 import routes from "../../static/routes";
 import "./navbar.css";
 
+interface Route {
+  id: number;
+  name: string;
+  route: string;
+}
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,7 +26,7 @@ const Navbar = () => {
         <div className="bar"></div>
       </div>
       <nav className={`nav ${isMobileMenuOpen ? "open" : ""}`}>
-        {routes.map((route: any, index: number) => (
+        {routes.map((route: Route, index: number) => (
           <Link
             key={route.id}
             href={route.route}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import "./carousel.css";
 
 interface ImageCarouselProps {
-  images: any[];
+  images: HTMLImageElement[];
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
