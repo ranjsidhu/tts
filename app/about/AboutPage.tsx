@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-import { notFound, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import j3 from "../assets/j3.jpeg";
 import Layout from "../components/layout/Layout";

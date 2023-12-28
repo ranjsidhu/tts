@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import NotFound from "./not-found/NotFound";
 
 export const metadata: Metadata = {
@@ -6,5 +7,12 @@ export const metadata: Metadata = {
 };
 
 export default function NotFoundPage() {
-  return <NotFound />;
+  return (
+    <>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <NotFound />
+    </>
+  );
 }

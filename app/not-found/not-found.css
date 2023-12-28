@@ -1,0 +1,15 @@
+.not-found-title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found p {
+  text-align: center;
+}
