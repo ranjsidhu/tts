@@ -58,6 +58,8 @@ button[type="submit"]:hover {
 
 .bookings-title {
   text-align: center;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 input[type="radio"] {

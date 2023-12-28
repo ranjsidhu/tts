@@ -7,7 +7,7 @@ export default function OffersPage() {
   return (
     <Layout>
       <br />
-      <h3 className="offers-title">Offers</h3>
+      <h1 className="offers-title">Offers</h1>
       <br />
       <div className="offers">
         <p>This page will be updated in the near future! </p>

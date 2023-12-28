@@ -21,9 +21,9 @@ const Navbar = () => {
         className={`menu-toggle ${isMobileMenuOpen ? "open" : ""}`}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
+        <div className={`bar ${isMobileMenuOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isMobileMenuOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isMobileMenuOpen ? "open" : ""}`}></div>
       </div>
       <nav className={`nav ${isMobileMenuOpen ? "open" : ""}`}>
         {routes.map((route: Route, index: number) => (

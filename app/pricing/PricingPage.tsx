@@ -7,7 +7,7 @@ export default function PricingPage() {
     <Layout>
       <div className="pricing">
         <br />
-        <h3 className="pricing-title">Pricing</h3>
+        <h1 className="pricing-title">Pricing</h1>
         <br />
         <div>
           <table className="pricing-table">

@@ -4,7 +4,13 @@ import TestimonialsPage from "./TestimonialsPage";
 export const metadata: Metadata = {
   title: "Testimonials",
   description:
-    "View testimonials of Tutoring To Success alumni who achieved their academic dreams as a result of our tutors' dedication to their success",
+    "Explore inspiring testimonials from Tutoring To Success alumni who turned their academic aspirations into reality, thanks to the unwavering dedication of our tutors. Discover success stories that showcase the transformative impact of our personalized approach to education.",
+  alternates: {
+    canonical: "https://tutoringtosuccess.co.uk/testimonials",
+    types: {
+      www: "https://www.tutoringtosuccess.co.uk/testimonials",
+    },
+  },
 };
 
 export default function Testimonials() {

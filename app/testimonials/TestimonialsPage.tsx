@@ -30,7 +30,7 @@ export default function TestimonialsPage() {
   return (
     <Layout>
       <br />
-      <h3 className="testimonials-title">Testimonials</h3>
+      <h1 className="testimonials-title">Testimonials</h1>
       <br />
       <div className="testimonial">
         <div className="center">

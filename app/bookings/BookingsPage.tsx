@@ -48,7 +48,7 @@ export default function BookingsPage() {
     <>
       <Layout>
         <br />
-        <h3 className="bookings-title">Make a Booking</h3>
+        <h1 className="bookings-title">Make a Booking</h1>
         <br />
         <br />
         <form className="form" onSubmit={handleSubmit}>

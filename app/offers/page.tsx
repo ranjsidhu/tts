@@ -4,7 +4,13 @@ import OffersPage from "./OffersPage";
 export const metadata: Metadata = {
   title: "Offers",
   description:
-    "View our offers here at Tutoring to Success. This page will be updated regurlarly to display the latest offers",
+    "Discover exclusive opportunities at Tutoring To Success! Explore our latest promotions and special offers designed to enhance your learning experience. Check back regularly, as this page is updated with exciting new offers to support your academic journey.",
+  alternates: {
+    canonical: "https://tutoringtosuccess.co.uk/offers",
+    types: {
+      www: "https://www.tutoringtosuccess.co.uk/offers",
+    },
+  },
 };
 
 export default function Bookings() {

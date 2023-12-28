@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import "./carousel.css";
 
 interface ImageCarouselProps {
-  images: HTMLImageElement[];
+  images: StaticImageData[];
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
@@ -19,7 +19,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [images, 1800]);
+  }, [images]);
 
   return (
     <div style={{ textAlign: "center" }}>

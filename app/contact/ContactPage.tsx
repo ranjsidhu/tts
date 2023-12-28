@@ -8,7 +8,7 @@ export default function ContactPage() {
     <Layout>
       <div className="contact">
         <br />
-        <h3 className="contact-title">Contact Us</h3>
+        <h1 className="contact-title">Contact Us</h1>
         <br />
         <div className="socials">
           <address>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tutoringtosuccess.co.uk"),
   title: {
     default: "Tutoring To Success",
-    template: "%s | TTS",
+    template: "%s | Tutoring To Success",
   },
   description: "Your journey to success starts here",
   twitter: {

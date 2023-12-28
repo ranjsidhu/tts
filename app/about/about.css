@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+.about-title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
 .about-image-wrapper {
   display: flex;
   justify-content: center;

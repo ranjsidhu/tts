@@ -1,6 +1,7 @@
 .pricing-title {
   text-align: center;
-  font-size: 100% !important;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 .pricing {

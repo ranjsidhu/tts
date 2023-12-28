@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { notFound, useRouter } from "next/navigation";
 import Image from "next/image";
 import j3 from "../assets/j3.jpeg";
 import Layout from "../components/layout/Layout";
@@ -8,11 +9,12 @@ import "./about.css";
 
 export default function AboutPage() {
   const router = useRouter();
+
   return (
     <Layout>
       <div className="about">
         <br />
-        <h3>About Us</h3>
+        <h1 className="about-title">About Us</h1>
         <br />
         <div className="about-image-wrapper">
           <Image
