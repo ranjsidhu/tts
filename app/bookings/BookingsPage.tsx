@@ -153,6 +153,7 @@ export default function BookingsPage() {
           <p className="disclaimer">
             Please note: payments are taken on a monthly basis
           </p>
+          <br />
           <p className="disclaimer">
             If you would like an alternative payment structure, please contact{" "}
             <a
