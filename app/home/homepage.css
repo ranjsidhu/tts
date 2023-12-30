@@ -16,7 +16,7 @@
 
 .images > img {
   height: 250px;
-  width: auto;
+  width: 310px;
   animation: fadeIn 1s ease-in;
   border-radius: 13px;
   box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
@@ -59,7 +59,7 @@
   }
   .image {
     height: 600px;
-    width: auto;
+    width: 744px;
     transition: opacity 0.5s ease;
     animation: fadeIn 1s ease-in;
   }
@@ -76,7 +76,7 @@
   }
   .image {
     height: 400px;
-    width: auto;
+    width: 496px;
     animation: fadeIn 1s ease-in;
   }
 }
