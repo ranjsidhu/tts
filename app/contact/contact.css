@@ -1,12 +1,13 @@
-.socials {
+.methods {
   display: flex;
   flex-direction: column;
   margin-top: 5%;
 }
 .address-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .contact-title {
@@ -17,12 +18,16 @@
 
 address {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.contact-address {
+  text-align: center;
 }
 
 .contact a {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .iframe {
@@ -44,6 +49,17 @@ address {
   }
   .contact a {
     font-size: 90%;
+  }
+  address {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+  }
+  .address-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   .address-item svg {
     width: 48px;

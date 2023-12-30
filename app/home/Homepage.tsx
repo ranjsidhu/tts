@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import Layout from "../components/layout/Layout";
 import ImageCarousel from "../components/carousel/ImageCarousel";
@@ -18,10 +18,16 @@ export default function Homepage() {
     <Layout>
       <div className="img-wrapper">
         <div className="images">
-          <Image priority src={j} alt="Primary school student studying" />
-          <Image priority src={ranj} alt="Sixth form student studying" />
-          <Image priority src={gora} alt="Primary school student studying" />
-          <Image priority src={j2} alt="Primary school student studying" />
+          {images.map((image: StaticImageData, index: number) => {
+            return (
+              <Image
+                key={index}
+                priority
+                src={image}
+                alt={`Image ${index + 1}`}
+              />
+            );
+          })}
         </div>
         <div className="carousel">
           <ImageCarousel images={images} />

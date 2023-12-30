@@ -13,6 +13,13 @@ export default function EnquiryForm() {
     message: "",
   });
   const [enquirySent, setEnquirySent] = useState(false);
+  const [error, setError] = useState({
+    phone: false,
+    email: false,
+    message: false,
+    first_name: false,
+    last_name: false,
+  });
 
   const changeHandler = (
     e:
@@ -25,22 +32,64 @@ export default function EnquiryForm() {
 
   const sendEnquiry = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = { ...formData, date: new Date().toUTCString() };
-    instance.post("/enquiry/email", data).then(({ data }) => {
-      setFormData((prevData) => ({
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        message: "",
-      }));
-      setEnquirySent(true);
+    setError({
+      phone: false,
+      email: false,
+      message: false,
+      first_name: false,
+      last_name: false,
     });
+    setEnquirySent(false);
+    const data = { ...formData, date: new Date().toUTCString() };
+
+    const emailPhone = data.email || data.phone;
+    const validMessage = data.message;
+
+    if (emailPhone && validMessage) {
+      instance.post("/enquiry/email", data).then(({ data }) => {
+        setFormData(() => ({
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone: "",
+          message: "",
+        }));
+        setEnquirySent(true);
+      });
+    } else {
+      // Error handling for no message entered
+      if (!validMessage) {
+        setError((prevError) => ({ ...prevError, message: true }));
+      }
+      // Error handling for email and phone
+      if (!data.email && !data.phone) {
+        setError((prevError) => ({ ...prevError, email: true, phone: true }));
+      } else if (!data.email) {
+        setError((prevError) => ({ ...prevError, email: true }));
+      } else if (!data.phone) {
+        setError((prevError) => ({ ...prevError, phone: true }));
+      }
+      // Error handling for name
+      if (!data.first_name && !data.last_name) {
+        setError((prevError) => ({
+          ...prevError,
+          first_name: true,
+          last_name: true,
+        }));
+      } else if (!data.first_name) {
+        setError((prevError) => ({ ...prevError, first_name: true }));
+      } else if (!data.last_name) {
+        setError((prevError) => ({ ...prevError, last_name: true }));
+      }
+    }
   };
 
   return (
     <>
       <h3 className="form-title">Request a free no obligation consultation</h3>
+      <p className="form-text">
+        Our Admin team will aim to respond to your query within 3 business days
+      </p>
       <br />
       <br />
       <form onSubmit={sendEnquiry}>
@@ -49,6 +98,7 @@ export default function EnquiryForm() {
             <label htmlFor="first_name">First Name</label>
             <input
               id="first_name"
+              className={`${error.first_name ? "error" : ""}`}
               name="first_name"
               type="text"
               value={formData.first_name}
@@ -60,6 +110,7 @@ export default function EnquiryForm() {
             <label htmlFor="last_name">Last Name</label>
             <input
               id="last_name"
+              className={`${error.last_name ? "error" : ""}`}
               name="last_name"
               type="text"
               value={formData.last_name}
@@ -73,8 +124,9 @@ export default function EnquiryForm() {
             <label htmlFor="email">Email</label>
             <input
               id="email"
+              className={`${error.email ? "error" : ""}`}
               name="email"
-              type="text"
+              type="email"
               value={formData.email}
               autoComplete="email"
               onChange={changeHandler}
@@ -84,6 +136,7 @@ export default function EnquiryForm() {
             <label htmlFor="phone">Phone</label>
             <input
               id="phone"
+              className={`${error.phone ? "error" : ""}`}
               name="phone"
               type="text"
               value={formData.phone}
@@ -98,10 +151,14 @@ export default function EnquiryForm() {
             <label htmlFor="message">Message</label>
             <textarea
               id="message"
+              className={`${error.message ? "error" : ""}`}
               name="message"
               value={formData.message}
               onChange={changeHandler}
             />
+            {error.message && (
+              <p className="error-text">Please enter a messsage</p>
+            )}
           </div>
         </div>
 

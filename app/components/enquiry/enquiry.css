@@ -64,6 +64,19 @@ textarea,
   font-size: 175%;
 }
 
+.form-text {
+  text-align: center;
+}
+
+.error {
+  border: 3px solid red;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+}
+
 @media (max-width: 450px) {
   input,
   textarea,
@@ -84,10 +97,16 @@ textarea,
     justify-content: center;
     margin-bottom: 10px;
   }
+
   .form-title {
     text-align: center;
     padding: 25px;
     font-size: 100%;
+  }
+
+  .form-text {
+    text-align: center;
+    font-size: 80%;
   }
 
   .form-row {

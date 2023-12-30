@@ -11,8 +11,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
   useEffect(() => {
     // Auto-scroll functionality
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
+    const intervalId: NodeJS.Timeout = setInterval(() => {
+      setCurrentIndex((prevIndex: number) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, 1500);
@@ -22,14 +22,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   }, [images]);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <Image
-        priority
-        src={images[currentIndex]}
-        alt={`Image ${currentIndex + 1}`}
-        className="image"
-      />
-    </div>
+    <Image
+      priority
+      src={images[currentIndex]}
+      alt={`Image ${currentIndex + 1}`}
+      className="image"
+    />
   );
 };
 

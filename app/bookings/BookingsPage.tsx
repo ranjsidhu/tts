@@ -4,8 +4,16 @@ import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import "./bookings.css";
 
+type FormDataType = {
+  date: string;
+  time: string;
+  subject: string;
+  keyStage: string;
+  groupOrIndividual: string;
+};
+
 export default function BookingsPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     date: "",
     time: "",
     subject: "Maths",

@@ -20,6 +20,10 @@
 .about-image {
   height: 300px;
   width: auto;
+  border-radius: 13px;
+  box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
 }
 
 .about-text-items {

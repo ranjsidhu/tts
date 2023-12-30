@@ -1,9 +1,9 @@
 @keyframes fadeIn {
   from {
-    opacity: 0; /* Start with a transparent image */
+    opacity: 0;
   }
   to {
-    opacity: 1; /* End with a fully visible image */
+    opacity: 1;
   }
 }
 
@@ -18,6 +18,10 @@
   height: 250px;
   width: auto;
   animation: fadeIn 1s ease-in;
+  border-radius: 13px;
+  box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 23px 4px rgba(0, 0, 0, 0.75);
 }
 
 .img-wrapper {
@@ -25,6 +29,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 5vh;
 }
 
 .quote {
@@ -35,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3em;
   text-align: center;
 }
 

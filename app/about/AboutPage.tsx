@@ -1,13 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Image from "next/image";
 import j3 from "../assets/j3.jpeg";
 import Layout from "../components/layout/Layout";
 import "./about.css";
 
 export default function AboutPage() {
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
   return (
     <Layout>
