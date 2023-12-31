@@ -1,15 +1,15 @@
-interface CircleProps {
+type CircleProps = {
   cx: number;
   cy: number;
   r: number;
   fill: string;
-}
+};
 
-interface Path {
+type Path = {
   d: string;
   title: string;
   circle?: CircleProps;
-}
+};
 
 export default function ContactSVG({ path }: { path: Path }) {
   return (

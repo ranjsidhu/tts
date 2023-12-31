@@ -2,10 +2,10 @@ import { links } from "../../../static/static";
 import FooterImages from "../FooterImages/FooterImages";
 import "./footer.css";
 
-interface Link {
+type Link = {
   name: string;
   href: string;
-}
+};
 
 export default function PageFooter() {
   return (

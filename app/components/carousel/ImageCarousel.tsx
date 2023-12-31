@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import "./carousel.css";
 
-interface ImageCarouselProps {
+type ImageCarouselProps = {
   images: StaticImageData[];
-}
+};
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

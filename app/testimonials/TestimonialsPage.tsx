@@ -3,10 +3,10 @@
 import Layout from "../components/layout/Layout";
 import "./testimonials.css";
 
-interface Testimonial {
+type Testimonial = {
   content: string;
   author: string;
-}
+};
 
 const testimonials: Testimonial[] = [
   {
