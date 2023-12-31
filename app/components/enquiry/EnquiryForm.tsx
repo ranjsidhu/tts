@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import instance from "../../instance";
+import instance from "../../utils/instance";
 import "./enquiry.css";
 
 export default function EnquiryForm() {
