@@ -45,14 +45,14 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Start off-screen */
+  left: -250px;
   width: 250px;
   height: 100vh;
   overflow: auto;
   background-color: white;
   padding: 20px;
   z-index: 2;
-  transition: left 0.3s ease; /* Use left property for the transition */
+  transition: left 0.3s ease;
 }
 
 .sidebar.open {

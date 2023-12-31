@@ -2,11 +2,11 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMobileMenu } from "@/lib/features/UI";
+import { RootState } from "@/lib/store";
 import Header from "../header/Header";
 import LayoutMain from "./LayoutMain";
 import PageFooter from "../footer/PageFooter/PageFooter";
 import "./layout.css";
-import { RootState } from "@/lib/store";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch();
