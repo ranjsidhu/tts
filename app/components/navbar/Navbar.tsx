@@ -33,7 +33,7 @@ const Navbar = ({ onNavbarOpen }: { onNavbarOpen: Function }) => {
 
   const NavbarRoutes = () => {
     return (
-      <nav className={`nav ${isMobile === "open" ? "open overlay-open" : ""} `}>
+      <nav className={`nav ${isMobile} `}>
         {routes.map((route: Route, index: number) => (
           <Link
             key={route.id}
