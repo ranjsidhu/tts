@@ -8,9 +8,8 @@ export default function Header({
 }: {
   setOverlayVisibility: any;
 }) {
-  const onNavbarOpen = (setIsMobileMenuOpen: Function, visible: boolean) => {
-    setOverlayVisibility(setIsMobileMenuOpen);
-    setIsMobileMenuOpen(visible);
+  const onNavbarOpen = (visible: boolean) => {
+    setOverlayVisibility(visible);
   };
 
   return (

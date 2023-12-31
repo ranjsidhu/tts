@@ -1,5 +1,9 @@
-import { useState } from "react";
+"use client";
+
+import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
+import { toggleMobileMenu } from "@/lib/features/UI";
+import { RootState } from "@/lib/store";
 import Link from "next/link";
 import routes from "../../static/routes";
 import "./navbar.css";
@@ -11,7 +15,8 @@ type Route = {
 };
 
 const Navbar = ({ onNavbarOpen }: { onNavbarOpen: Function }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { isMobileMenuOpen } = useSelector((state: RootState) => state.UI);
 
   const pathname = usePathname();
   const isMobile = isMobileMenuOpen ? "open" : "";
@@ -22,8 +27,8 @@ const Navbar = ({ onNavbarOpen }: { onNavbarOpen: Function }) => {
 
   const setVisibilty = () => {
     const visible = !isMobileMenuOpen;
-    setIsMobileMenuOpen(visible);
-    onNavbarOpen(setIsMobileMenuOpen, visible);
+    onNavbarOpen(visible);
+    dispatch(toggleMobileMenu({ visible }));
   };
 
   const NavbarRoutes = () => {
@@ -36,6 +41,9 @@ const Navbar = ({ onNavbarOpen }: { onNavbarOpen: Function }) => {
             className={`navLink ${isActiveRoute(
               route.route
             )}  ${borderBottom} ${isFirstRoute(index)}`}
+            onClick={() => {
+              dispatch(toggleMobileMenu({ visible: false }));
+            }}
           >
             {route.name}
           </Link>
