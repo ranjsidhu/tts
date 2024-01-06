@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description:
     "Discover exclusive opportunities at Tutoring To Success! Explore our latest promotions and special offers designed to enhance your learning experience. Check back regularly, as this page is updated with exciting new offers to support your academic journey.",
   alternates: {
-    canonical: "https://tutoringtosuccess.co.uk/offers",
+    canonical: "https://tutoringtosuccess.co.uk/offers/",
     types: {
-      www: "https://www.tutoringtosuccess.co.uk/offers",
+      www: "https://www.tutoringtosuccess.co.uk/offers/",
     },
   },
 };

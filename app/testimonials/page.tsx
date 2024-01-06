@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description:
     "Explore inspiring testimonials from Tutoring To Success alumni who turned their academic aspirations into reality, thanks to the unwavering dedication of our tutors. Discover success stories that showcase the transformative impact of our personalized approach to education.",
   alternates: {
-    canonical: "https://tutoringtosuccess.co.uk/testimonials",
+    canonical: "https://tutoringtosuccess.co.uk/testimonials/",
     types: {
-      www: "https://www.tutoringtosuccess.co.uk/testimonials",
+      www: "https://www.tutoringtosuccess.co.uk/testimonials/",
     },
   },
 };

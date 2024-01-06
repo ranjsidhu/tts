@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description:
     "At Tutoring To Success, we bring expert tutoring services to Wolverhampton. Our experienced tutors provide personalised learning, ensuring academic success. Join us for face-to-face or online sessions tailored to your child's needs.",
   alternates: {
-    canonical: "https://tutoringtosuccess.co.uk/about",
+    canonical: "https://tutoringtosuccess.co.uk/about/",
     types: {
-      www: "https://www.tutoringtosuccess.co.uk/about",
+      www: "https://www.tutoringtosuccess.co.uk/about/",
     },
   },
 };
