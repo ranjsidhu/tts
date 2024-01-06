@@ -23,8 +23,7 @@ export default function PageFooter() {
           <div className="footer-legal">
             <p>Company Registration Number: 15228068</p>
             <p className="footer-copyright">
-              Copyright &copy;{" "}
-              <a href={`mailto:${process.env.DEV_EMAIL}`}>Ranjeet Sidhu 2023</a>
+              Copyright &copy; Ranjeet Sidhu 2023
             </p>
           </div>
         </div>

@@ -31,6 +31,11 @@ const routes = [
   },
   {
     id: 7,
+    route: "/vacancies/",
+    name: "Vacancies",
+  },
+  {
+    id: 8,
     route: "/contact/",
     name: "Contact",
   },
