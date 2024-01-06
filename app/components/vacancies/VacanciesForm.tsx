@@ -3,21 +3,25 @@
 import { useState } from "react";
 import "./vacanciesform.css";
 
+const initialFormData = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
+const initialErrorState = {
+  phone: false,
+  email: false,
+  message: false,
+  first_name: false,
+  last_name: false,
+};
+
 export default function VacanciesForm() {
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [error, setError] = useState({
-    phone: false,
-    email: false,
-    message: false,
-    first_name: false,
-    last_name: false,
-  });
+  const [formData, setFormData] = useState({ ...initialFormData });
+  const [error, setError] = useState({ ...initialErrorState });
 
   const changeHandler = (
     e:
@@ -30,20 +34,8 @@ export default function VacanciesForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError({
-      phone: false,
-      email: false,
-      message: false,
-      first_name: false,
-      last_name: false,
-    });
-    setFormData(() => ({
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone: "",
-      message: "",
-    }));
+    setError({ ...initialErrorState });
+    setFormData(() => ({ ...initialFormData }));
     console.log(formData);
   };
 
