@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (max-width: 360px) {
   .not-found p {
     text-align: center;

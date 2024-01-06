@@ -20,7 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="container">
       <div
-        className={`${isOverlayVisible ? "overlay" : ""}`}
+        className={`${isOverlayVisible ? "overlay" : "hidden"}`}
         onClick={overlayClicked}
       ></div>
       <LayoutMain>
