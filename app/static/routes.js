@@ -14,11 +14,11 @@ const routes = [
     route: "/bookings/",
     name: "Bookings",
   },
-  {
-    id: 4,
-    route: "/pricing/",
-    name: "Pricing",
-  },
+  // {
+  //   id: 4,
+  //   route: "/pricing/",
+  //   name: "Pricing",
+  // },
   {
     id: 5,
     route: "/testimonials/",
