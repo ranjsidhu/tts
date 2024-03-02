@@ -11,10 +11,10 @@ const links = [
     name: "Bookings",
     href: "/bookings",
   },
-  {
-    name: "Pricing",
-    href: "/pricing",
-  },
+  // {
+  //   name: "Pricing",
+  //   href: "/pricing",
+  // },
   {
     name: "Testimonials",
     href: "/testimonials",
