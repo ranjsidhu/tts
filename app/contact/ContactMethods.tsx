@@ -14,8 +14,8 @@ export default function ContactMethods() {
             title: "Phone",
           }}
         />
-        <a href="tel:+447309071389" title="Give us a call on +44 73090 71389">
-          +44 73090 71389
+        <a href="tel:+447767524030" title="Give us a call on +44 77675 24030">
+          +44 77675 24030
         </a>
       </div>
       <div className="address-item">
