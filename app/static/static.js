@@ -27,10 +27,10 @@ const links = [
     name: "Contact",
     href: "/contact",
   },
-  {
-    name: "Sitemap",
-    href: "/sitemap.xml",
-  },
+  // {
+  //   name: "Sitemap",
+  //   href: "/sitemap.xml",
+  // },
 ];
 
 const svgs = {
