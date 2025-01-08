@@ -32,10 +32,7 @@ const InnerContainer = styled("div")({
  * - https://govuk-react.github.io/govuk-react/?path=/docs/main
  * - https://design-system.service.gov.uk/styles/layout/#page-wrappers
  */
-export const LayoutMain: React.FC<MainProps> = ({
-  children,
-  ...props
-}: MainProps) => (
+const LayoutMain: React.FC<MainProps> = ({ children, ...props }: MainProps) => (
   <OuterContainer {...props}>
     <InnerContainer>{children}</InnerContainer>
   </OuterContainer>
@@ -43,7 +40,7 @@ export const LayoutMain: React.FC<MainProps> = ({
 
 LayoutMain.displayName = "Main";
 
-export interface MainProps {
+interface MainProps {
   /**
    * Child nodes for the page being built
    */

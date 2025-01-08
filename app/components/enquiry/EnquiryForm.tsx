@@ -46,7 +46,7 @@ export default function EnquiryForm() {
     const validMessage = data.message;
 
     if (emailPhone && validMessage) {
-      instance.post("/enquiry/email", data).then(({ data }) => {
+      instance.post("/enquiry/email", data).then(() => {
         setFormData(() => ({
           first_name: "",
           last_name: "",
