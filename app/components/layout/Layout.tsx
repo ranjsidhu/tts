@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="container">
+    <>
       <div
         className={`${isOverlayVisible ? "overlay" : "hidden"}`}
         onClick={overlayClicked}
@@ -25,6 +25,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Header setOverlayVisibility={overlayClicked} />
       <div>{children}</div>
       <Footer />
-    </div>
+    </>
   );
 }
