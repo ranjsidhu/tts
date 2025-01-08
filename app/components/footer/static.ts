@@ -1,5 +1,5 @@
-import instagram from "../../../assets/ig.png";
-import facebook from "../../../assets/fb.png";
+import instagram from "@/app/assets/ig.png";
+import facebook from "@/app/assets/fb.png";
 
 const socials = [
   {
