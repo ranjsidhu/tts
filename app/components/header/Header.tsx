@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "../navbar/Navbar";
 import Logo1 from "../../assets/Logo1.jpeg";
 import "./header.css";
+import Link from "next/link";
 
 export default function Header({
   setOverlayVisibility,
@@ -15,9 +16,9 @@ export default function Header({
   return (
     <div className="header">
       <div className={`header-logo`}>
-        <a href="/">
+        <Link href="/">
           <Image priority src={Logo1} alt="logo" className="logo" />
-        </a>
+        </Link>
       </div>
 
       <div className="navbar">
