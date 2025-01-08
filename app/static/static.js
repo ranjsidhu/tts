@@ -1,38 +1,3 @@
-const links = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Bookings",
-    href: "/bookings",
-  },
-  // {
-  //   name: "Pricing",
-  //   href: "/pricing",
-  // },
-  {
-    name: "Testimonials",
-    href: "/testimonials",
-  },
-  {
-    name: "Offers",
-    href: "/offers",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
-  // {
-  //   name: "Sitemap",
-  //   href: "/sitemap.xml",
-  // },
-];
-
 const svgs = {
   email:
     "M28,6H4A2,2,0,0,0,2,8V24a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V8A2,2,0,0,0,28,6ZM25.8,8,16,14.78,6.2,8ZM4,24V8.91l11.43,7.91a1,1,0,0,0,1.14,0L28,8.91V24Z",
@@ -46,7 +11,6 @@ const iframeLoc =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.4940235032795!2d-2.1624408226845357!3d52.59684063053694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709b524d9dced7%3A0x9813f9de96f46667!2sTutoring%20To%20Success!5e0!3m2!1sen!2suk!4v1702931595578!5m2!1sen!2suk";
 
 module.exports = {
-  links,
   svgs,
   iframeLoc,
 };
