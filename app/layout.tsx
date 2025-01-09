@@ -9,7 +9,7 @@ import "./globals.css";
 const inter: NextFont = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tutoringtosuccess.co.uk"),
+  metadataBase: new URL("https://www.tutoringtosuccess.co.uk"),
   title: {
     default: "Tutoring To Success",
     template: "%s | Tutoring To Success",
