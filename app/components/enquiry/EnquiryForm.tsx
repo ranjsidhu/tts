@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
-import LoadingSpinner from "../loading/LoadingSpinner";
+import LoadingSpinner from "../spinner/LoadingSpinner";
 
 interface FormData {
   studentName: string;
