@@ -1,175 +1,178 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 import instance from "../../utils/instance";
-import "./enquiry.css";
+import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
+import PageLoading from "../Loading/PageLoading";
+
+interface FormData {
+  studentName: string;
+  parentName: string;
+  parentPhone: string;
+  message: string;
+}
+
+interface FormErrors {
+  studentName?: string;
+  parentName?: string;
+  parentPhone?: string;
+  message?: string;
+}
+
+const initialFormData: FormData = {
+  studentName: "",
+  parentName: "",
+  parentPhone: "",
+  message: "",
+};
 
 export default function EnquiryForm() {
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [enquirySent, setEnquirySent] = useState(false);
-  const [error, setError] = useState({
-    phone: false,
-    email: false,
-    message: false,
-    first_name: false,
-    last_name: false,
-  });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const changeHandler = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const sendEnquiry = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate using imported function
+    const newErrors = sanitiseAndValidate(formData);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast.error("Please fix the errors in the form");
+      return;
+    }
+
+    setIsLoading(true);
+    setErrors({});
+
+    try {
+      await instance.post("/enquiry/email", formData);
+      setFormData({
+        studentName: "",
+        parentName: "",
+        parentPhone: "",
+        message: "",
+      });
+      toast.success("Thank you for your enquiry. We will be in touch shortly.");
+    } catch (error) {
+      console.error("Failed to send enquiry:", error);
+      toast.error("Failed to send enquiry. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const sendEnquiry = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError({
-      phone: false,
-      email: false,
-      message: false,
-      first_name: false,
-      last_name: false,
-    });
-    setEnquirySent(false);
-    const data = { ...formData, date: new Date().toUTCString() };
-
-    const emailPhone = data.email || data.phone;
-    const validMessage = data.message;
-
-    if (emailPhone && validMessage) {
-      instance.post("/enquiry/email", data).then(() => {
-        setFormData(() => ({
-          first_name: "",
-          last_name: "",
-          email: "",
-          phone: "",
-          message: "",
-        }));
-        setEnquirySent(true);
-      });
-    } else {
-      // Error handling for no message entered
-      if (!validMessage) {
-        setError((prevError) => ({ ...prevError, message: true }));
-      }
-      // Error handling for email and phone
-      if (!data.email && !data.phone) {
-        setError((prevError) => ({ ...prevError, email: true, phone: true }));
-      } else if (!data.email) {
-        setError((prevError) => ({ ...prevError, email: true }));
-      } else if (!data.phone) {
-        setError((prevError) => ({ ...prevError, phone: true }));
-      }
-      // Error handling for name
-      if (!data.first_name && !data.last_name) {
-        setError((prevError) => ({
-          ...prevError,
-          first_name: true,
-          last_name: true,
-        }));
-      } else if (!data.first_name) {
-        setError((prevError) => ({ ...prevError, first_name: true }));
-      } else if (!data.last_name) {
-        setError((prevError) => ({ ...prevError, last_name: true }));
-      }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
     }
   };
 
   return (
-    <>
-      <h3 className="form-title">Request a free no obligation consultation</h3>
-      <p className="form-text">
-        Our Admin team will aim to respond to your query within 3 business days
-      </p>
-      <br />
-      <br />
-      <form onSubmit={sendEnquiry}>
-        <div className="form-row">
-          <div>
-            <label htmlFor="first_name">First Name</label>
-            <input
-              id="first_name"
-              className={`${error.first_name ? "error" : ""}`}
-              name="first_name"
-              type="text"
-              value={formData.first_name}
-              autoComplete="given-name"
-              onChange={changeHandler}
-            />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last Name</label>
-            <input
-              id="last_name"
-              className={`${error.last_name ? "error" : ""}`}
-              name="last_name"
-              type="text"
-              value={formData.last_name}
-              autoComplete="family-name"
-              onChange={changeHandler}
-            />
-          </div>
-        </div>
-        <div className="form-row">
-          <div>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              className={`${error.email ? "error" : ""}`}
-              name="email"
-              type="email"
-              value={formData.email}
-              autoComplete="email"
-              onChange={changeHandler}
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">Phone</label>
-            <input
-              id="phone"
-              className={`${error.phone ? "error" : ""}`}
-              name="phone"
-              type="text"
-              value={formData.phone}
-              autoComplete="phone"
-              onChange={changeHandler}
-            />
-          </div>
-        </div>
-
-        <div className="form-row">
-          <div>
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              className={`${error.message ? "error" : ""}`}
-              name="message"
-              value={formData.message}
-              onChange={changeHandler}
-            />
-            {error.message && (
-              <p className="error-text">Please enter a messsage</p>
-            )}
-          </div>
-        </div>
-
-        <button type="submit">Send Enquiry</button>
-
-        {enquirySent && (
-          <p>
-            Thank you for your enquiry! Our Admin team will be in touch soon.
-          </p>
+    <form onSubmit={sendEnquiry} className="space-y-4 w-full max-w-md">
+      <div>
+        <label className="block text-sm font-medium mb-1">
+          Student&apos;s Name
+        </label>
+        <input
+          type="text"
+          name="studentName"
+          value={formData.studentName}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-lg border ${
+            errors.studentName ? "border-red-500" : "border-gray-300"
+          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+          placeholder="Enter student's name"
+          required
+          disabled={isLoading}
+        />
+        {errors.studentName && (
+          <p className="mt-1 text-sm text-red-500">{errors.studentName}</p>
         )}
-      </form>
-    </>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">
+          Parent&apos;s Name
+        </label>
+        <input
+          type="text"
+          name="parentName"
+          value={formData.parentName}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-lg border ${
+            errors.parentName ? "border-red-500" : "border-gray-300"
+          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+          placeholder="Enter parent's name"
+          required
+          disabled={isLoading}
+        />
+        {errors.parentName && (
+          <p className="mt-1 text-sm text-red-500">{errors.parentName}</p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">
+          Parent&apos;s Phone Number
+        </label>
+        <input
+          type="tel"
+          name="parentPhone"
+          value={formData.parentPhone}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-lg border ${
+            errors.parentPhone ? "border-red-500" : "border-gray-300"
+          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+          placeholder="Enter phone number (e.g., 07123456789)"
+          required
+          disabled={isLoading}
+        />
+        {errors.parentPhone && (
+          <p className="mt-1 text-sm text-red-500">{errors.parentPhone}</p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">Message</label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-lg border ${
+            errors.message ? "border-red-500" : "border-gray-300"
+          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none min-h-[100px] resize-y disabled:bg-gray-50 disabled:cursor-not-allowed`}
+          placeholder="Enter your message"
+          disabled={isLoading}
+        />
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={`w-full bg-black text-white py-3 rounded-lg font-medium transition-colors
+          ${isLoading ? "cursor-not-allowed opacity-75" : "hover:bg-gray-800"}`}
+      >
+        <div className="flex items-center justify-center gap-2">
+          {isLoading && <PageLoading />}
+          <span>{isLoading ? "Sending..." : "Submit"}</span>
+        </div>
+      </button>
+    </form>
   );
 }

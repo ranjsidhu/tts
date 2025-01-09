@@ -13,7 +13,7 @@ export default function Footer() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle parent enquiry form submission
+    // TODO - Handle parent enquiry form submission
     setEmail("");
   };
 
