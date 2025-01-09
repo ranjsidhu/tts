@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import instagram from "@/app/assets/ig.png";
 import facebook from "@/app/assets/fb.png";
+import { links } from "@/app/static";
 
 type Link = {
   name: string;
@@ -19,37 +20,6 @@ const socials = [
     name: "Facebook",
     url: "https://www.facebook.com/share/19mnvxTJP2/?mibextid=wwXIfr",
     icon: facebook,
-  },
-];
-
-const links = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  //   {
-  //     name: "Bookings",
-  //     href: "/bookings",
-  //   },
-  // {
-  //   name: "Pricing",
-  //   href: "/pricing",
-  // },
-  {
-    name: "Testimonials",
-    href: "/testimonials",
-  },
-  {
-    name: "Offers",
-    href: "/offers",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
   },
 ];
 
