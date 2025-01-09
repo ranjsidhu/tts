@@ -44,7 +44,7 @@ export default function AboutPage() {
                 ensure your child makes the anticipated progress. Prior to
                 working with us, all tutors are{" "}
                 <a
-                  href="https://www.gov.uk/criminal-record-checks-become-employer/criminal-record-check-referral-rates"
+                  href="https://www.gov.uk/government/organisations/disclosure-and-barring-service/about#introduction-to-dbs"
                   target="_blank"
                   className="text-yellow-600 hover:text-yellow-700 underline"
                 >
