@@ -1,7 +1,7 @@
-import Layout from "../components/layout/Layout";
-import { features } from "../static";
+import Layout from "@/app/components/layout/Layout";
+import { features } from "@/app/static";
 import HeroSVG from "./HeroSVG";
-import EnquiryForm from "../components/enquiry/EnquiryForm";
+import EnquiryForm from "@/app/components/enquiry/EnquiryForm";
 
 interface FeatureCardProps {
   icon: React.ReactNode;

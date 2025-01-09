@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import { NextFont } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
-import Analytics from "./Analytics";
-import StoreProvider from "./StoreProvider";
+import Analytics from "./(misc)/Analytics";
+import StoreProvider from "@/app/(misc)/StoreProvider";
 import "./globals.css";
 
 const inter: NextFont = Inter({ subsets: ["latin"] });
