@@ -3,9 +3,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMobileMenu } from "@/lib/features/UI";
 import { RootState } from "@/lib/store";
-import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import "./layout.css";
+import Navbar from "../navbar/Navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch();
@@ -17,14 +16,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <>
-      <div
-        className={`${isOverlayVisible ? "overlay" : "hidden"}`}
-        onClick={overlayClicked}
-      ></div>
-      <Header setOverlayVisibility={overlayClicked} />
-      <div>{children}</div>
+    <div className="min-h-screen flex flex-col">
+      {isOverlayVisible && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={overlayClicked}
+        />
+      )}
+
+      <Navbar onNavbarOpen={overlayClicked} />
+
+      <main className="flex-1 mt-28">
+        <div className="container mx-auto px-4">{children}</div>
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
