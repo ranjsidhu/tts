@@ -30,10 +30,10 @@ const ContactUs = () => (
       <p className="flex items-center space-x-3">
         <Phone className="w-5 h-5 text-yellow-400" />
         <a
-          href="tel:+447309071389"
+          href="tel:+441902239339"
           className="hover:text-yellow-400 transition-colors duration-300"
         >
-          +44 7309 071389
+          01902 239 339
         </a>
       </p>
       <p className="flex items-center space-x-3">
