@@ -1,5 +1,3 @@
-"use client";
-
 import { Phone, Mail, MapPin } from "lucide-react";
 import Layout from "../components/layout/Layout";
 
