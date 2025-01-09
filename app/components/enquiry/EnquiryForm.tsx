@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
-import PageLoading from "../loading/PageLoading";
+import PageLoading from "@/app/components/loading/PageLoading";
 
 interface FormData {
   studentName: string;
