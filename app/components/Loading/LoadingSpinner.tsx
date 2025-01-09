@@ -1,13 +1,8 @@
-// LoadingSpinner.tsx
-import React from "react";
-
 interface LoadingSpinnerProps {
   size?: "small" | "medium" | "large";
 }
 
-export default function LoadingSpinner({
-  size = "medium",
-}: LoadingSpinnerProps) {
+function Spinner({ size = "medium" }: LoadingSpinnerProps) {
   // Map size prop to actual dimensions
   const sizeClasses = {
     small: "w-4 h-4 border-2",
@@ -26,6 +21,17 @@ export default function LoadingSpinner({
           animate-spin
         `}
       />
+    </div>
+  );
+}
+
+export default function LoadingSpinner() {
+  return (
+    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="text-center">
+        <Spinner size="large" />
+        <p className="mt-4 text-gray-600">Loading...</p>
+      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
-import PageLoading from "@/app/components/loading/PageLoading";
+import LoadingSpinner from "../loading/LoadingSpinner";
 
 interface FormData {
   studentName: string;
@@ -169,7 +169,7 @@ export default function EnquiryForm() {
           ${isLoading ? "cursor-not-allowed opacity-75" : "hover:bg-gray-800"}`}
       >
         <div className="flex items-center justify-center gap-2">
-          {isLoading && <PageLoading />}
+          {isLoading && <LoadingSpinner />}
           <span>{isLoading ? "Sending..." : "Submit"}</span>
         </div>
       </button>
