@@ -5,7 +5,9 @@ interface LoadingSpinnerProps {
   size?: "small" | "medium" | "large";
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "medium" }) => {
+export default function LoadingSpinner({
+  size = "medium",
+}: LoadingSpinnerProps) {
   // Map size prop to actual dimensions
   const sizeClasses = {
     small: "w-4 h-4 border-2",
@@ -26,6 +28,4 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "medium" }) => {
       />
     </div>
   );
-};
-
-export default LoadingSpinner;
+}
