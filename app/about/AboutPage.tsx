@@ -15,7 +15,7 @@ export default function AboutPage() {
             About Tutoring To Success
           </h1>
           <p className="text-grey-600 max-w-2xl mx-auto">
-            Personalised learning solutions designed to unlock your child&apos;
+            Personalised learning solutions designed to unlock your child&apos;s
             full academic potential
           </p>
         </div>
@@ -43,13 +43,13 @@ export default function AboutPage() {
                 learning framework in accordance with the UK curriculum to
                 ensure your child makes the anticipated progress. Prior to
                 working with us, all tutors are{" "}
-                <a
+                <Link
                   href="https://www.gov.uk/government/organisations/disclosure-and-barring-service/about#introduction-to-dbs"
                   target="_blank"
                   className="text-yellow-600 hover:text-yellow-700 underline"
                 >
                   DBS checked
-                </a>
+                </Link>
                 .
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function AboutPage() {
               <p className="text-grey-600">
                 We are proud that over 80% of our students were offered a place
                 in their chosen school, including Thomas Telford, Wolverhampton
-                Girls High, and Queen Mary&apos;. We offer a personalised
+                Girls High, and Queen Mary&apos;s. We offer a personalised
                 service with an initial assessment, allowing for a bespoke plan
                 throughout the academic year. We conduct subsequent assessments
                 every six months to monitor progress consistently.
