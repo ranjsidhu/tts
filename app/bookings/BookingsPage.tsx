@@ -53,118 +53,113 @@ export default function BookingsPage() {
   };
 
   return (
-    <>
-      <Layout>
+    <Layout>
+      <br />
+      <h1 className="bookings-title">Make a Booking</h1>
+      <br />
+      <br />
+      <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="lessonDate">Select a Date:</label>
+        <input
+          type="date"
+          name="date"
+          id="lessonDate"
+          required
+          value={formData.date}
+          onChange={handleInputChange}
+        />
+
         <br />
-        <h1 className="bookings-title">Make a Booking</h1>
+        <br />
+
+        <label htmlFor="lessonTime">Select a Time:</label>
+        <input
+          type="time"
+          min="16:00"
+          max="21:00"
+          id="lessonTime"
+          required
+          value={formData.time}
+          onChange={handleTimeChange}
+        />
         <br />
         <br />
-        <form className="form" onSubmit={handleSubmit}>
-          <label htmlFor="lessonDate">Select a Date:</label>
+
+        <label htmlFor="lessonSubject">Select a subject:</label>
+        <select
+          id="lessonSubject"
+          required
+          value={formData.subject}
+          onChange={handleInputChange}
+        >
+          <option value="Maths">Maths</option>
+          <option value="English">English</option>
+          <option value="Physics">Physics</option>
+          <option value="Biology">Biology</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="11plus">11+</option>
+        </select>
+        <br />
+        <br />
+
+        <label htmlFor="lessonSubject">Select a key stage:</label>
+        <select
+          id="lessonSubject"
+          required
+          value={formData.keyStage}
+          onChange={handleInputChange}
+        >
+          <option value="KS1">KS1/KS2</option>
+          <option value="KS3">KS3/KS4</option>
+          <option value="Alevel">A-Level</option>
+        </select>
+        <br />
+        <br />
+
+        <div className="type">
+          <label htmlFor="lessonDate">Group</label>
           <input
-            type="date"
-            name="date"
-            id="lessonDate"
+            type="radio"
+            name="grouporind"
+            value="group"
+            onChange={handleRadioChange}
+            checked={formData.groupOrIndividual === "group"}
             required
-            value={formData.date}
-            onChange={handleInputChange}
           />
-
           <br />
           <br />
-
-          <label htmlFor="lessonTime">Select a Time:</label>
+          <label htmlFor="lessonDate">Individual</label>
           <input
-            type="time"
-            min="16:00"
-            max="21:00"
-            id="lessonTime"
+            type="radio"
+            name="grouporind"
+            value="individual"
+            onChange={handleRadioChange}
+            checked={formData.groupOrIndividual === "individual"}
             required
-            value={formData.time}
-            onChange={handleTimeChange}
           />
           <br />
           <br />
+        </div>
 
-          <label htmlFor="lessonSubject">Select a subject:</label>
-          <select
-            id="lessonSubject"
-            required
-            value={formData.subject}
-            onChange={handleInputChange}
-          >
-            <option value="Maths">Maths</option>
-            <option value="English">English</option>
-            <option value="Physics">Physics</option>
-            <option value="Biology">Biology</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="11plus">11+</option>
-          </select>
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <label htmlFor="lessonSubject">Select a key stage:</label>
-          <select
-            id="lessonSubject"
-            required
-            value={formData.keyStage}
-            onChange={handleInputChange}
-          >
-            <option value="KS1">KS1/KS2</option>
-            <option value="KS3">KS3/KS4</option>
-            <option value="Alevel">A-Level</option>
-          </select>
-          <br />
-          <br />
+        <button type="submit">Continue to payment</button>
 
-          <div className="type">
-            <label htmlFor="lessonDate">Group</label>
-            <input
-              type="radio"
-              name="grouporind"
-              value="group"
-              onChange={handleRadioChange}
-              checked={formData.groupOrIndividual === "group"}
-              required
-            />
-            <br />
-            <br />
-            <label htmlFor="lessonDate">Individual</label>
-            <input
-              type="radio"
-              name="grouporind"
-              value="individual"
-              onChange={handleRadioChange}
-              checked={formData.groupOrIndividual === "individual"}
-              required
-            />
-            <br />
-            <br />
-          </div>
+        <br />
+        <br />
 
-          <br />
-          <br />
-
-          <button type="submit">Continue to payment</button>
-
-          <br />
-          <br />
-
-          <p className="disclaimer">
-            Please note: payments are taken on a monthly basis
-          </p>
-          <br />
-          <p className="disclaimer">
-            If you would like an alternative payment structure, please contact{" "}
-            <a
-              className="admin-link"
-              href="mailto:admin@tutoringtosuccess.co.uk"
-            >
-              <strong>Admin</strong>
-            </a>
-          </p>
-        </form>
-      </Layout>
-    </>
+        <p className="disclaimer">
+          Please note: payments are taken on a monthly basis
+        </p>
+        <br />
+        <p className="disclaimer">
+          If you would like an alternative payment structure, please contact{" "}
+          <a className="admin-link" href="mailto:admin@tutoringtosuccess.co.uk">
+            <strong>Admin</strong>
+          </a>
+        </p>
+      </form>
+    </Layout>
   );
 }

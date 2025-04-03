@@ -32,7 +32,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   };
 
   return (
-    <div
+    <button
       className="relative w-full max-w-[744px] mx-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -82,14 +82,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
         {images.map((_, index) => (
           <button
-            key={index}
+            key={_.blurDataURL}
             onClick={() => setCurrentIndex(index)}
             className={`h-2 w-2 rounded-full transition-all
               ${currentIndex === index ? "w-4 bg-white" : "bg-white/50"}`}
           />
         ))}
       </div>
-    </div>
+    </button>
   );
 };
 

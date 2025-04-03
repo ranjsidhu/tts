@@ -7,7 +7,11 @@ import { Toaster } from "react-hot-toast";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+export default function Layout({ children }: Readonly<LayoutProps>) {
   const dispatch = useDispatch();
   const { isOverlayVisible } = useSelector((state: RootState) => state.UI);
 
@@ -19,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       {isOverlayVisible && (
-        <div
+        <button
           className="fixed inset-0 bg-black/50 z-40"
           onClick={overlayClicked}
         />
