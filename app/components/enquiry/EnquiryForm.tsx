@@ -84,7 +84,7 @@ export default function EnquiryForm() {
     <form onSubmit={sendEnquiry} className="space-y-4 w-full max-w-md">
       <div>
         <label className="block text-sm font-medium mb-1">
-          Student&apos;s Name
+          Student&apos;s Name{" "}
         </label>
         <input
           type="text"
@@ -105,7 +105,7 @@ export default function EnquiryForm() {
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          Parent&apos;s Name
+          Parent&apos;s Name{" "}
         </label>
         <input
           type="text"
@@ -119,6 +119,7 @@ export default function EnquiryForm() {
           required
           disabled={isLoading}
         />
+
         {errors.parentName && (
           <p className="mt-1 text-sm text-red-500">{errors.parentName}</p>
         )}
@@ -126,7 +127,7 @@ export default function EnquiryForm() {
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          Parent&apos;s Phone Number
+          Parent&apos;s Phone Number{" "}
         </label>
         <input
           type="tel"
@@ -146,17 +147,19 @@ export default function EnquiryForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Message</label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          className={`w-full px-4 py-2 rounded-lg border ${
-            errors.message ? "border-red-500" : "border-gray-300"
-          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none min-h-[100px] resize-y disabled:bg-gray-50 disabled:cursor-not-allowed`}
-          placeholder="Enter your message"
-          disabled={isLoading}
-        />
+        <label className="block text-sm font-medium mb-1">
+          Message{" "}
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-lg border ${
+              errors.message ? "border-red-500" : "border-gray-300"
+            } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none min-h-[100px] resize-y disabled:bg-gray-50 disabled:cursor-not-allowed`}
+            placeholder="Enter your message"
+            disabled={isLoading}
+          />
+        </label>
         {errors.message && (
           <p className="mt-1 text-sm text-red-500">{errors.message}</p>
         )}

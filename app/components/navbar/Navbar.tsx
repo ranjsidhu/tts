@@ -11,7 +11,11 @@ import { links } from "@/app/static";
 import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
 
-export default function Navbar({ onNavbarOpen }: { onNavbarOpen: Function }) {
+type NavbarProps = {
+  onNavbarOpen: Function;
+};
+
+export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
   const dispatch = useDispatch();
   const { isMobileMenuOpen } = useSelector((state: RootState) => state.UI);
   const pathname = usePathname();

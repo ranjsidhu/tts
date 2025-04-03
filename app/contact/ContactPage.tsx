@@ -103,6 +103,7 @@ export default function ContactPage() {
           {/* Map Section */}
           <div className="h-[500px] rounded-xl overflow-hidden shadow-sm border border-gray-100">
             <iframe
+              title="Tutoring To Success Location"
               className="w-full h-full"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.4940235032795!2d-2.1624408226845357!3d52.59684063053694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709b524d9dced7%3A0x9813f9de96f46667!2sTutoring%20To%20Success!5e0!3m2!1sen!2suk!4v1702931595578!5m2!1sen!2suk"
               loading="lazy"

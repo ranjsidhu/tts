@@ -68,9 +68,9 @@ export default function OffersPage() {
 
         {/* Offers Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {offers.map((offer, index) => (
+          {offers.map((offer) => (
             <div
-              key={index}
+              key={offer.title}
               className="relative flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-md transition-shadow"
             >
               {offer.comingSoon && (
@@ -93,9 +93,9 @@ export default function OffersPage() {
 
                 {/* Features */}
                 <ul className="space-y-3">
-                  {offer.features.map((feature, idx) => (
+                  {offer.features.map((feature) => (
                     <li
-                      key={idx}
+                      key={feature}
                       className="flex items-center gap-2 text-sm text-gray-600"
                     >
                       <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
