@@ -25,8 +25,8 @@ export default function Homepage() {
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Unlock Your Child&apos;s
-              <span className="text-yellow-400"> Academic Potential</span>
+              Unlock Your Child&apos;s{" "}
+              <span className="text-yellow-400">Academic Potential</span>
             </h1>
             <p className="text-lg text-gray-300">
               Expert tuition in Mathematics, English, and Science for students
@@ -59,7 +59,7 @@ export default function Homepage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div
-                key={index}
+                key={feature.title}
                 className="translate-y-4 animate-[fadeInUp_0.5s_ease-out_forwards]"
                 style={{ animationDelay: `${index * 100}ms` }}
               >

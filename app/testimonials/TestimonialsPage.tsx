@@ -22,7 +22,7 @@ export default function TestimonialsPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
-              key={index}
+              key={testimonial.author}
               className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow animate-[fadeInUp_0.5s_ease-out_forwards]"
               style={{ animationDelay: `${index * 100}ms` }}
             >

@@ -40,7 +40,7 @@ const sanitiseAndValidate = (data: FormData): FormErrors => {
 
   // Sanitise and validate phone number
   const sanitisedPhone = data.parentPhone.replace(/[^0-9+]/g, "");
-  const phoneRegex = /^(?:\+44|0)[0-9]{10}$/;
+  const phoneRegex = /^(?:\+44|0)\d{10}$/;
   if (!phoneRegex.test(sanitisedPhone)) {
     newErrors.parentPhone = "Please enter a valid UK phone number";
   }
