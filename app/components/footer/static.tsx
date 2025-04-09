@@ -58,6 +58,19 @@ const ContactUs = () => (
           WV6 0SU
         </span>
       </button>
+      <button
+        className="flex items-start space-x-3 hover:cursor-pointer hover:text-yellow-400 transition-colors duration-300 text-left"
+        onClick={() => window.open("https://maps.app.goo.gl/CwFyLVR9VLMDA1ZEA")}
+      >
+        <MapPin className="w-5 h-5 text-yellow-400 mt-1" />
+        <span>
+          62 Codsall Road
+          <br />
+          Wolverhampton
+          <br />
+          WV6 9QP
+        </span>
+      </button>
     </div>
   </div>
 );
@@ -89,8 +102,7 @@ const OpeningHours = () => (
       </p>
       <div className="ml-8 space-y-1">
         <p>Monday - Friday: 4pm - 8pm</p>
-        <p>Saturday: 8am - 2pm</p>
-        <p>Sunday: Closed</p>
+        <p>Weekends: 8am - 2pm</p>
       </div>
       <p className="flex items-center space-x-3 mt-4">
         <CalendarCheck className="w-5 h-5 text-yellow-400" />
@@ -126,24 +138,6 @@ const CopyrightSocials = () => (
               onClick={() => window.open(url)}
             />
           ))}
-          {/* <a
-        href="#"
-        className="hover:text-yellow-400 transition-colors duration-300"
-      >
-        Policies
-      </a>
-      <a
-        href="#"
-        className="hover:text-yellow-400 transition-colors duration-300"
-      >
-        Terms & Conditions
-      </a>
-      <a
-        href="#"
-        className="hover:text-yellow-400 transition-colors duration-300"
-      >
-        Safeguarding
-      </a> */}
         </div>
       </div>
     </div>
