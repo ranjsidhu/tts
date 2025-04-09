@@ -58,20 +58,35 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Address */}
+                  {/* Addresses */}
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-black/5 rounded-lg text-yellow-400">
                       <MapPin className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Address</h3>
-                      <address className="text-gray-600 not-italic">
-                        337 Tettenhall Road
-                        <br />
-                        Wolverhampton
-                        <br />
-                        WV6 0SU
-                      </address>
+                      <h3 className="font-medium">Addresses</h3>
+                      <div className="text-gray-600 space-y-4">
+                        <address className="not-italic">
+                          <span className="font-medium block mb-1">
+                            Main Centre:
+                          </span>
+                          337 Tettenhall Road
+                          <br />
+                          Wolverhampton
+                          <br />
+                          WV6 0SU
+                        </address>
+                        <address className="not-italic">
+                          <span className="font-medium block mb-1">
+                            Secondary Centre:
+                          </span>
+                          62 Codsall Road
+                          <br />
+                          Wolverhampton
+                          <br />
+                          WV6 9QP
+                        </address>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -88,12 +103,8 @@ export default function ContactPage() {
                     <span className="font-medium">4:00 PM - 8:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday</span>
+                    <span className="text-gray-600">Weekends</span>
                     <span className="font-medium">8:00 AM - 2:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday</span>
-                    <span className="font-medium">Closed</span>
                   </div>
                 </div>
               </div>
@@ -101,14 +112,36 @@ export default function ContactPage() {
           </div>
 
           {/* Map Section */}
-          <div className="h-[500px] rounded-xl overflow-hidden shadow-sm border border-gray-100">
-            <iframe
-              title="Tutoring To Success Location"
-              className="w-full h-full"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.4940235032795!2d-2.1624408226845357!3d52.59684063053694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709b524d9dced7%3A0x9813f9de96f46667!2sTutoring%20To%20Success!5e0!3m2!1sen!2suk!4v1702931595578!5m2!1sen!2suk"
-              loading="lazy"
-              allowFullScreen
-            ></iframe>
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-medium mb-2">
+                Main Centre - Tettenhall Road
+              </h3>
+              <div className="h-[240px] rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                <iframe
+                  title="Tutoring To Success - Tettenhall Road Location"
+                  className="w-full h-full"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.4940235032795!2d-2.1624408226845357!3d52.59684063053694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709b524d9dced7%3A0x9813f9de96f46667!2sTutoring%20To%20Success!5e0!3m2!1sen!2suk!4v1702931595578!5m2!1sen!2suk"
+                  loading="lazy"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-medium mb-2">
+                Secondary Centre - Codsall Road
+              </h3>
+              <div className="h-[240px] rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                <iframe
+                  title="Tutoring To Success - Codsall Road Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13341.834676979071!2d-2.1701656161019227!3d52.59685644822328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709d92c80c2e3d%3A0x2df9eca360f2c788!2sTutoring%20To%20Success%20Codsall!5e1!3m2!1sen!2suk!4v1744223936121!5m2!1sen!2suk"
+                  className="w-full h-full"
+                  loading="lazy"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </div>
