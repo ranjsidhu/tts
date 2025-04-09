@@ -37,7 +37,7 @@ export default function Homepage() {
                 href="#enquiry"
                 className="bg-yellow-400 text-black px-8 py-3 rounded-lg font-medium hover:bg-yellow-300 transition-colors"
               >
-                Get Started
+                Enquire Now
               </a>
               <a
                 href="#features"
