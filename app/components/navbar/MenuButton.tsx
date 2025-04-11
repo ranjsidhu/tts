@@ -3,11 +3,17 @@ import { motion } from "framer-motion";
 interface MenuButtonProps {
   toggleMenu: () => void;
   isMobileMenuOpen: boolean;
+  "data-testid": string;
 }
 
-const MenuButton = ({ toggleMenu, isMobileMenuOpen }: MenuButtonProps) => {
+const MenuButton = ({
+  toggleMenu,
+  isMobileMenuOpen,
+  "data-testid": dataTestId,
+}: MenuButtonProps) => {
   return (
     <button
+      data-testid={dataTestId}
       onClick={toggleMenu}
       className="sm:hidden p-2 -mr-2 flex flex-col justify-center items-center w-12 h-12 group"
       aria-label="Toggle menu"
