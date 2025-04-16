@@ -12,4 +12,8 @@ type LoadingSpinnerProps = {
   size?: "small" | "medium" | "large";
 };
 
-export type { NavbarProps, MenuButtonProps, LoadingSpinnerProps };
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+export type { NavbarProps, MenuButtonProps, LoadingSpinnerProps, LayoutProps };
