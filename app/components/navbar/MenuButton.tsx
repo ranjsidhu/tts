@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-
-interface MenuButtonProps {
-  toggleMenu: () => void;
-  isMobileMenuOpen: boolean;
-  "data-testid": string;
-}
+import type { MenuButtonProps } from "@/app/types";
 
 const MenuButton = ({
   toggleMenu,
@@ -21,6 +16,7 @@ const MenuButton = ({
       <motion.div className="flex flex-col justify-center items-center gap-1.5 w-6">
         {/* Top line */}
         <motion.span
+          data-testid="menu-button-top-line"
           animate={{
             rotate: isMobileMenuOpen ? 45 : 0,
             translateY: isMobileMenuOpen ? 10 : 0,
@@ -35,6 +31,7 @@ const MenuButton = ({
 
         {/* Middle line */}
         <motion.span
+          data-testid="menu-button-middle-line"
           animate={{
             scale: isMobileMenuOpen ? 0 : 1,
             opacity: isMobileMenuOpen ? 0 : 1,
@@ -49,6 +46,7 @@ const MenuButton = ({
 
         {/* Bottom line */}
         <motion.span
+          data-testid="menu-button-bottom-line"
           animate={{
             rotate: isMobileMenuOpen ? -45 : 0,
             translateY: isMobileMenuOpen ? -10 : 0,

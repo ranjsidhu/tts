@@ -8,12 +8,9 @@ import { RootState } from "@/lib/store";
 import { toggleMobileMenu } from "@/lib/features/UI";
 import { motion, AnimatePresence } from "framer-motion";
 import { links } from "@/app/static";
+import type { NavbarProps } from "@/app/types";
 import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
-
-type NavbarProps = {
-  onNavbarOpen: Function;
-};
 
 export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
   const dispatch = useDispatch();
