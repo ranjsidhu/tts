@@ -8,4 +8,8 @@ type MenuButtonProps = {
   "data-testid": string;
 };
 
-export type { NavbarProps, MenuButtonProps };
+type LoadingSpinnerProps = {
+  size?: "small" | "medium" | "large";
+};
+
+export type { NavbarProps, MenuButtonProps, LoadingSpinnerProps };
