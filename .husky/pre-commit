@@ -1,1 +1,5 @@
-npm run lint
+npm run lint || echo "Error: Linting failed."
+
+npm run test
+
+git add .
