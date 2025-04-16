@@ -13,4 +13,10 @@ describe("PageLoading Component", () => {
     const spinnerElement = screen.getByTestId("page-loading-loading-spinner");
     expect(spinnerElement).toBeInTheDocument();
   });
+
+  it("should contain LoadingText", () => {
+    render(<PageLoading />);
+    const textElement = screen.getByTestId("page-loading-loading-text");
+    expect(textElement).toBeInTheDocument();
+  });
 });

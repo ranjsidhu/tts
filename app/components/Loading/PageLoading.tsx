@@ -9,7 +9,12 @@ const PageLoading: React.FC = () => {
     >
       <div className="text-center" data-testid="page-loading-loading-spinner">
         <LoadingSpinner size="large" />
-        <p className="mt-4 text-gray-600">Loading...</p>
+        <p
+          className="mt-4 text-gray-600"
+          data-testid="page-loading-loading-text"
+        >
+          Loading...
+        </p>
       </div>
     </div>
   );
