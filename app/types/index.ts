@@ -1,3 +1,5 @@
-import { NavbarProps, MenuButtonProps } from "./components";
+import type { NavbarProps, MenuButtonProps } from "./components";
 
-export type { NavbarProps, MenuButtonProps };
+import type { Testimonial } from "./static";
+
+export type { NavbarProps, MenuButtonProps, Testimonial };

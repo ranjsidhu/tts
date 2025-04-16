@@ -1,6 +1,6 @@
 import { Quote } from "lucide-react";
-import Layout from "../components/layout/Layout";
-import { testimonials } from "../static";
+import Layout from "../../components/layout/Layout";
+import { testimonials } from "../../static";
 import Link from "next/link";
 
 export default function TestimonialsPage() {
