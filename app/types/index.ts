@@ -3,6 +3,8 @@ import type {
   MenuButtonProps,
   LoadingSpinnerProps,
   LayoutProps,
+  FormData,
+  FormErrors,
 } from "./components";
 
 import type { Testimonial } from "./static";
@@ -13,4 +15,6 @@ export type {
   Testimonial,
   LoadingSpinnerProps,
   LayoutProps,
+  FormData,
+  FormErrors,
 };

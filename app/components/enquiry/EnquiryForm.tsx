@@ -5,20 +5,7 @@ import toast from "react-hot-toast";
 import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
 import PageLoading from "../loading/PageLoading";
-
-interface FormData {
-  studentName: string;
-  parentName: string;
-  parentPhone: string;
-  message: string;
-}
-
-interface FormErrors {
-  studentName?: string;
-  parentName?: string;
-  parentPhone?: string;
-  message?: string;
-}
+import { FormData, FormErrors } from "@/app/types";
 
 const initialFormData: FormData = {
   studentName: "",
@@ -48,12 +35,7 @@ export default function EnquiryForm() {
 
     try {
       await instance.post("/enquiry/email", formData);
-      setFormData({
-        studentName: "",
-        parentName: "",
-        parentPhone: "",
-        message: "",
-      });
+      setFormData(initialFormData);
       toast.success("Thank you for your enquiry. We will be in touch shortly.");
     } catch (error) {
       console.error("Failed to send enquiry:", error);
@@ -81,7 +63,11 @@ export default function EnquiryForm() {
   };
 
   return (
-    <form onSubmit={sendEnquiry} className="space-y-4 w-full max-w-md">
+    <form
+      onSubmit={sendEnquiry}
+      className="space-y-4 w-full max-w-md"
+      data-testid="enquiry-form"
+    >
       <div>
         <label className="block text-sm font-medium mb-1">
           Student&apos;s Name{" "}
@@ -95,11 +81,16 @@ export default function EnquiryForm() {
             errors.studentName ? "border-red-500" : "border-gray-300"
           } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
           placeholder="Enter student's name"
-          required
           disabled={isLoading}
+          data-testid="student-name-input"
         />
         {errors.studentName && (
-          <p className="mt-1 text-sm text-red-500">{errors.studentName}</p>
+          <p
+            className="mt-1 text-sm text-red-500"
+            data-testid="student-name-error"
+          >
+            {errors.studentName}
+          </p>
         )}
       </div>
 
@@ -116,12 +107,17 @@ export default function EnquiryForm() {
             errors.parentName ? "border-red-500" : "border-gray-300"
           } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
           placeholder="Enter parent's name"
-          required
           disabled={isLoading}
+          data-testid="parent-name-input"
         />
 
         {errors.parentName && (
-          <p className="mt-1 text-sm text-red-500">{errors.parentName}</p>
+          <p
+            className="mt-1 text-sm text-red-500"
+            data-testid="parent-name-error"
+          >
+            {errors.parentName}
+          </p>
         )}
       </div>
 
@@ -138,11 +134,16 @@ export default function EnquiryForm() {
             errors.parentPhone ? "border-red-500" : "border-gray-300"
           } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
           placeholder="Enter phone number (e.g., 07123456789)"
-          required
           disabled={isLoading}
+          data-testid="parent-phone-input"
         />
         {errors.parentPhone && (
-          <p className="mt-1 text-sm text-red-500">{errors.parentPhone}</p>
+          <p
+            className="mt-1 text-sm text-red-500"
+            data-testid="parent-phone-error"
+          >
+            {errors.parentPhone}
+          </p>
         )}
       </div>
 
@@ -158,10 +159,13 @@ export default function EnquiryForm() {
             } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none min-h-[100px] resize-y disabled:bg-gray-50 disabled:cursor-not-allowed`}
             placeholder="Enter your message"
             disabled={isLoading}
+            data-testid="message-input"
           />
         </label>
         {errors.message && (
-          <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+          <p className="mt-1 text-sm text-red-500" data-testid="message-error">
+            {errors.message}
+          </p>
         )}
       </div>
 
@@ -170,6 +174,7 @@ export default function EnquiryForm() {
         disabled={isLoading}
         className={`w-full bg-black text-white py-3 rounded-lg font-medium transition-colors
           ${isLoading ? "cursor-not-allowed opacity-75" : "hover:bg-gray-800"}`}
+        data-testid="submit-button"
       >
         <div className="flex items-center justify-center gap-2">
           {isLoading && <PageLoading />}

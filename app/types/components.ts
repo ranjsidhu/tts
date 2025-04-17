@@ -16,4 +16,25 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export type { NavbarProps, MenuButtonProps, LoadingSpinnerProps, LayoutProps };
+type FormData = {
+  studentName: string;
+  parentName: string;
+  parentPhone: string;
+  message: string;
+};
+
+type FormErrors = {
+  studentName?: string;
+  parentName?: string;
+  parentPhone?: string;
+  message?: string;
+};
+
+export type {
+  NavbarProps,
+  MenuButtonProps,
+  LoadingSpinnerProps,
+  LayoutProps,
+  FormData,
+  FormErrors,
+};
