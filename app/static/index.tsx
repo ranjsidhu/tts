@@ -1,11 +1,5 @@
 import { CheckCircle, BookOpen, Trophy, Users } from "lucide-react";
-
-type Testimonial = {
-  content: string;
-  author: string;
-  role: string;
-  subject?: string;
-};
+import type { Testimonial } from "../types";
 
 const links = [
   {
@@ -16,14 +10,6 @@ const links = [
     name: "About",
     href: "/about",
   },
-  //   {
-  //     name: "Bookings",
-  //     href: "/bookings",
-  //   },
-  // {
-  //   name: "Pricing",
-  //   href: "/pricing",
-  // },
   {
     name: "Testimonials",
     href: "/testimonials",

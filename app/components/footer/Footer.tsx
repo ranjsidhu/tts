@@ -57,9 +57,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white mt-9">
+    <footer className="bg-black text-white mt-9" data-testid="footer">
       {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+        data-testid="footer-content"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <ContactUs />
           <OpeningHours />
@@ -72,10 +75,14 @@ export default function Footer() {
               Interested in our tuition services? Leave your email for a free
               consultation.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-2">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-2"
+              data-testid="footer-enquiry-form"
+            >
               <div className="relative">
                 <input
-                  type="email"
+                  data-testid="footer-email-input"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -91,6 +98,7 @@ export default function Footer() {
                 />
                 {emailError && (
                   <AlertCircle
+                    data-testid="footer-email-error-icon"
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500"
                     size={20}
                   />
@@ -99,12 +107,16 @@ export default function Footer() {
 
               {emailError && (
                 <p className="text-red-500 text-sm flex items-center gap-2">
-                  <AlertCircle size={16} />
+                  <AlertCircle
+                    data-testid="footer-email-error-icon"
+                    size={16}
+                  />
                   {emailError}
                 </p>
               )}
 
               <button
+                data-testid="footer-submit-button"
                 type="submit"
                 className="w-full px-4 py-2 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 transition-colors duration-300"
               >

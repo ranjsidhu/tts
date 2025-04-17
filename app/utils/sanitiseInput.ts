@@ -1,16 +1,4 @@
-interface FormData {
-  studentName: string;
-  parentName: string;
-  parentPhone: string;
-  message: string;
-}
-
-interface FormErrors {
-  studentName?: string;
-  parentName?: string;
-  parentPhone?: string;
-  message?: string;
-}
+import { FormData, FormErrors } from "../types";
 
 // Sanitise and validate input
 const sanitiseAndValidate = (data: FormData): FormErrors => {
