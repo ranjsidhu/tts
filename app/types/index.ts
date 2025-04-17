@@ -9,6 +9,8 @@ import type {
 
 import type { Testimonial } from "./static";
 
+import type { InitialStateType } from "./state";
+
 export type {
   NavbarProps,
   MenuButtonProps,
@@ -17,4 +19,5 @@ export type {
   LayoutProps,
   FormData,
   FormErrors,
+  InitialStateType,
 };

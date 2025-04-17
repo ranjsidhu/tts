@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-type InitialStateType = {
-  isMobileMenuOpen: boolean;
-  isOverlayVisible: boolean;
-};
+import type { InitialStateType } from "@/app/types";
 
 const initialState: InitialStateType = {
   isMobileMenuOpen: false,
