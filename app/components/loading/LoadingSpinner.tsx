@@ -1,9 +1,5 @@
-// LoadingSpinner.tsx
 import React from "react";
-
-interface LoadingSpinnerProps {
-  size?: "small" | "medium" | "large";
-}
+import type { LoadingSpinnerProps } from "@/app/types";
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "medium" }) => {
   // Map size prop to actual dimensions
@@ -14,8 +10,12 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "medium" }) => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div
+      className="flex justify-center items-center"
+      data-testid="loading-spinner"
+    >
       <div
+        data-testid="loading-spinner-inner"
         className={`
           ${sizeClasses[size]}
           rounded-full

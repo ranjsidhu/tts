@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Homepage from "./home/Homepage";
+import Homepage from "../home/Homepage";
 
 export const metadata: Metadata = {
   title: "Home | Tutoring To Success",

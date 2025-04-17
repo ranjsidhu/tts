@@ -4,12 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMobileMenu } from "@/lib/features/UI";
 import { RootState } from "@/lib/store";
 import { Toaster } from "react-hot-toast";
+import { LayoutProps } from "@/app/types";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-
-type LayoutProps = {
-  children: React.ReactNode;
-};
 
 export default function Layout({ children }: Readonly<LayoutProps>) {
   const dispatch = useDispatch();
@@ -21,9 +18,10 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" data-testid="layout">
       {isOverlayVisible && (
         <button
+          data-testid="layout-overlay"
           className="fixed inset-0 bg-black/50 z-40"
           onClick={overlayClicked}
         />
@@ -31,8 +29,8 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
 
       <Navbar onNavbarOpen={overlayClicked} />
 
-      <main className="flex-1 mt-28">
-        <div className="container mx-auto px-4">
+      <main className="flex-1 mt-28" data-testid="layout-main">
+        <div className="container mx-auto px-4" data-testid="layout-children">
           {children} <Toaster position="top-right" />
         </div>
       </main>

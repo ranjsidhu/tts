@@ -1,5 +1,5 @@
 import { Sparkles, Zap, Rocket, Clock, CheckCircle2 } from "lucide-react";
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 
 interface OfferCard {
   title: string;
