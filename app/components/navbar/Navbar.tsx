@@ -2,19 +2,23 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { toggleMobileMenu } from "@/lib/features/UI";
+import { logout } from "@/lib/features/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import { links } from "@/app/static";
 import type { NavbarProps } from "@/app/types";
 import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
+import toast from "react-hot-toast";
 
 export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { isMobileMenuOpen } = useSelector((state: RootState) => state.UI);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
 
   const toggleMenu = () => {
@@ -22,6 +26,47 @@ export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
     onNavbarOpen(visible);
     dispatch(toggleMobileMenu({ visible }));
   };
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to logout");
+      }
+
+      dispatch(logout());
+      router.push("/");
+    } catch (error: any) {
+      console.error("Logout error:", error);
+      toast.error("Failed to logout");
+    }
+  };
+
+  const authLinks = isAuthenticated
+    ? [
+        {
+          name: "Dashboard",
+          href: "/dashboard",
+        },
+        {
+          name: "Logout",
+          href: "#",
+          onClick: handleLogout,
+        },
+      ]
+    : [
+        {
+          name: "Login",
+          href: "/login",
+        },
+        {
+          name: "Register",
+          href: "/register",
+        },
+      ];
 
   return (
     <header
@@ -60,6 +105,27 @@ export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
                         : ""
                     }
                     ${index !== 0 ? "border-l-2 border-yellow-400" : ""}
+                  `}
+                >
+                  {route.name}
+                </Link>
+              ))}
+              {authLinks.map((route) => (
+                <Link
+                  data-testid={`navbar-link-${route.name}`}
+                  key={route.href}
+                  href={route.href}
+                  onClick={route.onClick}
+                  className={`
+                    relative px-4 py-2 text-sm font-medium
+                    transition-all duration-300 ease-in-out
+                    hover:text-white hover:bg-black hover:rounded-xl
+                    ${
+                      pathname === route.href
+                        ? "after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:bg-yellow-400"
+                        : ""
+                    }
+                    border-l-2 border-yellow-400
                   `}
                 >
                   {route.name}
@@ -104,6 +170,32 @@ export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
                       key={route.href}
                       href={route.href}
                       onClick={() => {
+                        dispatch(toggleMobileMenu({ visible: false }));
+                      }}
+                      className={`
+                        px-4 py-3 text-sm font-medium
+                        transition-all duration-200
+                        hover:bg-gray-50
+                        ${
+                          pathname === route.href
+                            ? "text-black border-l-4 border-yellow-400 bg-gray-50"
+                            : "text-gray-600"
+                        }
+                      `}
+                    >
+                      {route.name}
+                    </Link>
+                  ))}
+                  {authLinks.map((route) => (
+                    <Link
+                      data-testid={`mobile-menu-link-${route.name}`}
+                      key={route.href}
+                      href={route.href}
+                      onClick={(e) => {
+                        if (route.onClick) {
+                          e.preventDefault();
+                          route.onClick();
+                        }
                         dispatch(toggleMobileMenu({ visible: false }));
                       }}
                       className={`

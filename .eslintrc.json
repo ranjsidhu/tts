@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "eslint-config-next"],
   "rules": {
     "no-unused-vars": [
       "error",
@@ -10,9 +10,10 @@
       {
         "unusedExports": true,
         "missingExports": false,
-        "ignoreExports": ["**/page.tsx", "**/not-found.tsx"]
+        "ignoreExports": ["**/page.tsx", "**/not-found.tsx", "**/**/api/**"]
       }
     ]
   },
-  "plugins": ["import"]
+  "plugins": ["import"],
+  "ignorePatterns": ["**/lib/generated/**"]
 }

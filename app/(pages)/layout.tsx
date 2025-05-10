@@ -4,6 +4,8 @@ import { NextFont } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
 import Analytics from "./Analytics";
 import StoreProvider from "./StoreProvider";
+import AuthInitializer from "../components/auth/AuthInitializer";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter: NextFont = Inter({ subsets: ["latin"] });
@@ -32,10 +34,15 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
-      <Analytics />
-      <StoreProvider>
-        <body className={inter.className}>{children}</body>
-      </StoreProvider>
+      <body className={inter.className}>
+        <StoreProvider>
+          <AuthInitializer />
+          <Analytics />
+          <AuthInitializer />
+          {children}
+          <Toaster position="top-center" />
+        </StoreProvider>
+      </body>
     </html>
   );
 }

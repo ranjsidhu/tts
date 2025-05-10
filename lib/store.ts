@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducer";
 
-export const makeStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-  });
-};
+export const store = configureStore({
+  reducer: rootReducer,
+});
 
-export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore["getState"]>;
+export type RootState = ReturnType<typeof store.getState>;
+// eslint-disable-next-line import/no-unused-modules
+export type AppDispatch = typeof store.dispatch;
