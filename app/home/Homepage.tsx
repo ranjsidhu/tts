@@ -4,6 +4,7 @@ import HeroSVG from "./HeroSVG";
 import EnquiryForm from "../components/enquiry/EnquiryForm";
 import SignIn from "../components/auth/SignIn";
 import SignOut from "../components/auth/SignOut";
+import { getSession } from "@/lib/session";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -19,12 +20,16 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
   </div>
 );
 
-export default function Homepage() {
+export default async function Homepage() {
+  // TODO - cleanup
+  const session = await getSession();
+  console.log("🚀 ~ Homepage ~ session:", session);
+
   return (
     <Layout>
       {/* Hero Section */}
-      <SignIn />
-      <SignOut />
+      {session ? <SignOut /> : <SignIn provider="google" />}
+
       <section className="relative bg-black text-white py-20 md:py-32 rounded-2xl">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">

@@ -11,6 +11,8 @@ import type { Testimonial } from "./static";
 
 import type { InitialStateType } from "./state";
 
+import type { SignInProps } from "./auth";
+
 export type {
   NavbarProps,
   MenuButtonProps,
@@ -20,4 +22,5 @@ export type {
   FormData,
   FormErrors,
   InitialStateType,
+  SignInProps,
 };
