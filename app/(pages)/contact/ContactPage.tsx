@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import Layout from "../../components/layout/Layout";
+import { config } from "@/lib/config";
 
 export default function ContactPage() {
   return (
@@ -49,10 +50,10 @@ export default function ContactPage() {
                       <h3 className="font-medium">Email</h3>
                       <p className="text-gray-600">
                         <a
-                          href="mailto:admin@tutoringtosuccess.co.uk"
+                          href={`mailto:${config.adminEmail}`}
                           className="hover:text-yellow-500 transition-colors"
                         >
-                          admin@tutoringtosuccess.co.uk
+                          {config.adminEmail}
                         </a>
                       </p>
                     </div>

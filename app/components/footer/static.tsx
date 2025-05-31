@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import instagram from "@/app/assets/ig.png";
 import facebook from "@/app/assets/fb.png";
 import { links } from "@/app/static";
+import { config } from "@/lib/config";
 
 type Link = {
   name: string;
@@ -39,10 +40,10 @@ const ContactUs = () => (
       <p className="flex items-center space-x-3">
         <Mail className="w-5 h-5 text-yellow-400" />
         <a
-          href={`mailto:admin@tutoringtosuccess.co.uk`}
+          href={`mailto:${config.adminEmail}`}
           className="hover:text-yellow-400 transition-colors duration-300"
         >
-          admin@tutoringtosuccess.co.uk
+          {config.adminEmail}
         </a>
       </p>
       <button
