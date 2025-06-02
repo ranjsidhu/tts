@@ -90,7 +90,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/sign-in",
+    // signIn: "/auth/sign-in",
     error: "/auth/error",
   },
   callbacks: {
@@ -103,19 +103,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           where: { email: user.email },
           update: {
             name: user.name ?? undefined,
-            // Only update password if it's a credentials sign-in
-            ...(account?.type === "credentials" && user.password
-              ? { password: user.password }
-              : {}),
           },
           create: {
             email: user.email,
             name: user.name ?? "",
             role: "STUDENT",
-            // Only set password if it's a credentials sign-in
-            ...(account?.type === "credentials" && user.password
-              ? { password: user.password }
-              : {}),
           },
         });
 
@@ -133,14 +125,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       if (session.user && token.sub) {
         session.user.id = token.sub;
-        session.user.role = token.role as string;
+        (session.user as any).role = token.role as string;
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role;
+        token.role = (user as any).role;
       }
       return token;
     },
