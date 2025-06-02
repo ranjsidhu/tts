@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { handleCredentialsSignIn } from "./serveractions";
-import toast from "react-hot-toast";
 
 export default function CredentialsForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,14 +10,7 @@ export default function CredentialsForm() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    name: "",
   });
-  const [showNameField, setShowNameField] = useState(false);
-
-  useEffect(() => {
-    // Show name field if both email and password have content
-    setShowNameField(formData.email.length > 0 && formData.password.length > 0);
-  }, [formData.email, formData.password]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,18 +24,12 @@ export default function CredentialsForm() {
     setIsLoading(true);
     try {
       await handleCredentialsSignIn(formData);
-    } catch (e: any) {
-      toast.error("There was an error signing you in.");
-      console.log(e);
     } finally {
       setIsLoading(false);
     }
   };
 
   const isFormValid = () => {
-    if (showNameField) {
-      return formData.email && formData.password && formData.name;
-    }
     return formData.email && formData.password;
   };
 
@@ -99,27 +85,6 @@ export default function CredentialsForm() {
           </button>
         </div>
       </div>
-
-      {showNameField && (
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-            placeholder="Enter your name"
-          />
-        </div>
-      )}
 
       <button
         type="submit"

@@ -21,9 +21,7 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
 );
 
 export default async function Homepage() {
-  // TODO - cleanup
   const session = await getSession();
-  console.log("🚀 ~ Homepage ~ session:", session);
 
   return (
     <Layout>
