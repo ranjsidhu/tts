@@ -1,25 +1,54 @@
-import Layout from "@/app/components/layout/Layout";
-import { signIn } from "@/auth";
+import type { Metadata } from "next";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import Layout from "@/app/components/layout/Layout";
+import CredentialsForm from "./CredentialsForm";
+import { handleGoogleSignIn } from "./serveractions";
+import { auth } from "@/auth";
 
-export default function SignInPage() {
-  const handleGoogleSignIn = async () => {
-    "use server";
-    await signIn("google", { redirectTo: "/" });
-  };
+export const metadata: Metadata = {
+  title: "Sign In",
+  description:
+    "Sign in to your Tutoring To Success account to access your personalized learning journey.",
+  alternates: {
+    canonical: "https://tutoringtosuccess.co.uk/auth/sign-in/",
+    types: {
+      www: "https://www.tutoringtosuccess.co.uk/auth/sign-in/",
+    },
+  },
+};
+
+export default async function SignInPage() {
+  const session = await auth();
+
+  if (session) {
+    redirect("/");
+  }
 
   return (
     <Layout>
       <div className="min-h-[calc(100vh-28rem)] flex items-center justify-center">
         <div className="max-w-md w-full mx-auto p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
+            <h1 className="text-3xl font-bold mb-2">Welcome</h1>
             <p className="text-gray-600">
               Sign in to access your Tutoring To Success account
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <CredentialsForm />
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-200"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">
+                  Or continue with
+                </span>
+              </div>
+            </div>
+
             <form action={handleGoogleSignIn}>
               <button
                 type="submit"

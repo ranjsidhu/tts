@@ -1,9 +1,9 @@
 import { signIn } from "@/auth";
 import { SignInProps } from "@/app/types";
-import { capitalise } from "@/app/utils/capitalise";
 
+// eslint-disable-next-line import/no-unused-modules
 export default function SignIn({ provider }: SignInProps) {
-  const signInText = `Sign in with ${capitalise(provider)}`;
+  const signInText = `Sign in`;
 
   const handleSignIn = async () => {
     "use server";
