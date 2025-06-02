@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { NextFont } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
-// import Analytics from "./Analytics";
+import Analytics from "./Analytics";
 import StoreProvider from "./StoreProvider";
 import "./globals.css";
 
@@ -32,7 +32,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
-      {/* <Analytics /> */}
+      <Analytics />
       <StoreProvider>
         <body className={inter.className}>{children}</body>
       </StoreProvider>

@@ -28,7 +28,7 @@ export default async function Homepage() {
   return (
     <Layout>
       {/* Hero Section */}
-      {session ? <SignOut /> : <SignIn provider="google" />}
+      {session?.user ? <SignOut /> : <SignIn provider="google" />}
 
       <section className="relative bg-black text-white py-20 md:py-32 rounded-2xl">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">

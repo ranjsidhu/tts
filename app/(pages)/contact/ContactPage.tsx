@@ -136,7 +136,7 @@ export default function ContactPage() {
               <div className="h-[240px] rounded-xl overflow-hidden shadow-sm border border-gray-100">
                 <iframe
                   title="Tutoring To Success - Codsall Road Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13341.834676979071!2d-2.1701656161019227!3d52.59685644822328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709d92c80c2e3d%3A0x2df9eca360f2c788!2sTutoring%20To%20Success%20Codsall!5e1!3m2!1sen!2suk!4v1744223936121!5m2!1sen!2suk"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2422.8650899839304!2d-2.1641402221250297!3d52.608209372084495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48709d92c80c2e3d%3A0x2df9eca360f2c788!2sTutoring%20To%20Success%20Codsall!5e0!3m2!1sen!2suk!4v1748764418560!5m2!1sen!2suk"
                   className="w-full h-full"
                   loading="lazy"
                   allowFullScreen
