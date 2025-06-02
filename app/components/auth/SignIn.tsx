@@ -5,6 +5,7 @@ import { capitalise } from "@/app/utils/capitalise";
 export default function SignIn({ provider }: SignInProps) {
   const signInText = `Sign in with ${capitalise(provider)}`;
 
+  const handleSignIn = async () => {
     "use server";
     await signIn(provider, { redirectTo: "/" });
   };
