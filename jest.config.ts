@@ -19,6 +19,7 @@ const config: Config = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
   },
+  modulePathIgnorePatterns: ["<rootDir>/.next/standalone"],
   globals: {
     fetch: global.fetch,
   },
