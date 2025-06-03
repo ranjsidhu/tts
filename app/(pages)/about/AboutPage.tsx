@@ -1,5 +1,3 @@
-"use client";
-
 import Layout from "../../components/layout/Layout";
 import { BookOpen, Check, Clock, Rocket } from "lucide-react";
 import Link from "next/link";

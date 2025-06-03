@@ -1,7 +1,3 @@
-type NavbarProps = {
-  onNavbarOpen: Function;
-};
-
 type MenuButtonProps = {
   toggleMenu: () => void;
   isMobileMenuOpen: boolean;
@@ -30,11 +26,15 @@ type FormErrors = {
   message?: string;
 };
 
+type MobileMenuProps = {
+  toggleMenu: () => void;
+};
+
 export type {
-  NavbarProps,
   MenuButtonProps,
   LoadingSpinnerProps,
   LayoutProps,
   FormData,
   FormErrors,
+  MobileMenuProps,
 };
