@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaClient } from "@/generated/prisma";
-import { compare, hash } from "bcryptjs";
+import { hashPassword, verifyPassword } from "@/app/utils/password";
 
 const prisma = new PrismaClient();
 
@@ -52,7 +52,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         // If user doesn't exist, create a new one with hashed password
         if (!user) {
-          const hashedPassword = await hash(typedCredentials.password, 12);
+          const hashedPassword = await hashPassword(typedCredentials.password);
           const newUser = await prisma.user.create({
             data: {
               email: typedCredentials.email,
@@ -71,7 +71,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         // At this point, we know user exists and has a password
-        const isPasswordValid = await compare(
+        const isPasswordValid = await verifyPassword(
           typedCredentials.password,
           user.password as string
         );
