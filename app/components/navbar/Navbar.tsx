@@ -1,31 +1,34 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
-import { toggleMobileMenu } from "@/lib/features/UI";
-import { motion, AnimatePresence } from "framer-motion";
 import { links } from "@/app/static";
-import type { NavbarProps } from "@/app/types";
 import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
+import MobileMenu from "./MobileMenu";
 
-export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
-  const dispatch = useDispatch();
-  const { isMobileMenuOpen } = useSelector((state: RootState) => state.UI);
+export default function Navbar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  const toggleMenu = () => {
-    const visible = !isMobileMenuOpen;
-    onNavbarOpen(visible);
-    dispatch(toggleMobileMenu({ visible }));
-  };
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50"
+      className="w-screen flex flex-col justify-center items-center bg-white/95 fixed top-0 left-0 right-0 shadow-sm z-50"
       data-testid="navbar-container"
     >
       <div className="container mx-auto px-4">
@@ -77,54 +80,7 @@ export default function Navbar({ onNavbarOpen }: Readonly<NavbarProps>) {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={toggleMenu}
-                className="fixed inset-0 bg-black/20 sm:hidden"
-              />
-
-              {/* Mobile Menu Panel */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute left-0 right-0 bg-white sm:hidden border-t border-gray-100 shadow-lg"
-              >
-                <nav className="flex flex-col py-2" data-testid="mobile-menu">
-                  {links.map((route) => (
-                    <Link
-                      data-testid={`mobile-menu-link-${route.name}`}
-                      key={route.href}
-                      href={route.href}
-                      onClick={() => {
-                        dispatch(toggleMobileMenu({ visible: false }));
-                      }}
-                      className={`
-                        px-4 py-3 text-sm font-medium
-                        transition-all duration-200
-                        hover:bg-gray-50
-                        ${
-                          pathname === route.href
-                            ? "text-black border-l-4 border-yellow-400 bg-gray-50"
-                            : "text-gray-600"
-                        }
-                      `}
-                    >
-                      {route.name}
-                    </Link>
-                  ))}
-                </nav>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+        {isMobileMenuOpen && <MobileMenu toggleMenu={toggleMenu} />}
       </div>
     </header>
   );
