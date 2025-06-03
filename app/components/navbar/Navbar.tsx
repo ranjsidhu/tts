@@ -12,7 +12,7 @@ import MobileMenu from "./MobileMenu";
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
