@@ -6,7 +6,6 @@ import { SessionProvider } from "next-auth/react";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 import Analytics from "./Analytics";
-import StoreProvider from "./StoreProvider";
 import "./globals.css";
 
 const inter: NextFont = Inter({ subsets: ["latin"] });
@@ -36,15 +35,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
       <Analytics />
-      <StoreProvider>
-        <body className={inter.className}>
-          <ConfigProvider>
-            <AntdRegistry>
-              <SessionProvider>{children}</SessionProvider>
-            </AntdRegistry>
-          </ConfigProvider>
-        </body>
-      </StoreProvider>
+      <body className={inter.className}>
+        <ConfigProvider>
+          <AntdRegistry>
+            <SessionProvider>{children}</SessionProvider>
+          </AntdRegistry>
+        </ConfigProvider>
+      </body>
     </html>
   );
 }

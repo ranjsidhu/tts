@@ -19,7 +19,9 @@ export default function DashboardName({ name }: { name: string }) {
     const findAndSetUserDetails = async () => {
       if (!session?.user?.email) return;
       const userDetails = await getUserDetails(session?.user?.email);
-      update({ user: { ...session?.user, name: userDetails?.name } });
+      if (userDetails?.name !== session?.user?.name) {
+        update({ user: { ...session?.user, name: userDetails?.name } });
+      }
       setDetails(userDetails);
       setIsLoading(false);
     };

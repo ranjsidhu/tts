@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Layout from "@/app/components/layout/Layout";
-import { auth } from "@/auth";
+import { getSession } from "@/lib/session";
 import DashboardName from "./DashboardName";
 import AuthWrapper from "@/app/components/auth/AuthWrapper";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function DashboardPage() {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session || !session.user) {
     redirect("/auth/sign-in");

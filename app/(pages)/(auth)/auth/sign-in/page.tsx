@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import Layout from "@/app/components/layout/Layout";
 import CredentialsForm from "./CredentialsForm";
 import { handleGoogleSignIn } from "./serveractions";
-import { auth } from "@/auth";
+import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SignInPage() {
-  const session = await auth();
+  const session = await getSession();
 
   if (session) {
     redirect("/");
