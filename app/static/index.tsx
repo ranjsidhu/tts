@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unused-modules */
+
 import { CheckCircle, BookOpen, Trophy, Users } from "lucide-react";
 import type { Testimonial } from "../types";
 
