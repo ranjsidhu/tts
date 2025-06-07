@@ -13,9 +13,14 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@ant-design/nextjs-registry": "^1.0.2",
+    "@aws-sdk/client-sesv2": "^3.826.0",
+    "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.8.2",
     "@reduxjs/toolkit": "^2.0.1",
     "@types/styled-components": "^5.1.30",
+    "antd": "^5.25.4",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "framer-motion": "^11.16.4",
@@ -32,6 +37,7 @@
     "redux": "^5.0.1",
     "sharp": "^0.33.0",
     "styled-components": "^6.1.1",
+    "uuid": "^11.1.0",
     "web-vitals": "^3.5.0"
   },
   "devDependencies": {

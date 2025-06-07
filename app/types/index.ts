@@ -5,6 +5,10 @@ import type {
   FormData,
   FormErrors,
   MobileMenuProps,
+  NavbarProps,
+  AuthWrapperProps,
+  Role,
+  User,
 } from "./components";
 
 import type { Testimonial } from "./static";
@@ -23,4 +27,8 @@ export type {
   InitialStateType,
   SignInProps,
   MobileMenuProps,
+  NavbarProps,
+  AuthWrapperProps,
+  Role,
+  User,
 };

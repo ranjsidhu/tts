@@ -24,6 +24,17 @@ const links = [
   },
 ];
 
+const privacyAndTerms = [
+  {
+    name: "Terms of Service",
+    href: "/terms-of-service",
+  },
+  {
+    name: "Privacy Policy",
+    href: "/privacy-policy",
+  },
+];
+
 const features = [
   {
     icon: <Trophy size={32} />,
@@ -92,4 +103,4 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export { links, features, testimonials };
+export { links, features, testimonials, privacyAndTerms };

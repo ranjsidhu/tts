@@ -1,14 +1,21 @@
-import { signOut } from "@/auth";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { signOutAction } from "./serveractions";
 
 export default function SignOut() {
+  const router = useRouter();
+
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signOut();
+    <button
+      onClick={async () => {
+        await signOutAction();
+        router.push("/");
       }}
+      className="text-[#DAA520] text-base font-medium hover:underline transition-colors duration-150 flex items-center whitespace-nowrap"
+      style={{ lineHeight: 1 }}
     >
-      <button type="submit">Sign out</button>
-    </form>
+      Sign Out
+    </button>
   );
 }

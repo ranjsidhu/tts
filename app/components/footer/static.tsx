@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import instagram from "@/app/assets/ig.png";
 import facebook from "@/app/assets/fb.png";
-import { links } from "@/app/static";
+import { links, privacyAndTerms } from "@/app/static";
 import { config } from "@/lib/config";
 
 type Link = {
@@ -81,6 +81,15 @@ const QuickLinks = () => (
     <h3 className="text-lg font-semibold">Key Information</h3>
     <nav className="flex flex-col space-y-2">
       {links.map(({ href, name }) => (
+        <Link
+          href={href}
+          key={name}
+          className="hover:text-yellow-400 transition-colors duration-300"
+        >
+          {name}
+        </Link>
+      ))}
+      {privacyAndTerms.map(({ href, name }) => (
         <Link
           href={href}
           key={name}

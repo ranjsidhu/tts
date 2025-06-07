@@ -2,6 +2,9 @@
 import type { Metadata } from "next";
 import { NextFont } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
 import Analytics from "./Analytics";
 import StoreProvider from "./StoreProvider";
 import "./globals.css";
@@ -34,7 +37,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     <html lang="en">
       <Analytics />
       <StoreProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <ConfigProvider>
+            <AntdRegistry>
+              <SessionProvider>{children}</SessionProvider>
+            </AntdRegistry>
+          </ConfigProvider>
+        </body>
       </StoreProvider>
     </html>
   );

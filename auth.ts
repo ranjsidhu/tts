@@ -1,10 +1,8 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-import { PrismaClient } from "@/generated/prisma";
-import { hashPassword, verifyPassword } from "@/app/utils/password";
-
-const prisma = new PrismaClient();
+import { authorizeUsers } from "@/app/utils/auth/authorizeUsers";
+import { signInCallback } from "@/app/utils/auth/signInCallback";
 
 interface Credentials {
   email: string;
@@ -31,61 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null;
-        }
-
-        const typedCredentials = credentials as Credentials;
-
-        const user = await prisma.user.findUnique({
-          where: {
-            email: typedCredentials.email,
-          },
-        });
-
-        // If user exists but has no password (Google sign-in), prevent credentials login
-        if (user && !user.password) {
-          throw new Error(
-            "This account was created with Google. Please sign in with Google."
-          );
-        }
-
-        // If user doesn't exist, create a new one with hashed password
-        if (!user) {
-          const hashedPassword = await hashPassword(typedCredentials.password);
-          const newUser = await prisma.user.create({
-            data: {
-              email: typedCredentials.email,
-              name: typedCredentials.email.split("@")[0], // Default name from email
-              password: hashedPassword,
-              role: "STUDENT",
-            },
-          });
-
-          return {
-            id: newUser.id,
-            email: newUser.email,
-            name: newUser.name,
-            role: newUser.role,
-          };
-        }
-
-        // At this point, we know user exists and has a password
-        const isPasswordValid = await verifyPassword(
-          typedCredentials.password,
-          user.password as string
-        );
-
-        if (!isPasswordValid) {
-          return null;
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-        };
+        return await authorizeUsers(credentials);
       },
     }),
   ],
@@ -95,32 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (!user.email) return false;
-
-      try {
-        // Upsert user based on email
-        const dbUser = await prisma.user.upsert({
-          where: { email: user.email },
-          update: {
-            name: user.name ?? undefined,
-          },
-          create: {
-            email: user.email,
-            name: user.name ?? "",
-            role: "STUDENT",
-          },
-        });
-
-        // If user exists with Google auth but trying credentials, prevent login
-        if (account?.type === "credentials" && !dbUser.password) {
-          return false;
-        }
-
-        return true;
-      } catch (error) {
-        console.error("Error in signIn callback:", error);
-        return false;
-      }
+      return await signInCallback({ user, account });
     },
     async session({ session, token }) {
       if (session.user && token.sub) {

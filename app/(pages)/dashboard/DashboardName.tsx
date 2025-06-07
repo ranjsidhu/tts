@@ -1,13 +1,30 @@
 "use client";
-import { useState, useTransition } from "react";
-import { updateUserName } from "./serveractions";
-import toast from "react-hot-toast";
 
+import { useState, useTransition, useEffect } from "react";
+import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import type { User } from "@/app/types";
+import { updateUserName, getUserDetails } from "./serveractions";
+import LoadingSpinner from "@/app/components/loading/LoadingSpinner";
 export default function DashboardName({ name }: { name: string }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(name);
+  const [details, setDetails] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentName, setCurrentName] = useState(name);
   const [isPending, startTransition] = useTransition();
+  const { data: session, update } = useSession();
+
+  useEffect(() => {
+    const findAndSetUserDetails = async () => {
+      if (!session?.user?.email) return;
+      const userDetails = await getUserDetails(session?.user?.email);
+      update({ user: { ...session?.user, name: userDetails?.name } });
+      setDetails(userDetails);
+      setIsLoading(false);
+    };
+    findAndSetUserDetails();
+  }, [session?.user?.email, session?.user, update]);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -18,7 +35,7 @@ export default function DashboardName({ name }: { name: string }) {
     setNewName(currentName);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     startTransition(async () => {
       try {
         await updateUserName(newName);
@@ -31,6 +48,10 @@ export default function DashboardName({ name }: { name: string }) {
       }
     });
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="mb-4">
@@ -45,7 +66,7 @@ export default function DashboardName({ name }: { name: string }) {
           <input
             id="name"
             type="text"
-            value={newName}
+            value={details?.name}
             onChange={(e) => setNewName(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
             disabled={isPending}
