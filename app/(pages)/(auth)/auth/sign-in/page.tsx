@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import Layout from "@/app/components/layout/Layout";
 import CredentialsForm from "./CredentialsForm";
 import { handleGoogleSignIn } from "./serveractions";
-import { getSession } from "@/lib/session";
+import { getSession } from "@/app/utils/session";
 
 export const metadata: Metadata = {
   title: "Sign In",

@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import Layout from "../../components/layout/Layout";
-import { config } from "@/lib/config";
+import { config } from "@/app/utils/config";
 
 export default function ContactPage() {
   return (

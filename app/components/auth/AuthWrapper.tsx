@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/session";
+import { getSession } from "@/app/utils/session";
 import { AuthWrapperProps, Role } from "@/app/types";
-import { getUserRole } from "@/app/(pages)/dashboard/serveractions";
+import { getUserDetails } from "./serveractions";
 
 export default async function AuthWrapper({
   children,
@@ -12,7 +12,8 @@ export default async function AuthWrapper({
     redirect("/auth/sign-in");
   }
 
-  const userRole = await getUserRole(session.user.email);
+  const userDetails = await getUserDetails(session.user.email);
+  const userRole = userDetails?.roles?.name;
 
   if (!userRole) {
     redirect("/");

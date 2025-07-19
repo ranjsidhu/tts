@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Layout from "@/app/components/layout/Layout";
-import { getSession } from "@/lib/session";
+import { getSession } from "@/app/utils/session";
 import DashboardName from "./DashboardName";
 import AuthWrapper from "@/app/components/auth/AuthWrapper";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Dashboard",
+  title: "Profile",
+  description: "Profile",
+  alternates: {
+    canonical: "https://tutoringtosuccess.co.uk/dashboard",
+    types: {
+      www: "https://www.tutoringtosuccess.co.uk/dashboard",
+    },
+  },
 };
 
 export default async function DashboardPage() {

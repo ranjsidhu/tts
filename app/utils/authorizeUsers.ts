@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/app/api/utils/prismaUtils";
-import { hashPassword, verifyPassword } from "../auth/password";
+import { prisma } from "@/app/api/utils/prisma-utils";
+import { hashPassword, verifyPassword } from "@/app/utils/password";
 
 interface Credentials {
   email: string;
@@ -21,6 +21,9 @@ const authorizeUsers = async (
     where: {
       email: typedCredentials.email,
     },
+    include: {
+      roles: true,
+    },
   });
 
   // If user doesn't exist, create a new one with hashed password
@@ -29,17 +32,20 @@ const authorizeUsers = async (
     const newUser = await prisma.users.create({
       data: {
         email: typedCredentials.email,
-        name: typedCredentials.email.split("@")[0],
+        first_name: typedCredentials.email.split("@")[0],
         password: hashedPassword,
-        role: "STUDENT",
+        role_id: 3,
+      },
+      include: {
+        roles: true,
       },
     });
 
     return {
       id: newUser.id.toString(),
       email: newUser.email,
-      name: newUser.name,
-      role: newUser.role,
+      name: newUser.first_name + " " + newUser.last_name,
+      role: newUser.roles?.name ?? "user",
     };
   }
 
@@ -56,8 +62,8 @@ const authorizeUsers = async (
   return {
     id: user.id.toString(),
     email: user.email,
-    name: user.name,
-    role: user.role,
+    name: user.first_name + " " + user.last_name,
+    role: user.roles?.name ?? "user",
   };
 };
 

@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { LayoutProps } from "@/app/types";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import { getSession } from "@/lib/session";
+import { getSession } from "@/app/utils/session";
 
 export default async function Layout({ children }: Readonly<LayoutProps>) {
   const session = await getSession();

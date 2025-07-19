@@ -22,7 +22,7 @@ jest.mock("@/app/components/navbar/Navbar", () => {
   ));
 });
 
-jest.mock("@/lib/session", () => ({
+jest.mock("@/app/utils/session", () => ({
   getSession: jest.fn(),
 }));
 
@@ -30,7 +30,7 @@ jest.mock("@/lib/session", () => ({
 import { Toaster } from "react-hot-toast";
 import Footer from "@/app/components/footer/Footer";
 import Navbar from "@/app/components/navbar/Navbar";
-import { getSession } from "@/lib/session";
+import { getSession } from "@/app/utils/session";
 
 const MockedToaster = Toaster as jest.MockedFunction<typeof Toaster>;
 const MockedFooter = Footer as jest.MockedFunction<typeof Footer>;

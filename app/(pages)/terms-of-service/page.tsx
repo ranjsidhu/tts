@@ -1,5 +1,5 @@
 import Layout from "@/app/components/layout/Layout";
-import { config } from "@/lib/config";
+import { config } from "@/app/utils/config";
 
 const TermsOfService = () => {
   return (

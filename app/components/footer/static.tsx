@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import instagram from "@/app/assets/ig.png";
 import facebook from "@/app/assets/fb.png";
 import { links, privacyAndTerms } from "@/app/static";
-import { config } from "@/lib/config";
+import { config } from "@/app/utils/config";
 
 type Link = {
   name: string;

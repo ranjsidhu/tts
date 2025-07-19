@@ -1,5 +1,5 @@
 import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
-import { config } from "@/lib/config";
+import { config } from "@/app/utils/config";
 
 const { AWS_REGION, AWS_AK, AWS_SECRET_ACCESS_KEY, SENDER_EMAIL } = process.env;
 

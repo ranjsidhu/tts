@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/app/api/utils/prismaUtils";
-import { getSession } from "@/lib/session";
+import { prisma } from "@/app/api/utils/prisma-utils";
+import { getSession } from "@/app/utils/session";
 
 export async function updateUserName(newName: string) {
   const session = await getSession();
@@ -9,7 +9,7 @@ export async function updateUserName(newName: string) {
 
   await prisma.users.update({
     where: { email: session.user.email },
-    data: { name: newName },
+    data: { first_name: newName },
   });
 
   return newName;
@@ -20,8 +20,8 @@ export async function getUserRole(email: string | null | undefined) {
 
   const user = await prisma.users.findUnique({
     where: { email },
-    select: {
-      role: true,
+    include: {
+      roles: true,
     },
   });
 
@@ -29,7 +29,7 @@ export async function getUserRole(email: string | null | undefined) {
     return null;
   }
 
-  return user.role;
+  return user.roles.name;
 }
 
 export async function getUserDetails(email: string | null | undefined) {
