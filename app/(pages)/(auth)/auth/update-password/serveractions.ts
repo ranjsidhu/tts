@@ -2,7 +2,7 @@
 
 import { prisma } from "@/app/api/utils/prisma-utils";
 import { v4 as uuidv4 } from "uuid";
-import { hashPassword } from "@/app/utils/auth/password";
+import { hashPassword } from "@/app/utils/password";
 
 const getPasswordResetTokenByToken = async (token: string) => {
   try {

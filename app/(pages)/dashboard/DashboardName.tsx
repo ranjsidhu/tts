@@ -1,63 +1,67 @@
+/* eslint-disable import/no-unused-modules */
+
 "use client";
 
-import { useState, useTransition, useEffect } from "react";
-import toast from "react-hot-toast";
-import { useSession } from "next-auth/react";
-import type { User } from "@/app/types";
-import { updateUserName, getUserDetails } from "./serveractions";
-import LoadingSpinner from "@/app/components/loading/LoadingSpinner";
-export default function DashboardName({ name }: { name: string }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [newName, setNewName] = useState(name);
-  const [details, setDetails] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentName, setCurrentName] = useState(name);
-  const [isPending, startTransition] = useTransition();
-  const { data: session, update } = useSession();
+// import { useState, useTransition, useEffect } from "react";
+// import toast from "react-hot-toast";
+// import { useSession } from "next-auth/react";
+// import type { User } from "@/app/types";
+// import { updateUserName, getUserDetails } from "./serveractions";
+// import LoadingSpinner from "@/app/components/loading/LoadingSpinner";
 
-  useEffect(() => {
-    const findAndSetUserDetails = async () => {
-      if (!session?.user?.email) return;
-      const userDetails = await getUserDetails(session?.user?.email);
-      if (userDetails?.name !== session?.user?.name) {
-        update({ user: { ...session?.user, name: userDetails?.name } });
-      }
-      setDetails(userDetails);
-      setIsLoading(false);
-    };
-    findAndSetUserDetails();
-  }, [session?.user?.email, session?.user, update]);
+export default function DashboardName() {
+  // { name }: { name: string }
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [newName, setNewName] = useState(name);
+  // const [details, setDetails] = useState<User | null>(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [currentName, setCurrentName] = useState(name);
+  // const [isPending, startTransition] = useTransition();
+  // const { data: session, update } = useSession();
 
-  const handleEdit = () => {
-    setIsEditing(true);
-  };
+  // useEffect(() => {
+  //   const findAndSetUserDetails = async () => {
+  //     if (!session?.user?.email) return;
+  //     const userDetails = await getUserDetails(session?.user?.email);
+  //     if (userDetails?.name !== session?.user?.name) {
+  //       update({ user: { ...session?.user, name: userDetails?.name } });
+  //     }
+  //     setDetails(userDetails);
+  //     setIsLoading(false);
+  //   };
+  //   findAndSetUserDetails();
+  // }, [session?.user?.email, session?.user, update]);
 
-  const handleCancel = () => {
-    setIsEditing(false);
-    setNewName(currentName);
-  };
+  // const handleEdit = () => {
+  //   setIsEditing(true);
+  // };
 
-  const handleSave = async () => {
-    startTransition(async () => {
-      try {
-        await updateUserName(newName);
-        setCurrentName(newName);
-        setIsEditing(false);
-        toast.success("Name updated!");
-      } catch (e: any) {
-        toast.error("Failed to update name.");
-        console.error(e.message);
-      }
-    });
-  };
+  // const handleCancel = () => {
+  //   setIsEditing(false);
+  //   setNewName(currentName);
+  // };
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  // const handleSave = async () => {
+  //   startTransition(async () => {
+  //     try {
+  //       await updateUserName(newName);
+  //       setCurrentName(newName);
+  //       setIsEditing(false);
+  //       toast.success("Name updated!");
+  //     } catch (e: any) {
+  //       toast.error("Failed to update name.");
+  //       console.error(e.message);
+  //     }
+  //   });
+  // };
+
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
 
   return (
     <div className="mb-4">
-      <label
+      {/* <label
         htmlFor="name"
         className="block text-sm font-medium text-gray-700 mb-1"
       >
@@ -98,7 +102,7 @@ export default function DashboardName({ name }: { name: string }) {
             Edit
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
