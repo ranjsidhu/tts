@@ -9,6 +9,8 @@ const nextConfig = {
       ...config.resolve.alias,
       "@": path.resolve(process.cwd(), "./"),
     };
+
+    return config;
   },
   images: {
     remotePatterns: [
