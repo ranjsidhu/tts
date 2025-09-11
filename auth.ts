@@ -4,18 +4,6 @@ import Credentials from "next-auth/providers/credentials";
 import { authorizeUsers } from "./app/utils/authorizeUsers";
 import { signInCallback } from "./app/utils/signInCallback";
 
-declare module "next-auth" {
-  interface Session {
-    user: {
-      id: string;
-      email: string;
-      name: string;
-      image?: string;
-      role: string;
-    };
-  }
-}
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({

@@ -91,7 +91,6 @@ export default function ProfileForm({ user }: Readonly<ProfileFormProps>) {
         toast.success("Profile updated");
       } catch (e: any) {
         toast.error("Failed to update profile");
-        // eslint-disable-next-line no-console
         console.error(e?.message);
       }
     });
