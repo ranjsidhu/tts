@@ -91,7 +91,9 @@ export default function Navbar({ session }: Readonly<NavbarProps>) {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && <MobileMenu toggleMenu={toggleMenu} />}
+        {isMobileMenuOpen && (
+          <MobileMenu toggleMenu={toggleMenu} session={session} />
+        )}
       </div>
     </header>
   );

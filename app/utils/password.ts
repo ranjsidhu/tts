@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
+
 /**
  * Utility functions for password hashing and verification using Web Crypto API
  */
 
 // Convert string to ArrayBuffer
-function stringToBuffer(str: string): Uint8Array {
-  return new TextEncoder().encode(str);
+function stringToBuffer(str: string): any {
+  return new TextEncoder().encode(str).buffer;
 }
 
 // Convert ArrayBuffer to string
-// eslint-disable-next-line no-unused-vars
-function bufferToString(buffer: ArrayBuffer): string {
+function _bufferToString(buffer: ArrayBuffer): string {
   return new TextDecoder().decode(buffer);
 }
 

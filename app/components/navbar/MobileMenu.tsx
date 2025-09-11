@@ -2,8 +2,12 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { links } from "@/app/static";
 import type { MobileMenuProps } from "@/app/types";
+import SignOut from "../auth/SignOut";
 
-export default function MobileMenu({ toggleMenu }: Readonly<MobileMenuProps>) {
+export default function MobileMenu({
+  toggleMenu,
+  session,
+}: Readonly<MobileMenuProps>) {
   return (
     <div className="fixed inset-0 z-60 bg-white/95 flex flex-col backdrop-blur-sm overflow-hidden animate-[fadeIn_150ms_ease-in]">
       <div className="flex justify-between items-center p-4 border-b border-amber-300/30">
@@ -34,6 +38,16 @@ export default function MobileMenu({ toggleMenu }: Readonly<MobileMenuProps>) {
               {route.name}
             </Link>
           ))}
+          {session?.user ? (
+            <SignOut />
+          ) : (
+            <Link
+              href="/auth/sign-in"
+              className="text-[#DAA520] text-base font-medium hover:underline transition-colors duration-150 flex items-center whitespace-nowrap"
+            >
+              Sign in
+            </Link>
+          )}
         </nav>
       </div>
 

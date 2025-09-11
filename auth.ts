@@ -16,7 +16,6 @@ declare module "next-auth" {
   }
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({

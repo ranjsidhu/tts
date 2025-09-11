@@ -9,7 +9,6 @@ import type {
   MobileMenuProps,
   NavbarProps,
   AuthWrapperProps,
-  Role,
   User,
 } from "./components";
 
@@ -31,6 +30,5 @@ export type {
   MobileMenuProps,
   NavbarProps,
   AuthWrapperProps,
-  Role,
   User,
 };

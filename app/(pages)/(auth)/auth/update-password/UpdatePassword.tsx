@@ -2,16 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Form, Input, Button, type FormProps } from "antd";
 import toast from "react-hot-toast";
 import { LockClosedIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { setNewPassword } from "./serveractions";
 
-const { Item } = Form;
-
 export default function UpdatePassword() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    newPassword: "",
+    confirmNewPassword: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
@@ -21,11 +23,41 @@ export default function UpdatePassword() {
     }
   }, [token, router]);
 
-  const handleUpdatePassword: FormProps<{
-    newPassword: string;
-    confirmNewPassword: string;
-  }>["onFinish"] = async (values) => {
-    if (values.newPassword !== values.confirmNewPassword) {
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.newPassword) {
+      newErrors.newPassword = "Please enter a password";
+    } else if (formData.newPassword.length < 8) {
+      newErrors.newPassword = "Password must be at least 8 characters";
+    }
+
+    if (!formData.confirmNewPassword) {
+      newErrors.confirmNewPassword = "Please confirm your password";
+    } else if (formData.newPassword !== formData.confirmNewPassword) {
+      newErrors.confirmNewPassword = "The two passwords do not match";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    if (formData.newPassword !== formData.confirmNewPassword) {
       toast.error("Passwords do not match");
       return;
     }
@@ -38,7 +70,7 @@ export default function UpdatePassword() {
     }
 
     try {
-      await setNewPassword(values.newPassword, token);
+      await setNewPassword(formData.newPassword, token);
       toast.success("Password updated successfully");
       router.push("/auth/sign-in");
     } catch (error: any) {
@@ -70,55 +102,75 @@ export default function UpdatePassword() {
           </div>
 
           {/* Form */}
-          <Form
-            name="updatePassword"
-            layout="vertical"
-            onFinish={handleUpdatePassword}
-            scrollToFirstError
-            className="space-y-6"
-          >
-            <Item
-              label="New Password"
-              name="newPassword"
-              rules={[
-                { required: true, message: "Please enter a password" },
-                { min: 8, message: "Password must be at least 8 characters" },
-              ]}
-            >
-              <Input.Password
-                prefix={
-                  <LockClosedIcon className="h-5 w-5 text-gray-400 mr-1" />
-                }
-                placeholder="Enter your new password"
-                className="rounded-md py-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full"
-              />
-            </Item>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="newPassword"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                New Password
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <LockClosedIcon className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="newPassword"
+                  name="newPassword"
+                  type="password"
+                  required
+                  minLength={8}
+                  value={formData.newPassword}
+                  onChange={(e) =>
+                    handleInputChange("newPassword", e.target.value)
+                  }
+                  placeholder="Enter your new password"
+                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    errors.newPassword ? "border-red-300" : "border-gray-300"
+                  }`}
+                />
+              </div>
+              {errors.newPassword && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.newPassword}
+                </p>
+              )}
+            </div>
 
-            <Item
-              label="Confirm New Password"
-              name="confirmNewPassword"
-              rules={[
-                { required: true, message: "Please confirm your password" },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("newPassword") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(
-                      new Error("The two passwords do not match")
-                    );
-                  },
-                }),
-              ]}
-            >
-              <Input.Password
-                prefix={
-                  <LockClosedIcon className="h-5 w-5 text-gray-400 mr-1" />
-                }
-                placeholder="Confirm your new password"
-                className="rounded-md py-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full"
-              />
-            </Item>
+            <div>
+              <label
+                htmlFor="confirmNewPassword"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Confirm New Password
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <LockClosedIcon className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="confirmNewPassword"
+                  name="confirmNewPassword"
+                  type="password"
+                  required
+                  value={formData.confirmNewPassword}
+                  onChange={(e) =>
+                    handleInputChange("confirmNewPassword", e.target.value)
+                  }
+                  placeholder="Confirm your new password"
+                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                    errors.confirmNewPassword
+                      ? "border-red-300"
+                      : "border-gray-300"
+                  }`}
+                />
+              </div>
+              {errors.confirmNewPassword && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.confirmNewPassword}
+                </p>
+              )}
+            </div>
 
             {/* Password Requirements */}
             <div className="rounded-md bg-gray-50 p-4">
@@ -133,17 +185,42 @@ export default function UpdatePassword() {
               </div>
             </div>
 
-            <Item>
-              <Button
-                htmlType="submit"
-                type="primary"
-                loading={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            <div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Update Password
-              </Button>
-            </Item>
-          </Form>
+                {loading ? (
+                  <div className="flex items-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Updating...
+                  </div>
+                ) : (
+                  "Update Password"
+                )}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

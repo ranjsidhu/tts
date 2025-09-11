@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { handleCredentialsSignIn } from "./serveractions";
+import toast from "react-hot-toast";
 
 export default function CredentialsForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,6 +25,11 @@ export default function CredentialsForm() {
     setIsLoading(true);
     try {
       await handleCredentialsSignIn(formData);
+    } catch (error: any) {
+      if (!error.message?.includes("NEXT_REDIRECT")) {
+        console.error("Failed to sign in:", error);
+        toast.error("Failed to sign in. Please try again later.");
+      }
     } finally {
       setIsLoading(false);
     }

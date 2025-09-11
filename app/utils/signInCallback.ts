@@ -22,6 +22,11 @@ export async function signInCallback({ user }: SignInCallbackParams) {
     });
 
     if (dbUser) {
+      // Update last_logged_in for existing user
+      await prisma.users.update({
+        where: { id: dbUser.id },
+        data: { last_logged_in: new Date() },
+      });
       const role = dbUser.roles?.name;
       console.log("Existing user found:", {
         id: dbUser.id,
@@ -37,6 +42,7 @@ export async function signInCallback({ user }: SignInCallbackParams) {
         email: user.email,
         first_name: user.name?.split(" ")[0] ?? "",
         last_name: user.name?.split(" ")[1] ?? "",
+        last_logged_in: new Date(),
         roles: {
           connect: {
             id: 3, // Candidate role ID

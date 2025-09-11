@@ -2,6 +2,11 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import MobileMenu from "../MobileMenu";
 import { links } from "@/app/static";
 
+jest.mock("../../auth/SignOut", () => ({
+  __esModule: true,
+  default: () => null,
+}));
+
 describe("MobileMenu", () => {
   const mockToggleMenu = jest.fn();
 
@@ -10,7 +15,7 @@ describe("MobileMenu", () => {
   });
 
   it("renders the mobile menu with all navigation links", () => {
-    render(<MobileMenu toggleMenu={mockToggleMenu} />);
+    render(<MobileMenu toggleMenu={mockToggleMenu} session={null} />);
 
     // Check if menu title is rendered
     expect(screen.getByText("Menu")).toBeInTheDocument();
@@ -28,7 +33,7 @@ describe("MobileMenu", () => {
   });
 
   it("calls toggleMenu when close button is clicked", () => {
-    render(<MobileMenu toggleMenu={mockToggleMenu} />);
+    render(<MobileMenu toggleMenu={mockToggleMenu} session={null} />);
 
     const closeButton = screen.getByLabelText("Close menu");
     fireEvent.click(closeButton);
@@ -37,7 +42,7 @@ describe("MobileMenu", () => {
   });
 
   it("calls toggleMenu when a navigation link is clicked", () => {
-    render(<MobileMenu toggleMenu={mockToggleMenu} />);
+    render(<MobileMenu toggleMenu={mockToggleMenu} session={null} />);
 
     const firstLink = screen.getByTestId(`mobile-menu-link-${links[0].name}`);
     fireEvent.click(firstLink);
@@ -46,7 +51,7 @@ describe("MobileMenu", () => {
   });
 
   it("displays the current year in the footer", () => {
-    render(<MobileMenu toggleMenu={mockToggleMenu} />);
+    render(<MobileMenu toggleMenu={mockToggleMenu} session={null} />);
 
     const currentYear = new Date().getFullYear();
     expect(
@@ -55,7 +60,7 @@ describe("MobileMenu", () => {
   });
 
   it("renders with correct accessibility attributes", () => {
-    render(<MobileMenu toggleMenu={mockToggleMenu} />);
+    render(<MobileMenu toggleMenu={mockToggleMenu} session={null} />);
 
     // Check if navigation links have aria-labels
     links.forEach((link) => {

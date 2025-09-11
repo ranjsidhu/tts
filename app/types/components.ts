@@ -1,4 +1,3 @@
-import { Role } from "@/generated/prisma";
 import type { Session } from "next-auth";
 
 type MenuButtonProps = {
@@ -31,6 +30,7 @@ type FormErrors = {
 
 type MobileMenuProps = {
   toggleMenu: () => void;
+  session: Session | null;
 };
 
 type NavbarProps = {
@@ -39,7 +39,7 @@ type NavbarProps = {
 
 type AuthWrapperProps = Readonly<{
   children: React.ReactNode;
-  role?: Role | Role[];
+  role?: string | string[];
 }>;
 
 type User = Readonly<{
@@ -52,7 +52,7 @@ type User = Readonly<{
   postcode: string | null;
   dob: Date | null;
   phone: string | null;
-  role: Role;
+  role: string;
 }>;
 
 export type {
@@ -64,6 +64,5 @@ export type {
   MobileMenuProps,
   NavbarProps,
   AuthWrapperProps,
-  Role,
   User,
 };

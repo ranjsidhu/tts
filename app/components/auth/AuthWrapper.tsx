@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/app/utils/session";
-import { AuthWrapperProps, Role } from "@/app/types";
+import { AuthWrapperProps } from "@/app/types";
 import { getUserDetails } from "./serveractions";
 
 export default async function AuthWrapper({
@@ -19,7 +19,7 @@ export default async function AuthWrapper({
     redirect("/");
   }
 
-  if (role && !role.includes(userRole as Role)) {
+  if (role && !role.includes(userRole)) {
     redirect("/");
   }
 
