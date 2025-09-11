@@ -27,7 +27,7 @@ export default defineConfig([
     ],
   },
   // Spread the Next.js config produced by compat to avoid redefining plugins
-  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("next"),
   {
     rules: {
       "no-unused-vars": [
