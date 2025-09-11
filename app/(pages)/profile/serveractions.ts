@@ -2,7 +2,7 @@
 
 "use server";
 
-import { prisma } from "@/app/api/utils/prisma-utils";
+import { prisma } from "@/app/api/utils/prismaUtils";
 import { getSession } from "@/app/utils/session";
 import { revalidatePath } from "next/cache";
 

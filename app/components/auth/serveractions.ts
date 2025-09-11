@@ -1,7 +1,7 @@
 "use server";
 
 import { signOut } from "@/auth";
-import { prisma } from "@/app/api/utils/prisma-utils";
+import { prisma } from "@/app/api/utils/prismaUtils";
 
 const signOutAction = async () => {
   await signOut();

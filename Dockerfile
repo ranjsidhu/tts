@@ -1,5 +1,10 @@
 FROM node:22-bookworm-slim AS base
 
+# Ensure OpenSSL is installed for Prisma engines
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends ca-certificates libssl3 openssl   \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install dependencies only when needed
 FROM base AS deps
 WORKDIR /app

@@ -1,5 +1,5 @@
 import type { User, Account } from "next-auth";
-import { prisma } from "@/app/api/utils/prisma-utils";
+import { prisma } from "@/app/api/utils/prismaUtils";
 
 type SignInCallbackParams = {
   user: User;

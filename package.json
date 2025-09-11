@@ -10,7 +10,7 @@
     "prepare": "husky",
     "test": "jest",
     "test:watch": "jest --watch",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --no-hints"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "3.886.0",

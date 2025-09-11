@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/app/api/utils/prisma-utils";
+import { prisma } from "@/app/api/utils/prismaUtils";
 import { hashPassword, verifyPassword } from "@/app/utils/password";
 
 interface Credentials {

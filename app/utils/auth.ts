@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 import { getSession } from "./session";
-import { prisma } from "../api/utils/prisma-utils";
+import { prisma } from "../api/utils/prismaUtils";
 import { config } from "./config";
 
 type AuthResult =

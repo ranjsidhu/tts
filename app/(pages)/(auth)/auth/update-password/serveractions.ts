@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/app/api/utils/prisma-utils";
+import { prisma } from "@/app/api/utils/prismaUtils";
 import { v4 as uuidv4 } from "uuid";
 import { hashPassword } from "@/app/utils/password";
 
