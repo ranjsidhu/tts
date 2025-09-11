@@ -5,14 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { links } from "@/app/static";
+import type { NavbarProps } from "@/app/types";
 import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
 import MobileMenu from "./MobileMenu";
+import SignOut from "../auth/SignOut";
+import { UserCircle } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ session }: Readonly<NavbarProps>) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const toggleMenu = () => setIsMobileMenuOpen(prev => !prev);
+  const toggleMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -48,7 +51,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="flex-1 max-sm:hidden" data-testid="desktop-nav">
             <div className="flex items-center justify-end space-x-1">
-              {links.map((route, index: number) => (
+              {links.map((route) => (
                 <Link
                   data-testid={`navbar-link-${route.name}`}
                   key={route.href}
@@ -62,12 +65,29 @@ export default function Navbar() {
                         ? "after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:bg-yellow-400"
                         : ""
                     }
-                    ${index !== 0 ? "border-l-2 border-yellow-400" : ""}
                   `}
                 >
                   {route.name}
                 </Link>
               ))}
+              {session?.user ? (
+                <span className="flex items-center space-x-4">
+                  <Link
+                    href="/profile"
+                    className="flex items-center justify-center"
+                  >
+                    <UserCircle style={{ color: "#DAA520", fontSize: 24 }} />
+                  </Link>
+                  <SignOut />
+                </span>
+              ) : (
+                <Link
+                  href="/auth/sign-in"
+                  className="text-[#DAA520] text-base font-medium hover:underline transition-colors duration-150 flex items-center whitespace-nowrap"
+                >
+                  Sign in
+                </Link>
+              )}
             </div>
           </nav>
 
@@ -80,7 +100,9 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && <MobileMenu toggleMenu={toggleMenu} />}
+        {isMobileMenuOpen && (
+          <MobileMenu toggleMenu={toggleMenu} session={session} />
+        )}
       </div>
     </header>
   );

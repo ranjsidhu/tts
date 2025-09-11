@@ -8,7 +8,7 @@ export default function Analytics() {
     <>
       <Script
         strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-RQF2GW9H85`}
       />
 
       <Script strategy="lazyOnload" id="g-analytics">
@@ -16,7 +16,7 @@ export default function Analytics() {
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                    gtag('config', 'G-RQF2GW9H85', {
                     page_path: window.location.pathname,
                     });
                 `}

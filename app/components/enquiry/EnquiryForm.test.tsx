@@ -123,11 +123,13 @@ describe("EnquiryForm", () => {
       "Thank you for your enquiry. We will be in touch shortly."
     );
 
-    // Form should be reset
-    expect(screen.getByTestId("student-name-input")).toHaveValue("");
-    expect(screen.getByTestId("parent-name-input")).toHaveValue("");
-    expect(screen.getByTestId("parent-phone-input")).toHaveValue("");
-    expect(screen.getByTestId("message-input")).toHaveValue("");
+    // Form should be reset (wait for state updates after async submit)
+    await waitFor(() => {
+      expect(screen.getByTestId("student-name-input")).toHaveValue("");
+      expect(screen.getByTestId("parent-name-input")).toHaveValue("");
+      expect(screen.getByTestId("parent-phone-input")).toHaveValue("");
+      expect(screen.getByTestId("message-input")).toHaveValue("");
+    });
   });
 
   it("shows error toast when API call fails", async () => {

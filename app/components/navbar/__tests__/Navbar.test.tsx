@@ -1,9 +1,8 @@
 import { usePathname } from "next/navigation";
-import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 import Navbar from "../Navbar";
 import { links } from "@/app/static";
-import { createMockStore } from "@/app/utils/tests/mock-store";
+import type { Session } from "next-auth";
 
 // Mock next/navigation
 jest.mock("next/navigation", () => ({
@@ -19,18 +18,20 @@ jest.mock("next/image", () => ({
   },
 }));
 
+// Mock auth components
+jest.mock("@/app/components/auth/SignOut", () => ({
+  __esModule: true,
+  default: () => <button data-testid="sign-out-button">Sign Out</button>,
+}));
+
 describe("Navbar Component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     (usePathname as jest.Mock).mockReturnValue("/");
   });
 
-  const renderNavbar = (store = createMockStore()) => {
-    return render(
-      <Provider store={store}>
-        <Navbar />
-      </Provider>
-    );
+  const renderNavbar = (session: Session | null = null) => {
+    return render(<Navbar session={session} />);
   };
 
   it("renders the navbar container", () => {
@@ -70,5 +71,18 @@ describe("Navbar Component", () => {
     expect(activeLink).toHaveClass("after:right-2");
     expect(activeLink).toHaveClass("after:h-0.5");
     expect(activeLink).toHaveClass("after:bg-yellow-400");
+  });
+
+  it("shows sign in link when user is not logged in", () => {
+    renderNavbar();
+    expect(screen.getByText("Sign in")).toBeInTheDocument();
+  });
+
+  it("shows sign out button when user is logged in", () => {
+    renderNavbar({
+      user: { email: "test@example.com" },
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+    });
+    expect(screen.getByTestId("sign-out-button")).toBeInTheDocument();
   });
 });

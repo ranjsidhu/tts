@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unused-modules */
+
 import type {
   MenuButtonProps,
   LoadingSpinnerProps,
@@ -5,6 +7,9 @@ import type {
   FormData,
   FormErrors,
   MobileMenuProps,
+  NavbarProps,
+  AuthWrapperProps,
+  User,
 } from "./components";
 
 import type { Testimonial } from "./static";
@@ -21,7 +26,9 @@ export type {
   FormData,
   FormErrors,
   InitialStateType,
-  // eslint-disable-next-line import/no-unused-modules
   SignInProps,
   MobileMenuProps,
+  NavbarProps,
+  AuthWrapperProps,
+  User,
 };

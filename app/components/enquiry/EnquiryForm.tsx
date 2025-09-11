@@ -65,7 +65,7 @@ export default function EnquiryForm() {
   return (
     <form
       onSubmit={sendEnquiry}
-      className="space-y-4 w-full max-w-md"
+      className="space-y-4 w-full max-w-md mx-auto"
       data-testid="enquiry-form"
     >
       <div>
