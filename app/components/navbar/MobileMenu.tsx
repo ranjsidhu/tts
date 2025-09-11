@@ -13,7 +13,7 @@ export default function MobileMenu({
 
   return (
     <div className="fixed inset-0 z-60 bg-white/95 flex flex-col backdrop-blur-sm overflow-hidden animate-[fadeIn_150ms_ease-in]">
-      <div className="flex justify-between items-center p-4 border-b border-amber-300/30">
+      <div className="flex justify-between items-center p-4 border-b border-black/30">
         <h2 className="text-xl font-bold text-black">Menu</h2>
         <button
           onClick={toggleMenu}
@@ -26,7 +26,7 @@ export default function MobileMenu({
 
       <div className="flex-1 overflow-y-auto">
         <nav
-          className="flex flex-col w-full divide-y divide-emerald-900/50"
+          className="flex flex-col w-full divide-y divide-black/50"
           data-testid="mobile-menu"
         >
           {links.map((route) => (
