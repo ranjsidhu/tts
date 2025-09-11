@@ -10,6 +10,7 @@ import Logo1 from "@/app/assets/Logo1.jpeg";
 import MenuButton from "./MenuButton";
 import MobileMenu from "./MobileMenu";
 import SignOut from "../auth/SignOut";
+import { UserCircle } from "lucide-react";
 
 export default function Navbar({ session }: Readonly<NavbarProps>) {
   const pathname = usePathname();
@@ -70,7 +71,15 @@ export default function Navbar({ session }: Readonly<NavbarProps>) {
                 </Link>
               ))}
               {session?.user ? (
-                <SignOut />
+                <span className="flex items-center space-x-4">
+                  <Link
+                    href="/profile"
+                    className="flex items-center justify-center"
+                  >
+                    <UserCircle style={{ color: "#DAA520", fontSize: 24 }} />
+                  </Link>
+                  <SignOut />
+                </span>
               ) : (
                 <Link
                   href="/auth/sign-in"

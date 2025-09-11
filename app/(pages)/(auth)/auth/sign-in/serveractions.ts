@@ -7,12 +7,12 @@ const handleCredentialsSignIn = async (formData: FormData) => {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
     name: formData.get("name") as string,
-    redirectTo: "/dashboard",
+    redirectTo: "/profile",
   });
 };
 
 const handleGoogleSignIn = async () => {
-  await signIn("google", { redirectTo: "/dashboard" });
+  await signIn("google", { redirectTo: "/profile" });
 };
 
 export { handleCredentialsSignIn, handleGoogleSignIn };

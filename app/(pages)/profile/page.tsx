@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   title: "Profile",
   description: "Profile",
   alternates: {
-    canonical: "https://tutoringtosuccess.co.uk/dashboard",
+    canonical: "https://tutoringtosuccess.co.uk/profile",
     types: {
-      www: "https://www.tutoringtosuccess.co.uk/dashboard",
+      www: "https://www.tutoringtosuccess.co.uk/profile",
     },
   },
 };

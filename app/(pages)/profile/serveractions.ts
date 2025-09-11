@@ -71,5 +71,5 @@ export async function updateUserProfile(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard");
+  revalidatePath("/profile");
 }

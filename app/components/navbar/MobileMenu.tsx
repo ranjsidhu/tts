@@ -43,6 +43,9 @@ export default function MobileMenu({
           ))}
           {session?.user ? (
             <>
+              <Link href="/profile" className={mobileMenuClassName}>
+                Profile
+              </Link>
               <span className={mobileMenuClassName}>
                 <SignOut />
               </span>
