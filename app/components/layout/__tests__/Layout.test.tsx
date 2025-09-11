@@ -26,15 +26,10 @@ jest.mock("@/app/utils/session", () => ({
   getSession: jest.fn(),
 }));
 
-// Import the mocked modules for type safety and assertions
-import { Toaster } from "react-hot-toast";
 import Footer from "@/app/components/footer/Footer";
-import Navbar from "@/app/components/navbar/Navbar";
 import { getSession } from "@/app/utils/session";
 
-const MockedToaster = Toaster as jest.MockedFunction<typeof Toaster>;
 const MockedFooter = Footer as jest.MockedFunction<typeof Footer>;
-const MockedNavbar = Navbar as jest.MockedFunction<typeof Navbar>;
 const MockedGetSession = getSession as jest.MockedFunction<typeof getSession>;
 
 describe("Layout Component", () => {
@@ -91,7 +86,12 @@ describe("Layout Component", () => {
   describe("Session handling", () => {
     it("passes session data to Navbar when session exists", async () => {
       const mockSession: Session = {
-        user: { id: "1", name: "John Doe", email: "john@example.com" },
+        user: {
+          id: "1",
+          name: "John Doe",
+          email: "john@example.com",
+          role: "Student",
+        },
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
       };
       MockedGetSession.mockResolvedValue(mockSession);
@@ -103,7 +103,6 @@ describe("Layout Component", () => {
       );
 
       expect(MockedGetSession).toHaveBeenCalledTimes(1);
-      expect(MockedNavbar).toHaveBeenCalledWith({ session: mockSession }, {});
 
       const navbar = screen.getByTestId("navbar");
       expect(navbar).toHaveAttribute(
@@ -122,7 +121,6 @@ describe("Layout Component", () => {
       );
 
       expect(MockedGetSession).toHaveBeenCalledTimes(1);
-      expect(MockedNavbar).toHaveBeenCalledWith({ session: null }, {});
 
       const navbar = screen.getByTestId("navbar");
       expect(navbar).toHaveAttribute("data-session", "null");
@@ -210,8 +208,6 @@ describe("Layout Component", () => {
           children: <div>Test</div>,
         })
       );
-
-      expect(MockedToaster).toHaveBeenCalledWith({ position: "top-right" }, {});
 
       const toaster = screen.getByTestId("toaster");
       expect(toaster).toHaveAttribute("data-position", "top-right");
