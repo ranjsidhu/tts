@@ -12,7 +12,7 @@ export default function SignOut() {
         await signOutAction();
         router.push("/");
       }}
-      className="text-[#DAA520] text-base font-medium hover:underline transition-colors duration-150 flex items-center whitespace-nowrap"
+      className="text-[#DAA520] text-[14px] hover:underline transition-colors duration-150 flex items-center whitespace-nowrap"
       style={{ lineHeight: 1 }}
     >
       Sign Out
