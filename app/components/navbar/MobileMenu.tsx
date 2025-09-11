@@ -2,8 +2,15 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { links } from "@/app/static";
 import type { MobileMenuProps } from "@/app/types";
+import SignOut from "../auth/SignOut";
 
-export default function MobileMenu({ toggleMenu }: Readonly<MobileMenuProps>) {
+export default function MobileMenu({
+  toggleMenu,
+  session,
+}: Readonly<MobileMenuProps>) {
+  const mobileMenuClassName =
+    "px-4 py-3 text-sm text-black font-medium transition-all duration-200 hover:bg-gray-50";
+
   return (
     <div className="fixed inset-0 z-60 bg-white/95 flex flex-col backdrop-blur-sm overflow-hidden animate-[fadeIn_150ms_ease-in]">
       <div className="flex justify-between items-center p-4 border-b border-black/30">
@@ -28,12 +35,31 @@ export default function MobileMenu({ toggleMenu }: Readonly<MobileMenuProps>) {
               key={route.href}
               href={route.href}
               onClick={() => toggleMenu()}
-              className="px-4 py-3 text-sm text-black font-medium transition-all duration-200 hover:bg-gray-50"
+              className={mobileMenuClassName}
               aria-label={route.name}
             >
               {route.name}
             </Link>
           ))}
+          {session?.user ? (
+            <>
+              <Link href="/profile" className={mobileMenuClassName}>
+                Profile
+              </Link>
+              <span className={mobileMenuClassName}>
+                <SignOut />
+              </span>
+            </>
+          ) : (
+            <span className={mobileMenuClassName}>
+              <Link
+                href="/auth/sign-in"
+                className="text-[#DAA520] text-base font-medium hover:underline transition-colors duration-150 flex items-center"
+              >
+                Sign in
+              </Link>
+            </span>
+          )}
         </nav>
       </div>
 

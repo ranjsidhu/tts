@@ -4,7 +4,7 @@ import Layout from "../../components/layout/Layout";
 interface OfferCard {
   title: string;
   description: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   features: string[];
   comingSoon?: boolean;
 }

@@ -17,10 +17,9 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
   </div>
 );
 
-export default function Homepage() {
+export default async function Homepage() {
   return (
     <Layout>
-      {/* Hero Section */}
       <section className="relative bg-black text-white py-20 md:py-32 rounded-2xl">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">

@@ -1,43 +1,278 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import Layout from "../Layout";
-import { createMockStore } from "@/app/utils/tests/mock-store";
-import { Provider } from "react-redux";
+import type { Session } from "next-auth";
 
-const renderLayout = (
-  initialState = { UI: { isMobileMenuOpen: false, isOverlayVisible: false } }
-) => {
-  const store = createMockStore(initialState);
-  return render(
-    <Provider store={store}>
-      <Layout>
-        <div>Test Content</div>
-      </Layout>
-    </Provider>
-  );
-};
+// Mock the external dependencies
+jest.mock("react-hot-toast", () => ({
+  Toaster: jest.fn(({ position }) => (
+    <div data-testid="toaster" data-position={position} />
+  )),
+}));
+
+jest.mock("@/app/components/footer/Footer", () => {
+  return jest.fn(() => <div data-testid="footer">Footer</div>);
+});
+
+jest.mock("@/app/components/navbar/Navbar", () => {
+  return jest.fn(({ session }) => (
+    <div data-testid="navbar" data-session={JSON.stringify(session)}>
+      Navbar
+    </div>
+  ));
+});
+
+jest.mock("@/app/utils/session", () => ({
+  getSession: jest.fn(),
+}));
+
+import Footer from "@/app/components/footer/Footer";
+import { getSession } from "@/app/utils/session";
+
+const MockedFooter = Footer as jest.MockedFunction<typeof Footer>;
+const MockedGetSession = getSession as jest.MockedFunction<typeof getSession>;
 
 describe("Layout Component", () => {
-  it("renders without crashing", () => {
-    const { getByTestId } = renderLayout();
-    const layout = getByTestId("layout");
-    expect(layout).toBeInTheDocument();
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
   });
 
-  it("renders children correctly", () => {
-    const { getByText } = renderLayout();
-    const childContent = getByText("Test Content");
-    expect(childContent).toBeInTheDocument();
+  describe("Rendering", () => {
+    it("renders the layout structure correctly", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      const TestChildren = () => (
+        <div data-testid="test-children">Test Content</div>
+      );
+
+      render(
+        await Layout({
+          children: <TestChildren />,
+        })
+      );
+
+      // Check main layout structure
+      expect(screen.getByTestId("layout")).toBeInTheDocument();
+      expect(screen.getByTestId("layout-main")).toBeInTheDocument();
+      expect(screen.getByTestId("layout-children")).toBeInTheDocument();
+
+      // Check components are rendered
+      expect(screen.getByTestId("navbar")).toBeInTheDocument();
+      expect(screen.getByTestId("footer")).toBeInTheDocument();
+      expect(screen.getByTestId("toaster")).toBeInTheDocument();
+      expect(screen.getByTestId("test-children")).toBeInTheDocument();
+    });
+
+    it("applies correct CSS classes", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: <div>Test</div>,
+        })
+      );
+
+      const layout = screen.getByTestId("layout");
+      const main = screen.getByTestId("layout-main");
+      const childrenContainer = screen.getByTestId("layout-children");
+
+      expect(layout).toHaveClass("min-h-screen", "flex", "flex-col");
+      expect(main).toHaveClass("flex-1", "mt-28");
+      expect(childrenContainer).toHaveClass("container", "mx-auto", "px-4");
+    });
   });
 
-  it("has the correct main section", () => {
-    const { getByTestId } = renderLayout();
-    const mainSection = getByTestId("layout-main");
-    expect(mainSection).toBeInTheDocument();
+  describe("Session handling", () => {
+    it("passes session data to Navbar when session exists", async () => {
+      const mockSession: Session = {
+        user: {
+          id: "1",
+          name: "John Doe",
+          email: "john@example.com",
+          role: "Student",
+        },
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+      };
+      MockedGetSession.mockResolvedValue(mockSession);
+
+      render(
+        await Layout({
+          children: <div>Test</div>,
+        })
+      );
+
+      expect(MockedGetSession).toHaveBeenCalledTimes(1);
+
+      const navbar = screen.getByTestId("navbar");
+      expect(navbar).toHaveAttribute(
+        "data-session",
+        JSON.stringify(mockSession)
+      );
+    });
+
+    it("passes null session to Navbar when no session exists", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: <div>Test</div>,
+        })
+      );
+
+      expect(MockedGetSession).toHaveBeenCalledTimes(1);
+
+      const navbar = screen.getByTestId("navbar");
+      expect(navbar).toHaveAttribute("data-session", "null");
+    });
+
+    it("handles getSession errors gracefully", async () => {
+      MockedGetSession.mockRejectedValue(new Error("Session error"));
+
+      await expect(
+        Layout({
+          children: <div>Test</div>,
+        })
+      ).rejects.toThrow("Session error");
+    });
   });
 
-  it("has the correct children section", () => {
-    const { getByTestId } = renderLayout();
-    const childrenSection = getByTestId("layout-children");
-    expect(childrenSection).toBeInTheDocument();
+  describe("Children rendering", () => {
+    it("renders single child component", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      const TestChild = () => (
+        <div data-testid="single-child">Single Child</div>
+      );
+
+      render(
+        await Layout({
+          children: <TestChild />,
+        })
+      );
+
+      expect(screen.getByTestId("single-child")).toBeInTheDocument();
+      expect(screen.getByText("Single Child")).toBeInTheDocument();
+    });
+
+    it("renders multiple children", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: (
+            <>
+              <div data-testid="child-1">Child 1</div>
+              <div data-testid="child-2">Child 2</div>
+              <div data-testid="child-3">Child 3</div>
+            </>
+          ),
+        })
+      );
+
+      expect(screen.getByTestId("child-1")).toBeInTheDocument();
+      expect(screen.getByTestId("child-2")).toBeInTheDocument();
+      expect(screen.getByTestId("child-3")).toBeInTheDocument();
+    });
+
+    it("renders complex nested children", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      const ComplexChild = () => (
+        <div data-testid="complex-child">
+          <h1>Title</h1>
+          <p>Content</p>
+          <button>Action</button>
+        </div>
+      );
+
+      render(
+        await Layout({
+          children: <ComplexChild />,
+        })
+      );
+
+      expect(screen.getByTestId("complex-child")).toBeInTheDocument();
+      expect(screen.getByText("Title")).toBeInTheDocument();
+      expect(screen.getByText("Content")).toBeInTheDocument();
+      expect(screen.getByText("Action")).toBeInTheDocument();
+    });
+  });
+
+  describe("Component integration", () => {
+    it("renders Toaster with correct position", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: <div>Test</div>,
+        })
+      );
+
+      const toaster = screen.getByTestId("toaster");
+      expect(toaster).toHaveAttribute("data-position", "top-right");
+    });
+
+    it("renders Footer component", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: <div>Test</div>,
+        })
+      );
+
+      expect(MockedFooter).toHaveBeenCalledTimes(1);
+      expect(screen.getByTestId("footer")).toBeInTheDocument();
+    });
+
+    it("renders all components in correct order", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: <div data-testid="test-content">Content</div>,
+        })
+      );
+
+      const layout = screen.getByTestId("layout");
+      const children = Array.from(layout.children);
+
+      // Should have navbar, main, and footer as direct children
+      expect(children).toHaveLength(3);
+      expect(children[0]).toHaveAttribute("data-testid", "navbar");
+      expect(children[1]).toHaveAttribute("data-testid", "layout-main");
+      expect(children[2]).toHaveAttribute("data-testid", "footer");
+    });
+  });
+
+  describe("Error scenarios", () => {
+    it("handles missing children prop", async () => {
+      MockedGetSession.mockResolvedValue(null);
+
+      render(
+        await Layout({
+          children: undefined as any,
+        })
+      );
+
+      expect(screen.getByTestId("layout")).toBeInTheDocument();
+      expect(screen.getByTestId("navbar")).toBeInTheDocument();
+      expect(screen.getByTestId("footer")).toBeInTheDocument();
+    });
+  });
+});
+
+// Additional test for TypeScript type checking
+describe("Layout Props Types", () => {
+  it("accepts valid LayoutProps", async () => {
+    MockedGetSession.mockResolvedValue(null);
+
+    const validProps = {
+      children: <div>Valid children</div>,
+    };
+
+    const layoutComponent = await Layout(validProps);
+    expect(layoutComponent).toBeDefined();
   });
 });

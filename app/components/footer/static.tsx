@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import instagram from "@/app/assets/ig.png";
 import facebook from "@/app/assets/fb.png";
-import { links } from "@/app/static";
+import { links, privacyAndTerms } from "@/app/static";
+import { config } from "@/app/utils/config";
 
 type Link = {
   name: string;
@@ -39,10 +40,10 @@ const ContactUs = () => (
       <p className="flex items-center space-x-3">
         <Mail className="w-5 h-5 text-yellow-400" />
         <a
-          href={`mailto:admin@tutoringtosuccess.co.uk`}
+          href={`mailto:${config.adminEmail}`}
           className="hover:text-yellow-400 transition-colors duration-300"
         >
-          admin@tutoringtosuccess.co.uk
+          {config.adminEmail}
         </a>
       </p>
       <button
@@ -80,6 +81,15 @@ const QuickLinks = () => (
     <h3 className="text-lg font-semibold">Key Information</h3>
     <nav className="flex flex-col space-y-2">
       {links.map(({ href, name }) => (
+        <Link
+          href={href}
+          key={name}
+          className="hover:text-yellow-400 transition-colors duration-300"
+        >
+          {name}
+        </Link>
+      ))}
+      {privacyAndTerms.map(({ href, name }) => (
         <Link
           href={href}
           key={name}
