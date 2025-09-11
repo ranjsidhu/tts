@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { handleCredentialsSignIn } from "./serveractions";
 import toast from "react-hot-toast";
@@ -99,6 +100,12 @@ export default function CredentialsForm() {
       >
         {isLoading ? "Signing in..." : "Sign in"}
       </button>
+
+      <div className="flex justify-center">
+        <Link href="/auth/forgot-password" className="text-sm text-gray-500">
+          Forgot password?
+        </Link>
+      </div>
     </form>
   );
 }

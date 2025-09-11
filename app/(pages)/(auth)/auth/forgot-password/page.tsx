@@ -1,3 +1,4 @@
+import Layout from "@/app/components/layout/Layout";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import ForgotPassword from "./ForgotPassword";
@@ -9,8 +10,10 @@ export const metadata: Metadata = {
 
 export default function ForgotPasswordPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ForgotPassword />
-    </Suspense>
+    <Layout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ForgotPassword />
+      </Suspense>
+    </Layout>
   );
 }

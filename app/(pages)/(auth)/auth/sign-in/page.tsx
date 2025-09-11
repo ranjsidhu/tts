@@ -32,8 +32,9 @@ export default async function SignInPage() {
         <div className="max-w-md w-full mx-auto p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">Welcome</h1>
-            <p className="text-gray-600">
-              Sign in to access your Tutoring To Success account
+            <p className="text-gray-600 mt-5">
+              If you don&apos;t have an account, enter an email address and
+              password to create an account or continue with Google.
             </p>
           </div>
 
@@ -44,9 +45,7 @@ export default async function SignInPage() {
                 <div className="w-full border-t border-gray-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Or continue with
-                </span>
+                <span className="px-2 bg-white text-gray-500">or</span>
               </div>
             </div>
 
