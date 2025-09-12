@@ -4,7 +4,7 @@ import { createServerClient } from "@supabase/ssr";
 export async function createClient() {
   const cookieStore = cookies();
 
-  // Validate required environment variables
+  // Validate required environment variables at runtime
   const dbUrl = process.env.NEXT_PUBLIC_DB_URL;
   const dbAnonKey = process.env.NEXT_PUBLIC_DB_API_ANON_KEY;
 
