@@ -6,11 +6,6 @@ import facebook from "@/app/assets/fb.png";
 import { links, privacyAndTerms } from "@/app/static";
 import { config } from "@/app/utils/config";
 
-type Link = {
-  name: string;
-  href: string;
-};
-
 const socials = [
   {
     name: "Instagram",
