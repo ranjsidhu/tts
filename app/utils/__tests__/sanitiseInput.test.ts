@@ -1,5 +1,5 @@
 import { sanitiseAndValidate } from "../sanitiseInput";
-import { FormData } from "@/app/types";
+import type { FormData } from "@/app/types";
 
 describe("sanitiseAndValidate", () => {
   const validFormData: FormData = {

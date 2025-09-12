@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unused-modules */
 import { type NextRequest, NextResponse } from "next/server";
 import { formatEmail } from "./emailtemplate";
 import { sendEmail } from "../utils/emailUtils";

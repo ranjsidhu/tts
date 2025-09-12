@@ -42,6 +42,7 @@ const ContactUs = () => (
         </a>
       </p>
       <button
+        type="button"
         className="flex items-start space-x-3 hover:cursor-pointer hover:text-yellow-400 transition-colors duration-300 text-left"
         onClick={() => window.open("https://maps.app.goo.gl/V71AiLukv3wr3Y2g6")}
       >
@@ -55,6 +56,7 @@ const ContactUs = () => (
         </span>
       </button>
       <button
+        type="button"
         className="flex items-start space-x-3 hover:cursor-pointer hover:text-yellow-400 transition-colors duration-300 text-left"
         onClick={() => window.open("https://maps.app.goo.gl/CwFyLVR9VLMDA1ZEA")}
       >
@@ -123,6 +125,7 @@ const CopyrightSocials = () => (
       <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <div className="text-gray-400 text-sm text-center">
           <button
+            type="button"
             className="hover:cursor-pointer"
             onClick={() => window.open("https://ranjsidhu.dev")}
           >

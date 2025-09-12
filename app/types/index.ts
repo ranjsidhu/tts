@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unused-modules */
-
 import type {
   MenuButtonProps,
   LoadingSpinnerProps,

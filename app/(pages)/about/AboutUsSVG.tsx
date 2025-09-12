@@ -1,6 +1,7 @@
 export default function AboutUsSVG() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+      <title>About Us</title>
       {/* Background */}
       <rect width="600" height="400" fill="#F5F5F5" />
 

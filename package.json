@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "npx @biomejs/biome lint",
+    "lint": "npx @biomejs/biome lint --max-diagnostics 1000",
     "prepare": "husky",
     "test": "jest",
     "test:watch": "jest --watch",

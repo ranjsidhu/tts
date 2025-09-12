@@ -5,6 +5,7 @@ export default function HeroSVG() {
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-full rounded-xl"
     >
+      <title>Hero</title>
       {/* Background */}
       <rect width="600" height="400" fill="#1a1a1a" />
 

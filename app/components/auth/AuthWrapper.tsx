@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/app/utils/session";
-import { AuthWrapperProps } from "@/app/types";
 import { getUserDetails } from "./serveractions";
+import type { AuthWrapperProps } from "@/app/types";
 
 export default async function AuthWrapper({
   children,

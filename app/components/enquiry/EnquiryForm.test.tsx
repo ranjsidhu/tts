@@ -163,7 +163,6 @@ describe("EnquiryForm", () => {
 
   it("disables form inputs and shows loading state during submission", async () => {
     // Create a promise that we can resolve manually to control the API call timing
-    // eslint-disable-next-line no-unused-vars
     let resolvePromise: (value: unknown) => void;
     const apiPromise = new Promise((resolve) => {
       resolvePromise = resolve;

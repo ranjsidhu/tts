@@ -1,4 +1,4 @@
-import { FormData, FormErrors } from "../types";
+import type { FormData, FormErrors } from "../types";
 
 // Sanitise and validate input
 const sanitiseAndValidate = (data: FormData): FormErrors => {

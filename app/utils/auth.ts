@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unused-modules */
-
 import { NextResponse } from "next/server";
 import { getSession } from "./session";
 import { prisma } from "../api/utils/prismaUtils";
@@ -133,7 +131,6 @@ export async function checkAdminOrTutorAccess(): Promise<AuthResult> {
 export function removeUndefined(obj: Record<string, any>) {
   return Object.fromEntries(
     Object.entries(obj).filter(
-      // eslint-disable-next-line no-unused-vars
       ([_, value]) => value !== undefined && value !== null && value !== ""
     )
   );

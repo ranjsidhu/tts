@@ -99,114 +99,130 @@ export default function ProfileForm({ user }: Readonly<ProfileFormProps>) {
   return (
     <form action={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
-        <label className="block text-sm text-gray-500">First name</label>
-        <input
-          name="first_name"
-          value={formValues.first_name}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="First name"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          First name
+          <input
+            name="first_name"
+            value={formValues.first_name}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="First name"
+            disabled={isPending}
+          />
+        </label>
       </div>
       <div>
-        <label className="block text-sm text-gray-500">Last name</label>
-        <input
-          name="last_name"
-          value={formValues.last_name}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="Last name"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Last name
+          <input
+            name="last_name"
+            value={formValues.last_name}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="Last name"
+            disabled={isPending}
+          />
+        </label>
       </div>
       <div>
-        <label className="block text-sm text-gray-500">Email</label>
-        <input
-          name="email"
-          value={formValues.email}
-          onChange={onChange}
-          onBlur={() =>
-            setErrors((prev) => ({
-              ...prev,
-              email: validateEmail(formValues.email) || undefined,
-            }))
-          }
-          inputMode="email"
-          className={`mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${
-            errors.email ? "border-red-500" : "border-gray-300"
-          }`}
-          placeholder="you@example.com"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Email
+          <input
+            name="email"
+            value={formValues.email}
+            onChange={onChange}
+            onBlur={() =>
+              setErrors((prev) => ({
+                ...prev,
+                email: validateEmail(formValues.email) || undefined,
+              }))
+            }
+            inputMode="email"
+            className={`mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            }`}
+            placeholder="you@example.com"
+            disabled={isPending}
+          />
+        </label>
         {errors.email && (
           <p className="mt-1 text-sm text-red-600">{errors.email}</p>
         )}
       </div>
       <div>
-        <label className="block text-sm text-gray-500">Phone</label>
-        <input
-          name="phone"
-          value={formValues.phone}
-          onChange={onChange}
-          onBlur={() =>
-            setErrors((prev) => ({
-              ...prev,
-              phone: validatePhone(formValues.phone) || undefined,
-            }))
-          }
-          inputMode="tel"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="Phone"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Phone
+          <input
+            name="phone"
+            value={formValues.phone}
+            onChange={onChange}
+            onBlur={() =>
+              setErrors((prev) => ({
+                ...prev,
+                phone: validatePhone(formValues.phone) || undefined,
+              }))
+            }
+            inputMode="tel"
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="Phone"
+            disabled={isPending}
+          />
+        </label>
         {errors.phone && (
           <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
         )}
       </div>
       <div className="md:col-span-2">
-        <label className="block text-sm text-gray-500">Address line</label>
-        <input
-          name="first_line_address"
-          value={formValues.first_line_address}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="Street and number"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Address line
+          <input
+            name="first_line_address"
+            value={formValues.first_line_address}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="Street and number"
+            disabled={isPending}
+          />
+        </label>
       </div>
       <div>
-        <label className="block text-sm text-gray-500">Town</label>
-        <input
-          name="town"
-          value={formValues.town}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="Town"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Town
+          <input
+            name="town"
+            value={formValues.town}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="Town"
+            disabled={isPending}
+          />
+        </label>
       </div>
       <div>
-        <label className="block text-sm text-gray-500">City</label>
-        <input
-          name="city"
-          value={formValues.city}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="City"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          City
+          <input
+            name="city"
+            value={formValues.city}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="City"
+            disabled={isPending}
+          />
+        </label>
       </div>
       <div>
-        <label className="block text-sm text-gray-500">Postcode</label>
-        <input
-          name="postcode"
-          value={formValues.postcode}
-          onChange={onChange}
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-          placeholder="Postcode"
-          disabled={isPending}
-        />
+        <label className="block text-sm text-gray-500">
+          Postcode
+          <input
+            name="postcode"
+            value={formValues.postcode}
+            onChange={onChange}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            placeholder="Postcode"
+            disabled={isPending}
+          />
+        </label>
       </div>
 
       <div className="md:col-span-2 flex items-center justify-end gap-3">
