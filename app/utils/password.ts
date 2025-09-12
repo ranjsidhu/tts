@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * Utility functions for password hashing and verification using Web Crypto API
  */

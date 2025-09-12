@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
 import PageLoading from "../loading/PageLoading";
-import { FormData, FormErrors } from "@/app/types";
+import type { FormData, FormErrors } from "@/app/types";
 
 const initialFormData: FormData = {
   studentName: "",
@@ -71,19 +71,19 @@ export default function EnquiryForm() {
       <div>
         <label className="block text-sm font-medium mb-1">
           Student&apos;s Name{" "}
+          <input
+            type="text"
+            name="studentName"
+            value={formData.studentName}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-lg border ${
+              errors.studentName ? "border-red-500" : "border-gray-300"
+            } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+            placeholder="Enter student's name"
+            disabled={isLoading}
+            data-testid="student-name-input"
+          />
         </label>
-        <input
-          type="text"
-          name="studentName"
-          value={formData.studentName}
-          onChange={handleChange}
-          className={`w-full px-4 py-2 rounded-lg border ${
-            errors.studentName ? "border-red-500" : "border-gray-300"
-          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
-          placeholder="Enter student's name"
-          disabled={isLoading}
-          data-testid="student-name-input"
-        />
         {errors.studentName && (
           <p
             className="mt-1 text-sm text-red-500"
@@ -97,20 +97,19 @@ export default function EnquiryForm() {
       <div>
         <label className="block text-sm font-medium mb-1">
           Parent&apos;s Name{" "}
+          <input
+            type="text"
+            name="parentName"
+            value={formData.parentName}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-lg border ${
+              errors.parentName ? "border-red-500" : "border-gray-300"
+            } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+            placeholder="Enter parent's name"
+            disabled={isLoading}
+            data-testid="parent-name-input"
+          />
         </label>
-        <input
-          type="text"
-          name="parentName"
-          value={formData.parentName}
-          onChange={handleChange}
-          className={`w-full px-4 py-2 rounded-lg border ${
-            errors.parentName ? "border-red-500" : "border-gray-300"
-          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
-          placeholder="Enter parent's name"
-          disabled={isLoading}
-          data-testid="parent-name-input"
-        />
-
         {errors.parentName && (
           <p
             className="mt-1 text-sm text-red-500"
@@ -124,19 +123,19 @@ export default function EnquiryForm() {
       <div>
         <label className="block text-sm font-medium mb-1">
           Parent&apos;s Phone Number{" "}
+          <input
+            type="tel"
+            name="parentPhone"
+            value={formData.parentPhone}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-lg border ${
+              errors.parentPhone ? "border-red-500" : "border-gray-300"
+            } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
+            placeholder="Enter phone number (e.g., 07123456789)"
+            disabled={isLoading}
+            data-testid="parent-phone-input"
+          />
         </label>
-        <input
-          type="tel"
-          name="parentPhone"
-          value={formData.parentPhone}
-          onChange={handleChange}
-          className={`w-full px-4 py-2 rounded-lg border ${
-            errors.parentPhone ? "border-red-500" : "border-gray-300"
-          } focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none disabled:bg-gray-50 disabled:cursor-not-allowed`}
-          placeholder="Enter phone number (e.g., 07123456789)"
-          disabled={isLoading}
-          data-testid="parent-phone-input"
-        />
         {errors.parentPhone && (
           <p
             className="mt-1 text-sm text-red-500"

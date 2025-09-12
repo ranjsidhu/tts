@@ -113,6 +113,7 @@ export default function OffersPage() {
                     <span>Details coming soon</span>
                   </div>
                   <button
+                    type="button"
                     className="text-sm font-medium text-yellow-600 hover:text-yellow-700 disabled:opacity-50"
                     disabled={offer.comingSoon}
                   >

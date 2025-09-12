@@ -44,7 +44,7 @@ const authorizeUsers = async (
     return {
       id: newUser.id.toString(),
       email: newUser.email,
-      name: newUser.first_name + " " + newUser.last_name,
+      name: `${newUser.first_name} ${newUser.last_name}`,
       role: newUser.roles?.name ?? "user",
     };
   }
@@ -62,7 +62,7 @@ const authorizeUsers = async (
   return {
     id: user.id.toString(),
     email: user.email,
-    name: user.first_name + " " + user.last_name,
+    name: `${user.first_name} ${user.last_name}`,
     role: user.roles?.name ?? "user",
   };
 };

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-import path from "path";
+import path from "node:path";
 
 const nextConfig = {
   output: "standalone",

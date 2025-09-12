@@ -16,6 +16,7 @@ export default function MobileMenu({
       <div className="flex justify-between items-center p-4 border-b border-black/30">
         <h2 className="text-xl font-bold text-black">Menu</h2>
         <button
+          type="button"
           onClick={toggleMenu}
           className="p-2 text-black hover:text-amber-300 transition-colors duration-100 focus:outline-none"
           aria-label="Close menu"
