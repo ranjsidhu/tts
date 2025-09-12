@@ -12,19 +12,17 @@ on:
 jobs:
   Code-Quality-Preview:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: latest
-      - name: Run Biome
-        run: biome ci .
+      - uses: actions/checkout@v2
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit Tests
+        run: npm run test
 
   Docker-Build-Preview:
     runs-on: ubuntu-latest
