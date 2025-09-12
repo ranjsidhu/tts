@@ -1,7 +1,6 @@
 import { signIn } from "@/auth";
-import { SignInProps } from "@/app/types";
+import type { SignInProps } from "@/app/types";
 
-// eslint-disable-next-line import/no-unused-modules
 export default function SignIn({ provider }: SignInProps) {
   const signInText = `Sign in`;
 

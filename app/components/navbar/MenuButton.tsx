@@ -8,6 +8,7 @@ const MenuButton = ({
 }: MenuButtonProps) => {
   return (
     <button
+      type="button"
       data-testid={dataTestId}
       onClick={toggleMenu}
       className="sm:hidden p-2 -mr-2 flex flex-col justify-center items-center w-12 h-12 group"

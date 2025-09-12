@@ -90,7 +90,6 @@ describe("Layout Component", () => {
           id: "1",
           name: "John Doe",
           email: "john@example.com",
-          role: "Student",
         },
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
       };
@@ -182,7 +181,7 @@ describe("Layout Component", () => {
         <div data-testid="complex-child">
           <h1>Title</h1>
           <p>Content</p>
-          <button>Action</button>
+          <button type="button">Action</button>
         </div>
       );
 

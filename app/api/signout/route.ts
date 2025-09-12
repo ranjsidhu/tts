@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unused-modules */
-
 import { signOut } from "@/auth";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";

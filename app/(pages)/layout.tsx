@@ -1,9 +1,8 @@
-/* eslint-disable import/no-unused-modules */
 import type { Metadata } from "next";
-import { NextFont } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import Analytics from "./Analytics";
+import type { NextFont } from "next/dist/compiled/@next/font";
 import "./globals.css";
 
 const inter: NextFont = Inter({ subsets: ["latin"] });

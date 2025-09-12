@@ -1,4 +1,3 @@
-import React from "react";
 import type { LoadingSpinnerProps } from "@/app/types";
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "medium" }) => {

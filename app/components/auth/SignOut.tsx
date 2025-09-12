@@ -8,6 +8,7 @@ export default function SignOut() {
 
   return (
     <button
+      type="submit"
       onClick={async () => {
         await signOutAction();
         router.push("/");

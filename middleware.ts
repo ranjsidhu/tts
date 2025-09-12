@@ -1,7 +1,4 @@
-/* eslint-disable import/no-unused-modules */
-
-// middleware.ts (in root directory)
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { config as appConfig } from "./app/utils/config";
 
 const { middlewareConfigMaxReqs } = appConfig;

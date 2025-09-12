@@ -1,6 +1,4 @@
-/* eslint-disable import/no-unused-modules */
-
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import {
   checkAdminAccess,
   checkTutorAccess,
@@ -8,7 +6,6 @@ import {
 } from "@/app/utils/auth";
 import { getSession } from "@/app/utils/session";
 
-// eslint-disable-next-line no-unused-vars
 type RouteHandler = (req: NextRequest, context?: any) => Promise<NextResponse>;
 
 export function withUserProtection(handler: RouteHandler): RouteHandler {

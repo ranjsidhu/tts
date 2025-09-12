@@ -9,19 +9,14 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-// Mock next/image
-jest.mock("next/image", () => ({
-  __esModule: true,
-  default: (props: any) => {
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...props} />;
-  },
-}));
-
 // Mock auth components
 jest.mock("@/app/components/auth/SignOut", () => ({
   __esModule: true,
-  default: () => <button data-testid="sign-out-button">Sign Out</button>,
+  default: () => (
+    <button type="submit" data-testid="sign-out-button">
+      Sign Out
+    </button>
+  ),
 }));
 
 describe("Navbar Component", () => {
