@@ -1,6 +1,6 @@
 import Layout from "../components/layout/Layout";
 import { features } from "../static";
-import HeroSVG from "./HeroSVG";
+import InstagramSection from "./InstagramSection";
 import EnquiryForm from "../components/enquiry/EnquiryForm";
 
 interface FeatureCardProps {
@@ -47,7 +47,7 @@ export default async function Homepage() {
             </div>
           </div>
           <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-full">
-            <HeroSVG />
+            <InstagramSection />
           </div>
         </div>
       </section>

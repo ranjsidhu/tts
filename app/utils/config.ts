@@ -16,10 +16,31 @@ const middlewareConfigMaxReqs = {
   windowMs: 1 * ONE_MINUTE,
 };
 
+const instagramLinks = [
+  {
+    name: "Main Instagram",
+    url: "https://www.instagram.com/tutoringtosuccesswolverhampton/",
+    description: "Follow us for educational tips and updates",
+  },
+] as const;
+
+const socialLinks = {
+  instagram: instagramLinks,
+  facebook: [
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/share/19mnvxTJP2/?mibextid=wwXIfr",
+      description: "Connect with us on Facebook",
+    },
+  ],
+} as const;
+
 export const config = {
   adminEmail: ADMIN_EMAIL,
   adminRoleName: ADMIN_ROLE_NAME,
   studentRoleName: STUDENT_ROLE_NAME,
   tutorRoleName: TUTOR_ROLE_NAME,
   middlewareConfigMaxReqs,
+  instagramLinks,
+  socialLinks,
 };
