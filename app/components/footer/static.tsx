@@ -9,12 +9,12 @@ import { config } from "@/app/utils/config";
 const socials = [
   {
     name: "Instagram",
-    url: "https://www.instagram.com/tutoringtosuccesswolverhampton/",
+    url: config.socialLinks.instagram[0].url,
     icon: instagram,
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com/share/19mnvxTJP2/?mibextid=wwXIfr",
+    url: config.socialLinks.facebook[0].url,
     icon: facebook,
   },
 ];
