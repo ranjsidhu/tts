@@ -47,7 +47,7 @@ const sendEmail = async (
     const command = new SendEmailCommand({
       FromEmailAddress: SENDER_EMAIL,
       Destination: {
-        ToAddresses: toAddresses || [config.adminEmail],
+        ToAddresses: toAddresses ?? [config.adminEmail],
       },
       ReplyToAddresses: [replyTo],
       FeedbackForwardingEmailAddress: config.adminEmail,

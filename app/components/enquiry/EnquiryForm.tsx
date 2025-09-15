@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import instance from "../../utils/instance";
 import { sanitiseAndValidate } from "@/app/utils/sanitiseInput";
 import PageLoading from "../loading/PageLoading";
 import type { FormData, FormErrors } from "@/app/types";
@@ -40,7 +39,13 @@ export default function EnquiryForm() {
     setErrors({});
 
     try {
-      await instance.post("/enquiry/email", formData);
+      await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       setFormData(initialFormData);
       toast.success("Thank you for your enquiry. We will be in touch shortly.");
     } catch (error) {
@@ -286,8 +291,8 @@ export default function EnquiryForm() {
                 required
                 type="radio"
                 name="tutoringPreference"
-                value="group"
-                checked={formData.tutoringPreference === "group"}
+                value="Group"
+                checked={formData.tutoringPreference === "Group"}
                 onChange={handleChange}
                 className="form-radio text-yellow-400"
                 disabled={isLoading}
