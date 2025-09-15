@@ -16,10 +16,17 @@ const middlewareConfigMaxReqs = {
   windowMs: 1 * ONE_MINUTE,
 };
 
+const instagramLinks = [
+  "https://www.instagram.com/tutoringtosuccesswolverhampton/reel/DN5nNZ8CJ9e/",
+  "https://www.instagram.com/tutoringtosuccesswolverhampton/reel/DN6PraICNrG/",
+  "https://www.instagram.com/p/DNnw9MPMr9q/",
+];
+
 export const config = {
   adminEmail: ADMIN_EMAIL,
   adminRoleName: ADMIN_ROLE_NAME,
   studentRoleName: STUDENT_ROLE_NAME,
   tutorRoleName: TUTOR_ROLE_NAME,
   middlewareConfigMaxReqs,
+  instagramLinks
 };

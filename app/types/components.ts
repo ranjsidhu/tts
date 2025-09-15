@@ -18,6 +18,12 @@ type FormData = {
   studentName: string;
   parentName: string;
   parentPhone: string;
+  parentEmail: string;
+  subjects: string;
+  currentSchool: string;
+  yearGroup: string;
+  tutoringPreference: string;
+  availability: string;
   message: string;
 };
 
@@ -25,6 +31,12 @@ type FormErrors = {
   studentName?: string;
   parentName?: string;
   parentPhone?: string;
+  parentEmail?: string;
+  subjects?: string;
+  currentSchool?: string;
+  yearGroup?: string;
+  tutoringPreference?: string;
+  availability?: string;
   message?: string;
 };
 
