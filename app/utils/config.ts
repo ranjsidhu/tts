@@ -1,3 +1,5 @@
+import type { FormData } from "@/app/types";
+
 const ADMIN_EMAIL = "admin@tutoringtosuccess.co.uk";
 const ADMIN_ROLE_NAME = "Admin" as const;
 const STUDENT_ROLE_NAME = "Student" as const;
@@ -16,11 +18,18 @@ const middlewareConfigMaxReqs = {
   windowMs: 1 * ONE_MINUTE,
 };
 
-const instagramLinks = [
-  "https://www.instagram.com/tutoringtosuccesswolverhampton/reel/DN5nNZ8CJ9e/",
-  "https://www.instagram.com/tutoringtosuccesswolverhampton/reel/DN6PraICNrG/",
-  "https://www.instagram.com/p/DNnw9MPMr9q/",
-];
+const initialEnquiryFormData: FormData = {
+  studentName: "",
+  parentName: "",
+  parentPhone: "",
+  parentEmail: "",
+  subjects: "",
+  currentSchool: "",
+  yearGroup: "",
+  tutoringPreference: "",
+  availability: "",
+  message: "",
+};
 
 export const config = {
   adminEmail: ADMIN_EMAIL,
@@ -28,5 +37,5 @@ export const config = {
   studentRoleName: STUDENT_ROLE_NAME,
   tutorRoleName: TUTOR_ROLE_NAME,
   middlewareConfigMaxReqs,
-  instagramLinks
+  initialEnquiryFormData,
 };
