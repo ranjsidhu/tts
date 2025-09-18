@@ -37,17 +37,19 @@ const sendEmail = async (
   toAddresses?: string[]
 ) => {
   try {
-    const { SENDER_EMAIL } = process.env;
+    const { SENDER_EMAIL, PERSONAL_EMAIL } = process.env;
 
     // Validate SENDER_EMAIL at runtime
-    if (!SENDER_EMAIL) {
-      throw new Error("SENDER_EMAIL environment variable is required");
+    if (!SENDER_EMAIL || !PERSONAL_EMAIL) {
+      throw new Error(
+        "SENDER_EMAIL or PERSONAL_EMAIL environment variable is required"
+      );
     }
 
     const command = new SendEmailCommand({
       FromEmailAddress: SENDER_EMAIL,
       Destination: {
-        ToAddresses: toAddresses ?? [config.adminEmail],
+        ToAddresses: toAddresses ?? [config.adminEmail, PERSONAL_EMAIL],
       },
       ReplyToAddresses: [replyTo],
       FeedbackForwardingEmailAddress: config.adminEmail,
