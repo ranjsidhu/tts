@@ -6,6 +6,12 @@ describe("sanitiseAndValidate", () => {
     studentName: "John Smith",
     parentName: "Jane Smith",
     parentPhone: "+447123456789",
+    parentEmail: "test@test.com",
+    subjects: "Maths, Science",
+    currentSchool: "Test School",
+    yearGroup: "Year 10",
+    tutoringPreference: "In-person",
+    availability: "Weekends",
     message: "This is a valid test message for the enquiry form.",
   };
 
@@ -135,6 +141,12 @@ describe("sanitiseAndValidate", () => {
         studentName: "A",
         parentName: "B",
         parentPhone: "invalid",
+        parentEmail: "",
+        subjects: "",
+        currentSchool: "",
+        yearGroup: "",
+        tutoringPreference: "",
+        availability: "",
         message: "short",
       };
       const result = sanitiseAndValidate(data);

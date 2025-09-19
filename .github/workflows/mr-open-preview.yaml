@@ -38,8 +38,6 @@ jobs:
           context: .
           push: false
           load: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           build-args: |
             NEXT_PUBLIC_DB_URL=${{ secrets.NEXT_PUBLIC_DB_URL }}
             NEXT_PUBLIC_DB_API_ANON_KEY=${{ secrets.NEXT_PUBLIC_DB_API_ANON_KEY }}

@@ -7,11 +7,6 @@ function stringToBuffer(str: string): any {
   return new TextEncoder().encode(str).buffer;
 }
 
-// Convert ArrayBuffer to string
-function _bufferToString(buffer: ArrayBuffer): string {
-  return new TextDecoder().decode(buffer);
-}
-
 // Convert ArrayBuffer to base64 string
 function bufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
