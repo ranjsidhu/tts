@@ -15,7 +15,10 @@ const config: Config = {
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },
-  transformIgnorePatterns: ["/node_modules/(?!lucide-react/)"],
+  // Updated to include next-auth and related packages
+  transformIgnorePatterns: [
+    "/node_modules/(?!(lucide-react|next-auth|@auth|@panva)/)",
+  ],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
   },
@@ -23,6 +26,10 @@ const config: Config = {
   globals: {
     fetch: global.fetch,
   },
+  // Added to handle ES modules better
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
+  // Test file patterns
+  testMatch: ["**/__tests__/**/*.(ts|tsx|js)", "**/*.(test|spec).(ts|tsx|js)"],
 };
 
 export default createJestConfig(config);
