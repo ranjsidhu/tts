@@ -1,11 +1,10 @@
-import type { Config } from "jest";
-import nextJest from "next/jest";
+const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
   dir: "./",
 });
 
-const config: Config = {
+const config = {
   preset: "ts-jest",
   coverageProvider: "v8",
   setupFilesAfterEnv: ["./jest.setup.ts"],
@@ -32,4 +31,4 @@ const config: Config = {
   testMatch: ["**/__tests__/**/*.(ts|tsx|js)", "**/*.(test|spec).(ts|tsx|js)"],
 };
 
-export default createJestConfig(config);
+module.exports = createJestConfig(config);
